@@ -7,6 +7,7 @@ import { ListaDePeliculasComponent } from './components/lista-de-peliculas/lista
 import { HomeComponent } from './components/home/home.component';
 import { InfoPeliculasComponent } from './components/info-peliculas/info-peliculas.component';
 import { AuthenticationComponent } from './components/authentication/authentication.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { AuthenticationComponent } from './components/authentication/authenticat
     HomeComponent,
     InfoPeliculasComponent,
     AuthenticationComponent,
+    FooterComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],

@@ -1,35 +1,51 @@
 <!-- Barra de Navegacion -->
-<div style="display:flex; justify-content:center;">
+<div style="display: flex; justify-content: center">
   <div class="toolbar" role="banner">
-
-    <div style="display:flex; align-items:center; width:15%">
-      <img src="https://cdn-icons-png.flaticon.com/128/684/684646.png" style="width:50px;" />
+    <div style="display: flex; align-items: center; width: 15%">
+      <img
+        src="https://cdn-icons-png.flaticon.com/128/684/684646.png"
+        style="width: 50px"
+      />
       <span> BlockBuster</span>
     </div>
 
-
-    <div class="menu" style="display:flex; width:75%; justify-content:space-evenly">
+    <div
+      class="menu"
+      style="display: flex; width: 75%; justify-content: space-evenly"
+    >
       <a class="itemMenu" routerLink="/" routerLinkActive="active">HOME</a>
       <a class="itemMenu" href="#">CARTELERA</a>
-      <a class="itemMenu" routerLink="/peliculas" routerLinkActive="active">PELICULAS</a>
+      <a class="itemMenu" routerLink="/peliculas" routerLinkActive="active"
+        >PELICULAS</a
+      >
       <a class="itemMenu" href="#">FAQS</a>
     </div>
 
-
-    <div class="registro" style="width:10%; display:flex;justify-content:space-between; ">
+    <div
+      class="registro"
+      style="width: 10%; display: flex; justify-content: space-between"
+    >
       <button class="btn btn-danger">Login</button>
       <button class="btn btn-link bg">Signup</button>
     </div>
-
   </div>
 </div>
 
 <form class="formBusqueda" action="#" method="post">
-  <input type="text" class="inputBusqueda" id="buscar" placeholder="Busca la pelicula que quieras ver">
+  <input
+    type="text"
+    class="inputBusqueda"
+    id="buscar"
+    placeholder="Busca la pelicula que quieras ver"
+  />
   <input type="submit" value="S" class="submitBusqueda" />
 </form>
 
 <h1 class="text-center text-light">Pelicula: Sonic</h1>
 <br />
 
-<h2 class="text-light text-center"  >DESARROLLAR ACA LA INFORMACION DE LA PELICULA</h2>
+<h2 class="text-light text-center">
+  DESARROLLAR ACA LA INFORMACION DE LA PELICULA
+</h2>
+
+<app-footer></app-footer>
