@@ -15,17 +15,22 @@
 
 .buttonLogin {
   color: white;
-  background-color: rgb(87, 226, 134);
+  background-color: rgb(27, 23, 53);
 }
 .buttonLogin:hover {
   color: white;
-  background-color: rgb(67, 175, 103);
+  background-color: rgb(18, 7, 77);
   transition: ease 0.4s;
 }
 
 .buttonLoginGoogle {
   color: white;
-  background-color: rgb(27, 23, 53);
+  background-color: rgb(136, 20, 20);
+}
+
+.buttonLoginGoogle:hover {
+  background-color: rgb(189, 30, 30);
+  transition: ease 0.4s;
 }
 
 .googleLogo {
@@ -59,4 +64,8 @@
 
 .form-control {
   border: 1px solid #333333;
+}
+
+.divColForm {
+  background-color: #000000;
 }
