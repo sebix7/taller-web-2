@@ -1,0 +1,173 @@
+<div class="divContainer container-fluid d-flex flex-row col-12 p-0">
+  <div class="divPicture d-none d-md-block col-6"></div>
+
+  <!-- <p class="bg-danger">{{ screen }}</p> -->
+
+  <div *ngIf="screen > 1; then thenBlock; else elseBlock"></div>
+  <ng-template #thenBlock>
+    <div
+      class="col-12 animate__animated animate__fadeIn col-md-6 d-flex justify-content-center bg-black text-white"
+    >
+      <div
+        class="d-flex flex-column align-self-center col-8 col-sm-6 col-md-8 col-xl-5"
+      >
+        <div>
+          <p class="loginBienvenido">Bienvenido!</p>
+          <p class="mb-3 fs-3 fw-bold">Ingresá a tu cuenta</p>
+
+          <form class="mb-3">
+            <div class="form-group d-flex flex-column">
+              <label class="text-muted mb-1" htmlFor="exampleInputEmail1">
+                Email
+              </label>
+              <input
+                type="text"
+                class="form-control bg-black"
+                name="lEmail"
+                onChange="{handleInputChange}"
+                placeholder="Ingresar email"
+              />
+
+              <label
+                class="text-muted mt-2 mb-1"
+                htmlFor="exampleInputPassword1"
+              >
+                Contraseña
+              </label>
+              <input
+                type="password"
+                class="form-control bg-black"
+                name="lPassword"
+                onChange="{handleInputChange}"
+                placeholder="Ingresar contraseña"
+              />
+              <p id="emailHelp" class="forgotPassword form-text">
+                Olvidaste tu contraseña?
+              </p>
+
+              <button
+                type="submit"
+                class="buttonLogin mt-2 mb-2 btn bg-primary"
+              >
+                Ingresar
+              </button>
+
+              <button type="submit" class="buttonLoginGoogle btn bg-danger">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"
+                  alt="google"
+                  class="googleLogo"
+                />
+                Ingresar con Google
+              </button>
+            </div>
+          </form>
+
+          <div
+            class="registerLink text-center text-white d-flex justify-content-center"
+          >
+            No tenés cuenta?
+            <p (click)="changeScreen()" class="registerLinkP ms-1">
+              Registrate
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+  <ng-template #elseBlock>
+    <div
+      class="col-12 animate__animated animate__fadeIn col-md-6 d-flex justify-content-center bg-black text-white"
+    >
+      <div
+        className="d-flex flex-column align-self-center col-8 col-sm-6 col-md-8 col-xl-5"
+      >
+        <div>
+          <p class="mb-3 fs-3 fw-bold">Registrate!</p>
+          <form class="mb-3">
+            <div class="form-group d-flex flex-column">
+              <label class="text-muted mb-1" htmlFor="exampleInputName">
+                Nombre y apellido
+              </label>
+              <div>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="rName"
+                  onChange="{handleInputChange}"
+                  id="exampleInputName"
+                  placeholder="Nombre y apellido"
+                />
+                <!-- <small class="text-danger">*{error.name}</small> -->
+              </div>
+              <label class="text-muted mt-2 mb-1" htmlFor="exampleInputEmail1">
+                Email
+              </label>
+              <div>
+                <input
+                  type="text"
+                  class="form-control mt-3"
+                  id="exampleInputEmail1"
+                  name="rEmail"
+                  onChange="{handleInputChange}"
+                  placeholder="Email"
+                />
+                <!-- <small class="text-danger">*{error.email}</small> -->
+              </div>
+              <label
+                class="text-muted mt-2 mb-1"
+                htmlFor="exampleInputPassword1"
+              >
+                Contraseña
+              </label>
+              <div>
+                <input
+                  type="password"
+                  class="form-control mt-3"
+                  id="exampleInputPassword1"
+                  name="rPassword"
+                  onChange="{handleInputChange}"
+                  placeholder="Contraseña"
+                />
+                <!-- <small class="text-danger">*{error.password}</small> -->
+              </div>
+              <label
+                class="text-muted mt-2 mb-1"
+                htmlFor="exampleInputPassword2"
+              >
+                Confirmar contraseña
+              </label>
+              <div>
+                <input
+                  type="password"
+                  class="form-control mt-3"
+                  id="exampleInputPassword2"
+                  name="rPasswordConfirm"
+                  onChange="{handleInputChange}"
+                  placeholder="Confirmar contraseña"
+                />
+                <!-- <small class="text-danger"> </small> -->
+              </div>
+              <button type="submit" class="buttonLogin mt-3 mb-2 btn">
+                Registrarse
+              </button>
+            </div>
+          </form>
+
+          <div class="registerLink text-muted d-flex justify-content-center">
+            Ya tenés una cuenta?
+            <p (click)="changeScreen()" class="registerLinkP ms-1">Ingresa</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+
+  <!-- <p class="bg-danger text-white">{{ screen }}</p> -->
+
+  <!-- <div *ngIf="screen = 1; then thenBlock; else elseBlock"></div>
+
+   // div login  -->
+
+  <!-- div login -->
+</div>
