@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Pelicula } from './pelicula';
 
 @Component({
   //selector:'app-peliculas', 
@@ -9,8 +10,8 @@ import { Component, OnInit } from '@angular/core';
 
 export class ListaDePeliculasComponent implements OnInit {
 
-  public peliculas:Array<any> = [];
-  public descripcion:string = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.";
+  peliculas!: Pelicula[];
+  descripcion:string = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.";
 
   constructor() { }
 
