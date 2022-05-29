@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Pelicula } from './pelicula';
 
 @Component({
-  //selector:'app-peliculas', 
+  selector:'app-peliculas', 
   templateUrl: './lista-de-peliculas.component.html',
   styleUrls: ['./lista-de-peliculas.component.css']
 })
@@ -10,7 +10,7 @@ import { Pelicula } from './pelicula';
 
 export class ListaDePeliculasComponent implements OnInit {
 
-  peliculas!: Pelicula[];
+  peliculas: Pelicula[] = [];
   descripcion:string = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.";
 
   constructor() { }
@@ -20,7 +20,7 @@ export class ListaDePeliculasComponent implements OnInit {
     this.peliculas=[
       {
         id:1,
-        titulo: "Sony",
+        titulo: "Sonic",
         imagen:"./assets/img/peliculas/sonic.jpg",
         descripcion:"Va a los chapazos"
       },
@@ -47,8 +47,41 @@ export class ListaDePeliculasComponent implements OnInit {
         titulo: "Harry Potter",
         imagen:"./assets/img/peliculas/harry-potter.jpg",
         descripcion:this.descripcion
+      },
+      {
+        id:6,
+        titulo: "Animales Fantasticos 3",
+        imagen:"./assets/img/peliculas/animales-fantasticos.jpg",
+        descripcion:this.descripcion
+      },
+      {
+        id:7,
+        titulo: "Doctor Strange",
+        imagen:"./assets/img/peliculas/doctor-strange.jpg",
+        descripcion:this.descripcion
+      },
+      {
+        id:8,
+        titulo: "Jurassic World Dominion",
+        imagen:"./assets/img/peliculas/jurassic-world-dominion.jpg",
+        descripcion:this.descripcion
+      },
+      {
+        id:9,
+        titulo: "Lightyear",
+        imagen:"./assets/img/peliculas/lightyear.jpg",
+        descripcion:this.descripcion
+      },
+      {
+        id:10,
+        titulo: "Avatar El Camino del Agua",
+        imagen:"./assets/img/peliculas/avatar.jpg",
+        descripcion:this.descripcion
       }
     ]
   }
 
+  getPeliculas(){
+    return this.peliculas;
+  }
 }
