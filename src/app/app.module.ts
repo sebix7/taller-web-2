@@ -8,6 +8,8 @@ import { HomeComponent } from './components/home/home.component';
 import { InfoPeliculasComponent } from './components/info-peliculas/info-peliculas.component';
 import { AuthenticationComponent } from './components/authentication/authentication.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { FormsModule } from '@angular/forms';
+import { NavComponent } from './components/nav/nav.component';
 
 @NgModule({
   declarations: [
@@ -17,8 +19,9 @@ import { FooterComponent } from './components/footer/footer.component';
     InfoPeliculasComponent,
     AuthenticationComponent,
     FooterComponent,
+    NavComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
