@@ -1,18 +1,17 @@
-<app-nav></app-nav>
+<!-- <app-nav></app-nav> -->
 
 <h1 class="text-center text-light">Listado de Peliculas</h1>
 <br />
 
 <!--Seccion principal-->
 <main class="principal">
- 
+
     <div class="card" style="width: 15rem; height: auto" *ngFor="let peli of peliculas">
-      <img style="height: auto;" src="{{peli.imagen}}" class="card-img-top" alt="..."/>
-      <div class="card-body">
-        <h5 class="card-title">{{peli.titulo}}</h5>
-        <p class="card-text mb-5">{{peli.descripcion}}</p>
-        <a routerLink="/info/{{peli.id}}" routerLinkActive="active" class="btn btn-primary mb-2" style="position:absolute;bottom:0;"
-          >ver informacion</a
+        <img style="height: auto;" src="{{peli.imagen}}" class="card-img-top" alt="..." />
+        <div class="card-body">
+            <h5 class="card-title">{{peli.titulo}}</h5>
+            <p class="card-text mb-5">{{peli.descripcion}}</p>
+            <a routerLink="/info/{{peli.id}}" routerLinkActive="active" class="btn btn-primary mb-2" style="position:absolute;bottom:0;">ver informacion</a
         >
       </div>
     </div>
@@ -20,4 +19,4 @@
 
 </main>
 
-<app-footer></app-footer>
+<!-- <app-footer></app-footer> -->

@@ -1,57 +1,38 @@
-<div class="divContainer container-fluid d-flex flex-row col-12 p-0">
-  <div class="divPicture d-none d-md-block col-6"></div>
+<div class="divContainer container-fluid d-flex flex-row col-12 p-0" style="padding-top: 180px;">
+    <div class="divPicture d-none d-md-block col-6"></div>
 
-  <!-- <p class="bg-danger">{{ screen }}</p> -->
+    <!-- <p class="bg-danger">{{ screen }}</p> -->
 
-  <div *ngIf="1 >= screen; then thenBlock; else elseBlock"></div>
+    <div *ngIf="1 >= screen; then thenBlock; else elseBlock"></div>
 
-  <!-- login -->
-  <ng-template #thenBlock>
-    <div
-      class="divColForm col-12 animate__animated animate__fadeIn col-md-6 d-flex justify-content-center text-white"
-    >
-      <div
-        class="d-flex flex-column align-self-center col-8 col-sm-6 col-md-8 col-xl-5"
-      >
-        <div>
-          <p class="loginBienvenido">Bienvenido!</p>
-          <p class="mb-3 fs-3 fw-bold">Ingresá a tu cuenta</p>
+    <!-- login -->
+    <ng-template #thenBlock>
+        <div class="divColForm col-12 animate__animated animate__fadeIn col-md-6 d-flex justify-content-center text-white">
+            <div class="d-flex flex-column align-self-center col-8 col-sm-6 col-md-8 col-xl-5">
+                <div>
+                    <p class="loginBienvenido">Bienvenido!</p>
+                    <p class="mb-3 fs-3 fw-bold">Ingresá a tu cuenta</p>
 
-          <form class="mb-3">
-            <div class="form-group d-flex flex-column">
-              <label class="text-muted mb-1" htmlFor="exampleInputEmail1">
+                    <form class="mb-3">
+                        <div class="form-group d-flex flex-column">
+                            <label class="text-muted mb-1" htmlFor="exampleInputEmail1">
                 Email
               </label>
-              <input
-                type="text"
-                class="form-control bg-black"
-                name="lEmail"
-                onChange="{handleInputChange}"
-                placeholder="Ingresar email"
-              />
+                            <input type="text" class="form-control bg-black" name="lEmail" onChange="{handleInputChange}" placeholder="Ingresar email" />
 
-              <label
-                class="text-muted mt-2 mb-1"
-                htmlFor="exampleInputPassword1"
-              >
+                            <label class="text-muted mt-2 mb-1" htmlFor="exampleInputPassword1">
                 Contraseña
               </label>
-              <input
-                type="password"
-                class="form-control bg-black"
-                name="lPassword"
-                onChange="{handleInputChange}"
-                placeholder="Ingresar contraseña"
-              />
-              <p id="emailHelp" class="forgotPassword form-text">
-                Olvidaste tu contraseña?
-              </p>
+                            <input type="password" class="form-control bg-black" name="lPassword" onChange="{handleInputChange}" placeholder="Ingresar contraseña" />
+                            <p id="emailHelp" class="forgotPassword form-text">
+                                Olvidaste tu contraseña?
+                            </p>
 
-              <button type="submit" class="buttonLogin mt-2 mb-2 btn">
+                            <button type="submit" class="buttonLogin mt-2 mb-2 btn">
                 Ingresar
               </button>
 
-              <button type="submit" class="buttonLoginGoogle btn">
+                            <button type="submit" class="buttonLoginGoogle btn">
                 <img
                   src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"
                   alt="google"
@@ -59,90 +40,60 @@
                 />
                 Ingresar con Google
               </button>
+                        </div>
+                    </form>
+
+                    <div class="registerLink text-center text-muted d-flex justify-content-center">
+                        No tenés cuenta?
+                        <p (click)="changeScreen()" class="registerLinkP ms-1">
+                            Registrate
+                        </p>
+                    </div>
+                </div>
             </div>
-          </form>
-
-          <div
-            class="registerLink text-center text-muted d-flex justify-content-center"
-          >
-            No tenés cuenta?
-            <p (click)="changeScreen()" class="registerLinkP ms-1">
-              Registrate
-            </p>
-          </div>
         </div>
-      </div>
-    </div>
-  </ng-template>
-  <!-- fin login -->
+    </ng-template>
+    <!-- fin login -->
 
-  <!-- registro -->
-  <ng-template #elseBlock>
-    <div
-      class="divColForm col-12 animate__animated animate__fadeIn col-md-6 d-flex justify-content-center text-white"
-    >
-      <div
-        class="d-flex flex-column align-self-center col-8 col-sm-6 col-md-8 col-xl-5"
-      >
-        <div>
-          <p class="mb-3 fs-3 fw-bold">Registrate!</p>
-          <form class="mb-3">
-            <div class="form-group d-flex flex-column">
-              <div>
-                <input
-                  type="text"
-                  class="form-control bg-black"
-                  name="rName"
-                  id="exampleInputName"
-                  placeholder="Nombre y apellido"
-                />
-                <!-- <small class="text-danger">*{error.name}</small> -->
-              </div>
+    <!-- registro -->
+    <ng-template #elseBlock>
+        <div class="divColForm col-12 animate__animated animate__fadeIn col-md-6 d-flex justify-content-center text-white">
+            <div class="d-flex flex-column align-self-center col-8 col-sm-6 col-md-8 col-xl-5">
+                <div>
+                    <p class="mb-3 fs-3 fw-bold">Registrate!</p>
+                    <form class="mb-3">
+                        <div class="form-group d-flex flex-column">
+                            <div>
+                                <input type="text" class="form-control bg-black" name="rName" id="exampleInputName" placeholder="Nombre y apellido" />
+                                <!-- <small class="text-danger">*{error.name}</small> -->
+                            </div>
 
-              <div>
-                <input
-                  type="text"
-                  class="form-control bg-black mt-3"
-                  id="exampleInputEmail1"
-                  name="rEmail"
-                  placeholder="Email"
-                />
-                <!-- <small class="text-danger">*{error.email}</small> -->
-              </div>
-              <div>
-                <input
-                  type="password"
-                  class="form-control bg-black mt-3"
-                  id="exampleInputPassword1"
-                  name="rPassword"
-                  placeholder="Contraseña"
-                />
-                <!-- <small class="text-danger">*{error.password}</small> -->
-              </div>
+                            <div>
+                                <input type="text" class="form-control bg-black mt-3" id="exampleInputEmail1" name="rEmail" placeholder="Email" />
+                                <!-- <small class="text-danger">*{error.email}</small> -->
+                            </div>
+                            <div>
+                                <input type="password" class="form-control bg-black mt-3" id="exampleInputPassword1" name="rPassword" placeholder="Contraseña" />
+                                <!-- <small class="text-danger">*{error.password}</small> -->
+                            </div>
 
-              <div>
-                <input
-                  type="password"
-                  class="form-control bg-black mt-3"
-                  id="exampleInputPassword2"
-                  name="rPasswordConfirm"
-                  placeholder="Confirmar contraseña"
-                />
-                <!-- <small class="text-danger"> *{error.passwordConfirm} </small> -->
-              </div>
-              <button type="submit" class="buttonLogin mt-3 mb-2 btn">
+                            <div>
+                                <input type="password" class="form-control bg-black mt-3" id="exampleInputPassword2" name="rPasswordConfirm" placeholder="Confirmar contraseña" />
+                                <!-- <small class="text-danger"> *{error.passwordConfirm} </small> -->
+                            </div>
+                            <button type="submit" class="buttonLogin mt-3 mb-2 btn">
                 Registrarse
               </button>
-            </div>
-          </form>
+                        </div>
+                    </form>
 
-          <div class="registerLink text-muted d-flex justify-content-center">
-            Ya tenés una cuenta?
-            <p (click)="changeScreen()" class="registerLinkP ms-1">Ingresa</p>
-          </div>
+                    <div class="registerLink text-muted d-flex justify-content-center">
+                        Ya tenés una cuenta?
+                        <p (click)="changeScreen()" class="registerLinkP ms-1">Ingresa</p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </ng-template>
-  <!-- fin registro -->
+    </ng-template>
+    <!-- fin registro -->
 </div>
