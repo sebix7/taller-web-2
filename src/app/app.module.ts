@@ -8,7 +8,7 @@ import { HomeComponent } from './components/home/home.component';
 import { InfoPeliculasComponent } from './components/info-peliculas/info-peliculas.component';
 import { AuthenticationComponent } from './components/authentication/authentication.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavComponent } from './components/nav/nav.component';
 
 @NgModule({
@@ -21,7 +21,7 @@ import { NavComponent } from './components/nav/nav.component';
     FooterComponent,
     NavComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

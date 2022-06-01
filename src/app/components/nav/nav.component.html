@@ -45,7 +45,7 @@
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse flex-parent" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav flex-child-menu menu-left">
+                <ul class="nav navbar-nav flex-child-menu menu-left" *ngIf="buscador == false">
                     <li class="hidden">
                         <a href="#page-top"></a>
                     </li>
@@ -114,6 +114,12 @@
                         </ul>
                     </li> -->
                 </ul>
+                <ul class="nav navbar-nav flex-child-menu menu-left" *ngIf="buscador == true" style="padding-left: 20px; padding-right: 20px;">
+                    <form style="width: 100%;" [formGroup]='formBusqueda' (ngSubmit)="mostrarBusqueda()">
+                        <input type="text" class="input-busqueda-inicio" formControlName="titulo" placeholder="Busca la pelicula que quieras ver">
+                        <input type="submit" value="" class="hidden">
+                    </form>
+                </ul>
                 <ul class="nav navbar-nav flex-child-menu menu-right">
                     <!-- <li class="dropdown first">
                         <a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown">
@@ -126,8 +132,10 @@
                         </ul>
                     </li>
                     <li><a href="#">Help</a></li> -->
-                    <li class="loginLink"><a routerLink="/login">Iniciar Sesión</a></li>
-                    <li class="btn signupLink"><a href="#">Registro</a></li>
+                    <li class="dropdown first"><a href="javascript:void(0);" *ngIf="buscador == false" (click)="buscador = true" class="btn btn-default dropdown-toggle lv1">Buscar</a></li>
+                    <li class="dropdown first" *ngIf="buscador == false"><a routerLink="/login" data-toggle="dropdown" data-hover="dropdown" routerLinkActive="active" class="btn btn-default dropdown-toggle lv1">Iniciar Sesión</a></li>
+                    <li class="btn signupLink" *ngIf="buscador == false"><a href="javascript:void(0);">Registro</a></li>
+                    <li class="btn signupLink" *ngIf="buscador == true"><a href="javascript:void(0);" (click)="buscador = false">Cancelar</a></li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

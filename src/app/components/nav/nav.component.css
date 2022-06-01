@@ -1,58 +1,48 @@
 .spacer {
-  flex: 1;
+    flex: 1;
 }
 
 .toolbar {
-  height: 60px;
-  display: flex;
-  align-items: center;
-  background-color: rgb(0, 0, 0, 0,33);
-  color: white;
-  font-weight: 600;
-  display: flex;
-  width: 80%;
-}
-
-  .toolbar img {
-    margin: 0 16px;
-  }
-
-  .toolbar #twitter-logo {
-    height: 40px;
-    margin: 0 8px;
-  }
-
-  .toolbar #youtube-logo {
-    height: 40px;
-    margin: 0 16px;
-  }
-
-    .toolbar #twitter-logo:hover,
-    .toolbar #youtube-logo:hover {
-      opacity: 0.8;
-    }
-
-
-
-
-
-
-footer {
-  margin-top: 8px;
-  display: flex;
-  align-items: center;
-  line-height: 20px;
-}
-
-  footer a {
+    height: 60px;
     display: flex;
     align-items: center;
-  }
+    background-color: rgb(0, 0, 0, 0, 33);
+    color: white;
+    font-weight: 600;
+    display: flex;
+    width: 80%;
+}
 
+.toolbar img {
+    margin: 0 16px;
+}
 
+.toolbar #twitter-logo {
+    height: 40px;
+    margin: 0 8px;
+}
 
+.toolbar #youtube-logo {
+    height: 40px;
+    margin: 0 16px;
+}
 
+.toolbar #twitter-logo:hover,
+.toolbar #youtube-logo:hover {
+    opacity: 0.8;
+}
 
+footer {
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    line-height: 20px;
+}
+
+footer a {
+    display: flex;
+    align-items: center;
+}
 
 
 /*Mis estilos*/
@@ -64,33 +54,52 @@ footer {
     justify-content: center;
     align-items: center;
     opacity: 0.7
-  }
-  
-  .submitBusqueda {
+}
+
+.submitBusqueda {
     background-color: rgb(10, 19, 38);
     width: 4%;
     height: 50px;
     border: 2px #1E344A solid
-  }
-  
-  .inputBusqueda {
+}
+
+.inputBusqueda {
     height: 50px;
     width: 80%;
     border: 2px #1E344A solid;
     background-color: rgb(14, 36, 81)
-  }
+}
 
-  .card {
+.card {
     margin: 10px;
-  }
-  
-  a {
+}
+
+a {
     color: whitesmoke;
-    text-decoration:none;
-  }
-  
-  a:hover {
-      color: greenyellow;
-      transition: 0.2s;
-      text-decoration: none;
-   }
+    text-decoration: none;
+}
+
+a:hover {
+    color: greenyellow;
+    transition: 0.2s;
+    text-decoration: none;
+}
+
+.input-busqueda-inicio {
+    height: 42px;
+    border-radius: 20px;
+    font-family: 'Dosis', sans-serif;
+    font-size: 14px;
+    color: #020d18;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.input-busqueda-inicio::placeholder {
+    font-family: 'Dosis', sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
