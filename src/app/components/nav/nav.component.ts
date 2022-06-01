@@ -82,7 +82,6 @@ export class NavComponent implements OnInit {
       if(pelicula.titulo.toLowerCase().includes(this.formBusqueda.controls['titulo'].value.toLowerCase())) {
         this.router.navigate(['/info/'+pelicula.id]);
         this.buscador = false;
-        this.formBusqueda.controls['titulo'].setValue('');
       }
     });
   }
