@@ -1,4 +1,5 @@
 <!-- Barra de Navegacion -->
+
 <div style="display: flex; justify-content: center; display: none;">
     <div class="toolbar" role="banner">
         <div style="display: flex; align-items: center; width: 15%">
@@ -23,7 +24,6 @@
 
 <form class="formBusqueda" action="#" method="post" style="display: none;">
     <input type="text" class="inputBusqueda" id="buscar" placeholder="Busca la pelicula que quieras ver" name="peliculaBuscada" [(ngModel)]="peliculaBuscada" />
-    <!---<input type="submit" value="S" class="submitBusqueda" />-->
     <button (click)='onSubmit();' class="submitBusqueda">S</button>
 </form>
 
@@ -31,7 +31,6 @@
 <header class="ht-header full-width-hd">
     <div class="row">
         <nav id="mainNav" class="navbar navbar-default navbar-custom">
-            <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header logo">
                 <div class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
@@ -43,7 +42,6 @@
                 </div>
                 <a href="javascript:void(0);"><img class="logo" src="assets/images/logo1.png" alt="" width="119" height="58"></a>
             </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse flex-parent" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav flex-child-menu menu-left" *ngIf="buscador == false">
                     <li class="hidden">
@@ -52,67 +50,29 @@
                     <li class="dropdown first">
                         <a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown" routerLink="/" routerLinkActive="active">
                       Inicio 
-                      <!-- <i class="fa fa-angle-down" aria-hidden="true"></i> -->
                       </a>
-                        <!-- <ul class="dropdown-menu level1">
-                            <li><a href="index-2.html">Home 01</a></li>
-                            <li><a href="homev2.html">Home 02</a></li>
-                            <li><a href="homev3.html">Home 03</a></li>
-                        </ul> -->
+                       
                     </li>
                     <li class="dropdown first">
                         <a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown" href="javascript:void(0);">
                       Cartelera
                       <!-- <i class="fa fa-angle-down" aria-hidden="true"></i> -->
                       </a>
-                        <!-- <ul class="dropdown-menu level1">
-                            <li class="dropdown">
-                              <a href="#">about us <i class="fa fa-caret-right" aria-hidden="true"></i></a>
-                              <ul class="dropdown-menu level2">
-                                  <li><a href="aboutv1.html">About Us 01</a></li>
-                                  <li><a href="aboutv2.html">About Us 02</a></li>
-                              </ul>
-                          </li>
-                            <li><a href="moviegrid.html">Movie grid</a></li>
-                            <li><a href="moviegridfw.html">movie grid full width</a></li>
-                            <li><a href="movielist.html">Movie list</a></li>
-                            <li class="it-last"><a href="moviesingle.html">Movie single</a></li>
-                        </ul> -->
+                   
                     </li>
                     <li class="dropdown first">
                         <a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown" routerLink="/peliculas" routerLinkActive="active">
                       Peliculas
-                      <!-- <i class="fa fa-angle-down" aria-hidden="true"></i> -->
                       </a>
-                        <!-- <ul class="dropdown-menu level1">
-                            <li><a href="celebritygrid01.html">celebrity grid 01</a></li>
-                            <li><a href="celebritygrid02.html">celebrity grid 02 </a></li>
-                            <li><a href="celebritylist.html">celebrity list</a></li>
-                            <li class="it-last"><a href="celebritysingle.html">celebrity single</a></li>
-                        </ul> -->
+                        
                     </li>
                     <li class="dropdown first">
                         <a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown" href="javascript:void(0);">
                       FAQS
-                      <!-- <i class="fa fa-angle-down" aria-hidden="true"></i> -->
                       </a>
-                        <!-- <ul class="dropdown-menu level1">
-                            <li><a href="bloglist.html">blog List</a></li>
-                            <li><a href="bloggrid.html">blog Grid</a></li>
-                            <li class="it-last"><a href="blogdetail.html">blog Detail</a></li>
-                        </ul> -->
+                      
                     </li>
-                    <!-- <li class="dropdown first">
-                        <a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown">
-                      community <i class="fa fa-angle-down" aria-hidden="true"></i>
-                      </a>
-                        <ul class="dropdown-menu level1">
-                            <li><a href="userfavoritegrid.html">user favorite grid</a></li>
-                            <li><a href="userfavoritelist.html">user favorite list</a></li>
-                            <li><a href="userprofile.html">user profile</a></li>
-                            <li class="it-last"><a href="userrate.html">user rate</a></li>
-                        </ul>
-                    </li> -->
+                 
                 </ul>
                 <ul class="nav navbar-nav flex-child-menu menu-left" *ngIf="buscador == true" style="padding-left: 20px; padding-right: 20px;">
                     <form style="width: 100%;" [formGroup]='formBusqueda' (ngSubmit)="mostrarBusqueda()">
@@ -144,4 +104,5 @@
     </div>
 
 </header>
-<!-- END | Header -->
+
+ <br />

@@ -10,6 +10,7 @@ import { AuthenticationComponent } from './components/authentication/authenticat
 import { FooterComponent } from './components/footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavComponent } from './components/nav/nav.component';
+import { CarteleraComponent } from './components/cartelera/cartelera.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { NavComponent } from './components/nav/nav.component';
     AuthenticationComponent,
     FooterComponent,
     NavComponent,
+    CarteleraComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [],
