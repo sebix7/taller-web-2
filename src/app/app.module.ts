@@ -11,6 +11,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavComponent } from './components/nav/nav.component';
 import { CarteleraComponent } from './components/cartelera/cartelera.component';
+import { YouTubePlayerModule } from '@angular/youtube-player';
+
 
 @NgModule({
   declarations: [
@@ -23,8 +25,9 @@ import { CarteleraComponent } from './components/cartelera/cartelera.component';
     NavComponent,
     CarteleraComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, YouTubePlayerModule],
   providers: [],
   bootstrap: [AppComponent],
+
 })
 export class AppModule {}
