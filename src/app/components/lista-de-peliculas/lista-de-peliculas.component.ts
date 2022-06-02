@@ -74,7 +74,7 @@ export class ListaDePeliculasComponent implements OnInit {
       },
       {
         id:10,
-        titulo: "Avatar El Camino del Agua",
+        titulo: "Avatar",
         imagen:"./assets/img/peliculas/avatar.jpg",
         descripcion:this.descripcion
       }
