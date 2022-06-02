@@ -11,10 +11,10 @@
     </div>
 
     <ul class="info-item">
-      <li class="item"> GENERO: <span>AVENTURA</span></li>
-      <li class="item"> DURACION: <span>120 MIN</span></li>
-      <li class="item"> ACTORES: <span> LUISITO</span></li>
-      <li class="item"> DIRECTOR:<span> JUAN RIQUELME </span></li>
+      <li class="item"> GENERO: <span>{{genero}}</span></li>
+      <li class="item"> DURACION: <span>{{duracion}}</span></li>
+      <li class="item"> ACTORES: <span> {{actores}}</span></li>
+      <li class="item"> DIRECTOR:<span> {{director}} </span></li>
     </ul>
     </div>
 
@@ -23,7 +23,7 @@
       <youtube-player videoId="{{trailer}}"></youtube-player>
       <p class="descripcion">{{descripcion}}</p>
 
-      <a routerLink="/" routerLinkActive="active" class="boton">Mira las funciones de {{tituloPelicula}}</a>
+      <a routerLink="/" routerLinkActive="active" class="boton">Mira las funciones de {{titulo}}</a>
     </div>
 
 
