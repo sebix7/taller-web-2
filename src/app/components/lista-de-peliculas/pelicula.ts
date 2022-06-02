@@ -3,4 +3,8 @@ export interface Pelicula{
     titulo:string;
     imagen:string;
     descripcion:string;
+    genero:string;
+    duracion:string;
+    actores:string;
+    director:string;
 }
