@@ -7,11 +7,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InfoPeliculasComponent implements OnInit {
 
-  tituloPelicula: string = "Sonic";
-  id: number = 1;
-  imagen: string = "./assets/img/peliculas/sonic.jpg"
-  descripcion: string = "En esta película, Sonic se une al alguacil local de un pueblo, Tom Wachowski, para escapar de fuerzas gubernamentales secretas y derrotar a Robotnik, quien quiere robar los poderes de Sonic usando sus armas robot sumamente avanzadas para capturarlo."
+  titulo: any = ""
+  imagen: any = ""
+  descripcion: any = ""
+  genero:any=""
+  duracion:any=""
+  actores:any=""
+  director:any=""
   trailer: string = 'MsaAnA2EZQg';
+  
+  constructor() {
+
+        this.titulo= localStorage.getItem("titulo");
+        this.imagen = localStorage.getItem("imagen");
+        this.descripcion=localStorage.getItem("descripcion");
+        this.genero=localStorage.getItem("genero");
+        this.duracion=localStorage.getItem("duracion");
+        this.actores=localStorage.getItem("actores");
+        this.director=localStorage.getItem("director");
+  }
 
   ngOnInit(): void {
     const tag = document.createElement('script')
