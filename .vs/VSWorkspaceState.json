@@ -4,8 +4,10 @@
     "\\src",
     "\\src\\app",
     "\\src\\app\\components",
-    "\\src\\app\\components\\home"
+    "\\src\\app\\components\\cartelera",
+    "\\src\\app\\components\\nav",
+    "\\src\\assets\\css\\fonts"
   ],
-  "SelectedNode": "\\src\\app\\components\\home\\home.component.html",
+  "SelectedNode": "\\src\\app\\components\\nav\\nav.component.html",
   "PreviewInSolutionExplorer": false
 }

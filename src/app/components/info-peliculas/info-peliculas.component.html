@@ -3,27 +3,41 @@
 
 <main class="principal">
 
-  <div class="contenedor">
+  <div class="contenedorFunciones">
+
+    <ol class="dias">
+
+      <li><a class="diasLink" routerLink="/funciones" routerLinkActive="active-link">Lunes <br /> 6/6/22</a> </li>
+      <li> <a class="diasLink" routerLink="/funciones" routerLinkActive="active">Martes <br /> 7/6/22 </a> </li>
+      <li> <a class="diasLink" routerLink="/funciones" routerLinkActive="active">Miercoles <br /> 8/6/22 </a></li>
+      <li> <a class="diasLink" routerLink="/funciones" routerLinkActive="active">Jueves <br /> 9/6/22 </a></li>
+      <li> <a class="diasLink" routerLink="/funciones" routerLinkActive="active">Viernes <br /> 10/6/22 </a></li>
+      <li><a class="diasLink" routerLink="/funciones" routerLinkActive="active">Sabado <br /> 11/6/22</a></li>
+      <li> <a class="diasLink" routerLink="/funciones" routerLinkActive="active">Domingo <br /> 12/6/22 </a></li>
+
+    </ol>
+    <!--Hacerlo mediante una funcion-->
+    <router-outlet></router-outlet>
+  </div>
+  <div class="contenedorInformacion">
 
     <div class="izquierda">
-    <div>
-      <img src="{{imagen}}" style="height:500px;" />
-    </div>
+      <div>
+        <img src="{{imagen}}" style="height:400px;" />
+      </div>
 
-    <ul class="info-item">
-      <li class="item"> GENERO: <span>{{genero}}</span></li>
-      <li class="item"> DURACION: <span>{{duracion}}</span></li>
-      <li class="item"> ACTORES: <span> {{actores}}</span></li>
-      <li class="item"> DIRECTOR:<span> {{director}} </span></li>
-    </ul>
+      <ul class="info-item">
+        <li class="item"> GENERO: <span>{{genero}}</span></li>
+        <li class="item"> DURACION: <span>{{duracion}}</span></li>
+        <li class="item"> ACTORES: <span> {{actores}}</span></li>
+        <li class="item"> DIRECTOR:<span> {{director}} </span></li>
+      </ul>
     </div>
 
     <div class="derecha">
 
       <youtube-player videoId="{{trailer}}"></youtube-player>
       <p class="descripcion">{{descripcion}}</p>
-
-      <a routerLink="/" routerLinkActive="active" class="boton">Mira las funciones de {{titulo}}</a>
     </div>
 
 

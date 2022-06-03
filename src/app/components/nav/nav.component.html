@@ -9,7 +9,6 @@
 
         <div class="menu" style="display: flex; width: 75%; justify-content: space-evenly">
             <a class="itemMenu" routerLink="/" routerLinkActive="active">HOME</a>
-            <a class="itemMenu" href="#">CARTELERA</a>
             <a class="itemMenu" routerLink="/peliculas" routerLinkActive="active">PELICULAS</a
         >
         <a class="itemMenu" href="#">FAQS</a>
@@ -53,13 +52,7 @@
                       </a>
                        
                     </li>
-                    <li class="dropdown first">
-                        <a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown" href="javascript:void(0);">
-                      Cartelera
-                      <!-- <i class="fa fa-angle-down" aria-hidden="true"></i> -->
-                      </a>
-                   
-                    </li>
+                  
                     <li class="dropdown first">
                         <a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown" routerLink="/peliculas" routerLinkActive="active">
                       Peliculas
@@ -81,17 +74,7 @@
                     </form>
                 </ul>
                 <ul class="nav navbar-nav flex-child-menu menu-right">
-                    <!-- <li class="dropdown first">
-                        <a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown">
-                      pages <i class="fa fa-angle-down" aria-hidden="true"></i>
-                      </a>
-                        <ul class="dropdown-menu level1">
-                            <li><a href="landing.html">Landing</a></li>
-                            <li><a href="404.html">404 Page</a></li>
-                            <li class="it-last"><a href="comingsoon.html">Coming soon</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Help</a></li> -->
+               
                     <li class="dropdown first"><a href="javascript:void(0);" *ngIf="buscador == false" (click)="buscador = true" class="btn btn-default dropdown-toggle lv1">Buscar</a></li>
                     <li class="dropdown first" *ngIf="buscador == false"><a routerLink="/login" data-toggle="dropdown" data-hover="dropdown" routerLinkActive="active" class="btn btn-default dropdown-toggle lv1">Iniciar Sesión</a></li>
                     <li class="btn signupLink" *ngIf="buscador == false"><a href="javascript:void(0);">Registro</a></li>
