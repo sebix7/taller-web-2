@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavComponent } from './components/nav/nav.component';
 import { CarteleraComponent } from './components/cartelera/cartelera.component';
 import { YouTubePlayerModule } from '@angular/youtube-player';
+import { FuncionesComponent } from './components/admin/funciones/funciones.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { YouTubePlayerModule } from '@angular/youtube-player';
     FooterComponent,
     NavComponent,
     CarteleraComponent,
+    FuncionesComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, YouTubePlayerModule],
   providers: [],
