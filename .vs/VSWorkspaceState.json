@@ -1,13 +1,13 @@
 {
   "ExpandedNodes": [
     "",
+    "\\.angular",
     "\\src",
     "\\src\\app",
     "\\src\\app\\components",
-    "\\src\\app\\components\\cartelera",
-    "\\src\\app\\components\\nav",
-    "\\src\\assets\\css\\fonts"
+    "\\src\\app\\components\\funciones",
+    "\\src\\app\\components\\info-peliculas"
   ],
-  "SelectedNode": "\\src\\app\\components\\nav\\nav.component.html",
+  "SelectedNode": "\\src\\app\\components\\info-peliculas\\info-peliculas.component.html",
   "PreviewInSolutionExplorer": false
 }
