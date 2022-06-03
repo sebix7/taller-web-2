@@ -1,5 +1,5 @@
 
-<div class="container" style="padding-top: 180px; opacity: 0.7;">
+<div class="container" style="padding-top: 125px; opacity: 0.7;">
     <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleCaptions" *ngFor="let image of images, let i = index" attr.data-slide-to="{{i}}" [ngClass]="{'active': i === 0, 'inactive': i !== 0}" [id]="i" style="margin-left: 2px; margin-right: 2px;"></li>
