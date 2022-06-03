@@ -6,13 +6,14 @@
   background-color: #020d1867;
 }
 
-.h4Buttons {
+.pButtons {
+  font-size: 1em;
   color: #fff;
   font-weight: 500;
   cursor: pointer;
 }
 
-.h4Buttons:hover {
+.pButtons:hover {
   color: rgb(251, 255, 0);
   transition: ease 0.3s;
 }
