@@ -99,7 +99,7 @@ export class ListaDePeliculasComponent implements OnInit {
       descripcion:"La película cuenta los orígenes de Buzz Lightyear, el héroe que inspiró el juguete, y nos da a conocer la historia de este legendario Guardián Espacial narrada como una apasionante aventura intergaláctica.",
       genero:"Animación/Aventura/Comedia",
       duracion:"1h 40 MIN",
-      actores:"Chris Evans, Keke Palmer, Dale Soules",
+      actores:"Chris Evans, Keke Palmer",
       director:"Angus MacLane"
     },
     {

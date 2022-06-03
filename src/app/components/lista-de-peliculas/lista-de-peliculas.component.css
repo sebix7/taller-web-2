@@ -1,6 +1,8 @@
 
-.card {
-  margin: 10px;
+img {
+  height: 254px;
+  width: 203px;
+  object-fit: cover;
 }
 
 .principal {
@@ -9,69 +11,12 @@
   justify-content: center;
   background-color: #020d18;
   flex-wrap: wrap;
-  height: 500px;
   margin-top: 100px;
+  height: auto;
 }
 
 .movie-item {
-  margin:10px;
-  background-color:rgb(87, 10, 10)
+  margin: 10px;
+  background-color: rgb(87, 10, 10)
 }
-
-.toolbar {
-  height: 60px;
-  display: flex;
-  align-items: center;
-  background-color: rgb(0, 0, 0, 0,33);
-  color: white;
-  font-weight: 600;
-  display: flex;
-  width: 80%;
-}
-
-  .toolbar img {
-    margin: 0 16px;
-  }
-
-  .toolbar #twitter-logo {
-    height: 40px;
-    margin: 0 8px;
-  }
-
-  .toolbar #youtube-logo {
-    height: 40px;
-    margin: 0 16px;
-  }
-
-    .toolbar #twitter-logo:hover,
-    .toolbar #youtube-logo:hover {
-      opacity: 0.8;
-    }
-
-
-
-
-footer {
-  margin-top: 8px;
-  display: flex;
-  align-items: center;
-  line-height: 20px;
-}
-
-  footer a {
-    display: flex;
-    align-items: center;
-  }
-
-
-a {
-  color: whitesmoke;
-  text-decoration:none;
-}
-
-  a:hover {
-    color: greenyellow;
-    transition: 0.2s;
-    text-decoration: none;
-  }
 

@@ -1,108 +1,66 @@
-<!-- Barra de Navegacion -->
-
-<div style="display: flex; justify-content: center; display: none;">
-    <div class="toolbar" role="banner">
-        <div style="display: flex; align-items: center; width: 15%">
-            <img src="https://cdn-icons-png.flaticon.com/128/684/684646.png" style="width: 50px" />
-            <span> BlockBuster</span>
-        </div>
-
-        <div class="menu" style="display: flex; width: 75%; justify-content: space-evenly">
-            <a class="itemMenu" routerLink="/" routerLinkActive="active">HOME</a>
-            <a class="itemMenu" href="#">CARTELERA</a>
-            <a class="itemMenu" routerLink="/peliculas" routerLinkActive="active">PELICULAS</a
+<nav class="navContainer container-fluid fixed-top p-3">
+  <div class="d-flex flex-row justify-content-between align-items-center">
+    <div class="d-flex align-items-center">
+      <div routerLink="/" class="navbar-header logo">
+        <div
+          class="navbar-toggle"
+          data-toggle="collapse"
+          data-target="#bs-example-navbar-collapse-1"
         >
-        <a class="itemMenu" href="#">FAQS</a>
+          <span class="sr-only">Toggle navigation</span>
+          <div id="nav-icon1">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
         </div>
+        <a href="javascript:void(0);"
+          ><img class="logo" src="assets/images/logo1.png" alt="" width="80"
+        /></a>
+      </div>
 
-        <div class="registro" style="width: 10%; display: flex; justify-content: space-between">
-            <button class="btn btn-danger">Login</button>
-            <button class="btn btn-link bg">Signup</button>
-        </div>
-    </div>
-</div>
-
-<form class="formBusqueda" action="#" method="post" style="display: none;">
-    <input type="text" class="inputBusqueda" id="buscar" placeholder="Busca la pelicula que quieras ver" name="peliculaBuscada" [(ngModel)]="peliculaBuscada" />
-    <button (click)='onSubmit();' class="submitBusqueda">S</button>
-</form>
-
-<!-- BEGIN | Header -->
-<header class="ht-header full-width-hd">
-    <div class="row">
-        <nav id="mainNav" class="navbar navbar-default navbar-custom">
-            <div class="navbar-header logo">
-                <div class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <div id="nav-icon1">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                </div>
-                <a href="javascript:void(0);"><img class="logo" src="assets/images/logo1.png" alt="" width="119" height="58"></a>
-            </div>
-            <div class="collapse navbar-collapse flex-parent" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav flex-child-menu menu-left" *ngIf="buscador == false">
-                    <li class="hidden">
-                        <a href="#page-top"></a>
-                    </li>
-                    <li class="dropdown first">
-                        <a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown" routerLink="/" routerLinkActive="active">
-                      Inicio 
-                      </a>
-                       
-                    </li>
-                    <li class="dropdown first">
-                        <a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown" href="javascript:void(0);">
-                      Cartelera
-                      <!-- <i class="fa fa-angle-down" aria-hidden="true"></i> -->
-                      </a>
-                   
-                    </li>
-                    <li class="dropdown first">
-                        <a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown" routerLink="/peliculas" routerLinkActive="active">
-                      Peliculas
-                      </a>
-                        
-                    </li>
-                    <li class="dropdown first">
-                        <a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown" href="javascript:void(0);">
-                      FAQS
-                      </a>
-                      
-                    </li>
-                 
-                </ul>
-                <ul class="nav navbar-nav flex-child-menu menu-left" *ngIf="buscador == true" style="padding-left: 20px; padding-right: 20px;">
-                    <form style="width: 100%;" [formGroup]='formBusqueda' (ngSubmit)="mostrarBusqueda()">
-                        <input type="text" class="input-busqueda-inicio" formControlName="titulo" placeholder="Busca la pelicula que quieras ver">
-                        <input type="submit" value="" class="hidden">
-                    </form>
-                </ul>
-                <ul class="nav navbar-nav flex-child-menu menu-right">
-                    <!-- <li class="dropdown first">
-                        <a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown">
-                      pages <i class="fa fa-angle-down" aria-hidden="true"></i>
-                      </a>
-                        <ul class="dropdown-menu level1">
-                            <li><a href="landing.html">Landing</a></li>
-                            <li><a href="404.html">404 Page</a></li>
-                            <li class="it-last"><a href="comingsoon.html">Coming soon</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Help</a></li> -->
-                    <li class="dropdown first"><a href="javascript:void(0);" *ngIf="buscador == false" (click)="buscador = true" class="btn btn-default dropdown-toggle lv1">Buscar</a></li>
-                    <li class="dropdown first" *ngIf="buscador == false"><a routerLink="/login" data-toggle="dropdown" data-hover="dropdown" routerLinkActive="active" class="btn btn-default dropdown-toggle lv1">Iniciar Sesión</a></li>
-                    <li class="btn signupLink" *ngIf="buscador == false"><a href="javascript:void(0);">Registro</a></li>
-                    <li class="btn signupLink" *ngIf="buscador == true"><a href="javascript:void(0);" (click)="buscador = false">Cancelar</a></li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </nav>
-        <!-- search form -->
+      <div style="position: relative; top: 5px" class="d-flex ms-5">
+        <p routerLink="/" class="pButtons mx-3">INICIO</p>
+        <p routerLink="/peliculas" class="pButtons mx-3">PELICULAS</p>
+        <p class="pButtons mx-3">FAQS</p>
+      </div>
     </div>
 
-</header>
+    <div class="w-50" *ngIf="buscador == true">
+      <form
+        style="width: 100%"
+        [formGroup]="formBusqueda"
+        (ngSubmit)="mostrarBusqueda()"
+      >
+        <input
+          type="text"
+          class="input-busqueda-inicio"
+          formControlName="titulo"
+          placeholder="Busca la pelicula que quieras ver"
+        />
+        <input type="submit" value="" class="hidden" />
+      </form>
+    </div>
+    <div style="position: relative; top: 5px" class="d-flex">
+      <p
+        href="javascript:void(0);"
+        *ngIf="buscador == false"
+        (click)="buscador = true"
+        class="pButtons mx-3"
+      >
+        BUSCAR
+      </p>
+      <p
+        class="pButtons mx-3"
+        *ngIf="buscador == true"
+        href="javascript:void(0);"
+        (click)="buscador = false"
+      >
+        CANCELAR
+      </p>
 
- <br />
+      <p routerLink="/login" class="pButtons mx-3">INICIAR SESIÓN</p>
+      <p routerLink="/login" class="pButtons mx-3">REGISTRO</p>
+    </div>
+  </div>
+</nav>

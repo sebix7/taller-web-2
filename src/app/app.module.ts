@@ -10,9 +10,13 @@ import { AuthenticationComponent } from './components/authentication/authenticat
 import { FooterComponent } from './components/footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavComponent } from './components/nav/nav.component';
-import { CarteleraComponent } from './components/cartelera/cartelera.component';
 import { YouTubePlayerModule } from '@angular/youtube-player';
+<<<<<<< HEAD
 import { FuncionesComponent } from './components/admin/funciones/funciones.component';
+=======
+import { FuncionesComponent } from './components/funciones/funciones.component';
+import { ReservaComponent } from './components/reserva/reserva.component';
+>>>>>>> main
 
 
 @NgModule({
@@ -24,8 +28,13 @@ import { FuncionesComponent } from './components/admin/funciones/funciones.compo
     AuthenticationComponent,
     FooterComponent,
     NavComponent,
+<<<<<<< HEAD
     CarteleraComponent,
     FuncionesComponent,
+=======
+    FuncionesComponent,
+    ReservaComponent,
+>>>>>>> main
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, YouTubePlayerModule],
   providers: [],
