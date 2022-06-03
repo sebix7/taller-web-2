@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavComponent } from './components/nav/nav.component';
 import { YouTubePlayerModule } from '@angular/youtube-player';
 import { FuncionesComponent } from './components/funciones/funciones.component';
+import { ReservaComponent } from './components/reserva/reserva.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { FuncionesComponent } from './components/funciones/funciones.component';
     FooterComponent,
     NavComponent,
     FuncionesComponent,
+    ReservaComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, YouTubePlayerModule],
   providers: [],
