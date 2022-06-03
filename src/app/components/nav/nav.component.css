@@ -1,79 +1,96 @@
+* {
+  font-family: "Dosis", sans-serif;
+}
+
+.navContainer {
+  background-color: #020d1867;
+}
+
+.pButtons {
+  font-size: 1em;
+  color: #fff;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.pButtons:hover {
+  color: rgb(251, 255, 0);
+  transition: ease 0.3s;
+}
+
 .spacer {
-    flex: 1;
+  flex: 1;
 }
 
 .toolbar {
-    height: 60px;
-    display: flex;
-    align-items: center;
-    background-color: rgb(0, 0, 0, 0, 33);
-    color: white;
-    font-weight: 600;
-    display: flex;
-    width: 80%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  background-color: rgb(0, 0, 0, 0, 33);
+  color: white;
+  font-weight: 600;
+  display: flex;
+  width: 80%;
 }
 
 .toolbar img {
-    margin: 0 16px;
+  margin: 0 16px;
 }
 
 .toolbar #twitter-logo {
-    height: 40px;
-    margin: 0 8px;
+  height: 40px;
+  margin: 0 8px;
 }
 
 .toolbar #youtube-logo {
-    height: 40px;
-    margin: 0 16px;
+  height: 40px;
+  margin: 0 16px;
 }
 
 .toolbar #twitter-logo:hover,
 .toolbar #youtube-logo:hover {
-    opacity: 0.8;
+  opacity: 0.8;
 }
 
 footer {
-    margin-top: 8px;
-    display: flex;
-    align-items: center;
-    line-height: 20px;
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  line-height: 20px;
 }
 
 footer a {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
-
 
 /*Mis estilos*/
 
-
 a {
-    color: whitesmoke;
-    text-decoration: none;
+  color: whitesmoke;
+  text-decoration: none;
 }
 
 a:hover {
-    color: greenyellow;
-    transition: 0.2s;
-    text-decoration: none;
+  color: greenyellow;
+  transition: 0.2s;
+  text-decoration: none;
 }
 
 .input-busqueda-inicio {
-    height: 42px;
-    border-radius: 20px;
-    font-family: 'Dosis', sans-serif;
-    font-size: 14px;
-    color: #020d18;
-    font-weight: bold;
-    text-transform: uppercase;
-    padding-left: 20px;
-    padding-right: 20px;
+  border-radius: 20px;
+  font-family: "Dosis", sans-serif;
+  font-size: 14px;
+  color: #020d18;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .input-busqueda-inicio::placeholder {
-    font-family: 'Dosis', sans-serif;
-    font-size: 14px;
-    font-weight: bold;
-    text-transform: uppercase;
+  font-family: "Dosis", sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
 }
