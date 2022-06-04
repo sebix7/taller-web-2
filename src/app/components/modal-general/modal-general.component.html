@@ -20,17 +20,11 @@
         </button>
       </div>
       <div class="modal-body"><ng-content></ng-content></div>
-      <div class="modal-footer">
+      <div class="modal-footer" *ngIf="cerrarAction || eliminarAction">
         <ng-container *ngIf="cerrarAction">
           <button type="button" class="btn btn-primary" data-dismiss="modal">
             Cerrar
           </button>
-        </ng-container>
-        <ng-container *ngIf="guardarAction">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">
-            Cerrar
-          </button>
-          <button type="button" class="btn btn-primary">Guardar</button>
         </ng-container>
         <ng-container *ngIf="eliminarAction">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">

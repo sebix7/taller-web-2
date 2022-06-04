@@ -20,6 +20,8 @@ import { ModalDetallesPeliculaComponent } from './components/admin/funciones-adm
 import { ModalEditarPeliculaComponent } from './components/admin/funciones-admin/modal-editar-pelicula/modal-editar-pelicula.component';
 import { ModalEliminarPeliculaComponent } from './components/admin/funciones-admin/modal-eliminar-pelicula/modal-eliminar-pelicula.component';
 import { ModalFuncionesPeliculaComponent } from './components/admin/funciones-admin/modal-funciones-pelicula/modal-funciones-pelicula.component';
+import { FormularioPeliculaComponent } from './components/admin/funciones-admin/formulario-pelicula/formulario-pelicula.component';
+import { InputComponent } from './components/forms/input/input.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import { ModalFuncionesPeliculaComponent } from './components/admin/funciones-ad
     ModalEditarPeliculaComponent,
     ModalEliminarPeliculaComponent,
     ModalFuncionesPeliculaComponent,
+    FormularioPeliculaComponent,
+    InputComponent,
   ],
   imports: [
     BrowserModule,

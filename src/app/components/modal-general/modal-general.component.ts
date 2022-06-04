@@ -10,7 +10,6 @@ export class ModalGeneralComponent implements OnInit {
   @Input() titulo: String = '';
   @Input() eliminarAction: boolean = false;
   @Input() cerrarAction: boolean = false;
-  @Input() guardarAction: boolean = false;
 
   constructor() {}
 

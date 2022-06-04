@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Pelicula } from 'src/app/components/lista-de-peliculas/pelicula';
 
 @Component({
   selector: 'app-modal-nueva-pelicula',
