@@ -94,3 +94,9 @@ a:hover {
   font-weight: bold;
   text-transform: uppercase;
 }
+
+.nav-background {
+  background: url('../../../assets/images/uploads/ft-bg.jpg') no-repeat;
+  background-position: center;
+  background-size: cover;
+}

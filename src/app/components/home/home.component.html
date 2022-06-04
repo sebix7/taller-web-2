@@ -1,5 +1,4 @@
-
-<div class="container" style="padding-top: 125px; opacity: 0.7;">
+<div class="movie-items full-width" style="padding-top: 125px; background-color: #020d18;">
     <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleCaptions" *ngFor="let image of images, let i = index" attr.data-slide-to="{{i}}" [ngClass]="{'active': i === 0, 'inactive': i !== 0}" [id]="i" style="margin-left: 2px; margin-right: 2px;"></li>
@@ -26,7 +25,7 @@
                             <div style="opacity: 0; cursor: default;">#Popular</div>
                         </a>
                     </li>
-                 
+
                 </ul>
                 <div class="tab-content">
                     <div id="tab1-h2" class="tab active">
@@ -69,7 +68,7 @@
                             <div style="opacity: 0; cursor: default;">#Popular</div>
                         </a>
                     </li>
-               
+
                 </ul>
                 <div class="tab-content">
                     <div id="tab1-h2" class="tab active">
@@ -113,7 +112,7 @@
                             <div style="opacity: 0; cursor: default;">#Popular</div>
                         </a>
                     </li>
-             
+
                 </ul>
                 <div class="tab-content">
                     <div id="tab1-h2" class="tab active">
@@ -566,4 +565,3 @@
     </button>
     </div>
 </main>
-
