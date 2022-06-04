@@ -21,7 +21,7 @@ export class FormularioPeliculaComponent implements OnInit {
 
   constructor() {}
 
-  cargarDatosPelicula = new FormGroup({
+  cargarPelicula = new FormGroup({
     id: new FormControl(this.pelicula.id),
     titulo: new FormControl(this.pelicula.titulo, [Validators.required]),
     //imagen: new FormControl(this.pelicula.imagen, [Validators.required]),
@@ -37,7 +37,7 @@ export class FormularioPeliculaComponent implements OnInit {
   ngOnInit(): void {}
 
   submit(): void {
-    this.pelicula = this.cargarDatosPelicula.value;
-    console.log(this.cargarDatosPelicula.value);
+    this.pelicula = this.cargarPelicula.value;
+    console.log(this.cargarPelicula.value);
   }
 }

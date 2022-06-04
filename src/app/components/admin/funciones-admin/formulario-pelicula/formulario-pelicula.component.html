@@ -1,10 +1,10 @@
-<form [formGroup]="cargarDatosPelicula" (ngSubmit)="submit()">
+<form [formGroup]="cargarPelicula" (ngSubmit)="submit()">
   <app-input
     [label]="'Título'"
     [placeholder]="'Ingrese el título de la Película'"
     [name]="'titulo'"
-    [formGroup]="cargarDatosPelicula"
-    [condicionError]="cargarDatosPelicula.get('titulo')?.touched && cargarDatosPelicula.get('titulo')?.errors?.['required']"
+    [formGroup]="cargarPelicula"
+    [condicionError]="cargarPelicula.get('titulo')?.touched && cargarPelicula.get('titulo')?.errors?.['required']"
     [mensajeError]="'Debe ingresar un título para la película'"
     [value]="pelicula.titulo"
   ></app-input>
@@ -12,8 +12,8 @@
     [label]="'Descripción'"
     [placeholder]="'Ingrese la descripción de la Película'"
     [name]="'descripcion'"
-    [formGroup]="cargarDatosPelicula"
-    [condicionError]="cargarDatosPelicula.get('descripcion')?.touched && cargarDatosPelicula.get('descripcion')?.errors?.['required']"
+    [formGroup]="cargarPelicula"
+    [condicionError]="cargarPelicula.get('descripcion')?.touched && cargarPelicula.get('descripcion')?.errors?.['required']"
     [mensajeError]="'Debe ingresar una descripción para la película'"
     [value]="pelicula.descripcion"
   ></app-input>
@@ -21,8 +21,8 @@
     [label]="'Género'"
     [placeholder]="'Ingrese en género de la Película'"
     [name]="'genero'"
-    [formGroup]="cargarDatosPelicula"
-    [condicionError]="cargarDatosPelicula.get('genero')?.touched && cargarDatosPelicula.get('genero')?.errors?.['required']"
+    [formGroup]="cargarPelicula"
+    [condicionError]="cargarPelicula.get('genero')?.touched && cargarPelicula.get('genero')?.errors?.['required']"
     [mensajeError]="'Debe ingresar un género para la película'"
     [value]="pelicula.genero"
   ></app-input>
@@ -30,8 +30,8 @@
     [label]="'Duración'"
     [placeholder]="'Ingrese la duración de la Película'"
     [name]="'duracion'"
-    [formGroup]="cargarDatosPelicula"
-    [condicionError]="cargarDatosPelicula.get('duracion')?.touched && cargarDatosPelicula.get('duracion')?.errors?.['required']"
+    [formGroup]="cargarPelicula"
+    [condicionError]="cargarPelicula.get('duracion')?.touched && cargarPelicula.get('duracion')?.errors?.['required']"
     [mensajeError]="'Debe ingresar una duración para la película'"
     [value]="pelicula.duracion"
   ></app-input>
@@ -39,8 +39,8 @@
     [label]="'Actores'"
     [placeholder]="'Ingrese los actores de la Película'"
     [name]="'actores'"
-    [formGroup]="cargarDatosPelicula"
-    [condicionError]="cargarDatosPelicula.get('actores')?.touched && cargarDatosPelicula.get('actores')?.errors?.['required']"
+    [formGroup]="cargarPelicula"
+    [condicionError]="cargarPelicula.get('actores')?.touched && cargarPelicula.get('actores')?.errors?.['required']"
     [mensajeError]="'Debe ingresar al menos un actor de la película'"
     [value]="pelicula.actores"
   ></app-input>
@@ -48,13 +48,20 @@
     [label]="'Director'"
     [placeholder]="'Ingrese el director de la Película'"
     [name]="'director'"
-    [formGroup]="cargarDatosPelicula"
-    [condicionError]="cargarDatosPelicula.get('director')?.touched && cargarDatosPelicula.get('director')?.errors?.['required']"
+    [formGroup]="cargarPelicula"
+    [condicionError]="cargarPelicula.get('director')?.touched && cargarPelicula.get('director')?.errors?.['required']"
     [mensajeError]="'Debe ingresar el director de la película'"
     [value]="pelicula.director"
   ></app-input>
   <div class="modal-footer">
-    <button type="submit" class="btn btn-primary">Guardar</button>
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="!cargarPelicula.valid"
+      [attr.data-dismiss]="cargarPelicula.valid ? 'modal' : null"
+    >
+      Guardar
+    </button>
 
     <button type="button" class="btn btn-secondary" data-dismiss="modal">
       Cerrar
