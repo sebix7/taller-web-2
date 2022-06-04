@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FuncionesComponent } from './funciones.component';
+import { ModalNuevaPeliculaComponent } from './modal-nueva-pelicula.component';
 
-describe('FuncionesComponent', () => {
-  let component: FuncionesComponent;
-  let fixture: ComponentFixture<FuncionesComponent>;
+describe('ModalNuevaPeliculaComponent', () => {
+  let component: ModalNuevaPeliculaComponent;
+  let fixture: ComponentFixture<ModalNuevaPeliculaComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FuncionesComponent ]
+      declarations: [ ModalNuevaPeliculaComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FuncionesComponent);
+    fixture = TestBed.createComponent(ModalNuevaPeliculaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

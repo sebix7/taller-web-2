@@ -11,13 +11,15 @@ import { FooterComponent } from './components/footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavComponent } from './components/nav/nav.component';
 import { YouTubePlayerModule } from '@angular/youtube-player';
-<<<<<<< HEAD
-import { FuncionesComponent } from './components/admin/funciones/funciones.component';
-=======
-import { FuncionesComponent } from './components/funciones/funciones.component';
+import { FuncionesAdminComponent } from './components/admin/funciones-admin/funciones-admin.component';
 import { ReservaComponent } from './components/reserva/reserva.component';
->>>>>>> main
-
+import { ModalGeneralComponent } from './components/modal-general/modal-general.component';
+import { FuncionesComponent } from './components/funciones/funciones.component';
+import { ModalNuevaPeliculaComponent } from './components/admin/funciones-admin/modal-nueva-pelicula/modal-nueva-pelicula.component';
+import { ModalDetallesPeliculaComponent } from './components/admin/funciones-admin/modal-detalles-pelicula/modal-detalles-pelicula.component';
+import { ModalEditarPeliculaComponent } from './components/admin/funciones-admin/modal-editar-pelicula/modal-editar-pelicula.component';
+import { ModalEliminarPeliculaComponent } from './components/admin/funciones-admin/modal-eliminar-pelicula/modal-eliminar-pelicula.component';
+import { ModalFuncionesPeliculaComponent } from './components/admin/funciones-admin/modal-funciones-pelicula/modal-funciones-pelicula.component';
 
 @NgModule({
   declarations: [
@@ -28,17 +30,24 @@ import { ReservaComponent } from './components/reserva/reserva.component';
     AuthenticationComponent,
     FooterComponent,
     NavComponent,
-<<<<<<< HEAD
-    CarteleraComponent,
     FuncionesComponent,
-=======
-    FuncionesComponent,
+    FuncionesAdminComponent,
     ReservaComponent,
->>>>>>> main
+    ModalGeneralComponent,
+    ModalNuevaPeliculaComponent,
+    ModalDetallesPeliculaComponent,
+    ModalEditarPeliculaComponent,
+    ModalEliminarPeliculaComponent,
+    ModalFuncionesPeliculaComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, YouTubePlayerModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    YouTubePlayerModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
-
 })
 export class AppModule {}

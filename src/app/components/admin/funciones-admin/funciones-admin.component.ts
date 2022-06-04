@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Pelicula } from '../../lista-de-peliculas/pelicula';
+import { ModalNuevaPeliculaComponent } from './modal-nueva-pelicula/modal-nueva-pelicula.component';
 
 @Component({
-  selector: 'app-funciones',
-  templateUrl: './funciones.component.html',
-  styleUrls: ['./funciones.component.css'],
+  selector: 'app-funciones-admin',
+  templateUrl: './funciones-admin.component.html',
+  styleUrls: ['./funciones-admin.component.css'],
 })
-export class FuncionesComponent implements OnInit {
+export class FuncionesAdminComponent implements OnInit {
   peliculas: Pelicula[] = [
     {
       id: 1,
@@ -119,8 +120,22 @@ export class FuncionesComponent implements OnInit {
       director: 'James Cameron',
     },
   ];
+  peliculaElegida: Pelicula = {
+    id: 0,
+    titulo: '',
+    imagen: '',
+    descripcion: '',
+    genero: '',
+    duracion: '',
+    actores: '',
+    director: '',
+  };
 
   constructor() {}
 
   ngOnInit(): void {}
+
+  setPelicula(pelicula: Pelicula): void {
+    this.peliculaElegida = pelicula;
+  }
 }

@@ -1,0 +1,70 @@
+<div class="movie-items full-width" style="padding-top: 100px">
+  <button
+    type="button"
+    class="btn btn-success btn-lg"
+    data-toggle="modal"
+    data-target="#nuevaPelicula"
+  >
+    Nueva Película
+  </button>
+  <table class="table table-hover table-dark mt-5">
+    <thead>
+      <tr>
+        <th>Foto</th>
+        <th>Nombre</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let pelicula of peliculas">
+        <td>
+          <img
+            src="{{ pelicula.imagen }}"
+            alt="{{ pelicula.titulo }}"
+            width="100"
+          />
+        </td>
+        <td>{{ pelicula.titulo }}</td>
+        <td>
+          <i
+            data-toggle="modal"
+            data-target="#detallesPelicula"
+            class="fa-solid fa-eye"
+            title="Ver Detalles"
+            (click)="setPelicula(pelicula)"
+          ></i>
+          <i
+            class="fa-solid fa-pen"
+            data-toggle="modal"
+            data-target="#editarPelicula"
+            title="Editar"
+            (click)="setPelicula(pelicula)"
+          ></i>
+          <i
+            class="fa-solid fa-film"
+            title="Funciones"
+            data-toggle="modal"
+            data-target="#funcionesPelicula"
+            (click)="setPelicula(pelicula)"
+          ></i>
+          <i
+            class="fa-solid fa-trash text-danger"
+            data-toggle="modal"
+            data-target="#eliminarPelicula"
+            title="Eliminar"
+            (click)="setPelicula(pelicula)"
+          ></i>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <app-modal-nueva-pelicula></app-modal-nueva-pelicula>
+  <app-modal-detalles-pelicula
+    [pelicula]="peliculaElegida"
+  ></app-modal-detalles-pelicula>
+  <app-modal-editar-pelicula></app-modal-editar-pelicula>
+  <app-modal-eliminar-pelicula
+    [pelicula]="peliculaElegida"
+  ></app-modal-eliminar-pelicula>
+  <app-modal-funciones-pelicula></app-modal-funciones-pelicula>
+</div>
