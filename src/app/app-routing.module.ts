@@ -6,6 +6,7 @@ import { ListaDePeliculasComponent } from './components/lista-de-peliculas/lista
 import { AuthenticationComponent } from './components/authentication/authentication.component';
 import { FuncionesComponent } from './components/funciones/funciones.component';
 import { ReservaComponent } from './components/reserva/reserva.component';
+import { FuncionesAdminComponent } from './components/admin/funciones-admin/funciones-admin.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'login', component: AuthenticationComponent },
   { path: 'funciones', component: FuncionesComponent },
   { path: 'reserva', component: ReservaComponent },
+  { path: 'administrador/funciones', component: FuncionesAdminComponent },
 ];
 
 @NgModule({
