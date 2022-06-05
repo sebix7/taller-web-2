@@ -1,3 +1,18 @@
-<app-modal-general [target]="target" [titulo]="titulo" [eliminarAction]="true">
-  ¿Desea eliminar la película {{ pelicula.titulo }}?
+<app-modal-general [target]="target" [titulo]="titulo">
+  <div style="margin-bottom: 1rem">
+    ¿Desea eliminar la película {{ pelicula.titulo }}?
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+      Cerrar
+    </button>
+    <button
+      type="button"
+      class="btn btn-danger"
+      data-dismiss="modal"
+      (click)="onDelete(pelicula.id)"
+    >
+      Eliminar
+    </button>
+  </div>
 </app-modal-general>

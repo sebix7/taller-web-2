@@ -14,7 +14,7 @@ export class InputComponent implements OnInit {
   @Input() condicionError: boolean = false;
   @Input() mensajeError: string = '';
   @Input() formGroup: FormGroup = new FormGroup({});
-  @Input() value: string = '';
+  @Input() value: any = '';
 
   constructor() {}
 

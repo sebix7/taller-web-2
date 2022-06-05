@@ -22,5 +22,9 @@ export class ModalEliminarPeliculaComponent implements OnInit {
 
   constructor() {}
 
+  onDelete(id: number): void {
+    console.log('Eliminado: ' + id);
+  }
+
   ngOnInit(): void {}
 }
