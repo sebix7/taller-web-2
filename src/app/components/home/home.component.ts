@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+declare var $: any;
 
 @Component({
   selector: 'app-home',
@@ -31,7 +32,9 @@ export class HomeComponent implements OnInit {
 
   constructor() { }
   
+  
   ngOnInit(): void {
+    $.getScript('assets/js/custom.js');
     this.peliculas.forEach(pelicula => {
       if(pelicula.estreno == true) this.estrenos.push(pelicula);
       else this.anticipadas.push(pelicula);
