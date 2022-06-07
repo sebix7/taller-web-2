@@ -20,6 +20,7 @@ import { ModalDetallesPeliculaComponent } from './components/admin/funciones-adm
 import { ModalEditarPeliculaComponent } from './components/admin/funciones-admin/modal-editar-pelicula/modal-editar-pelicula.component';
 import { ModalEliminarPeliculaComponent } from './components/admin/funciones-admin/modal-eliminar-pelicula/modal-eliminar-pelicula.component';
 import { ModalFuncionesPeliculaComponent } from './components/admin/funciones-admin/modal-funciones-pelicula/modal-funciones-pelicula.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { ModalFuncionesPeliculaComponent } from './components/admin/funciones-ad
     FormsModule,
     ReactiveFormsModule,
     YouTubePlayerModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],

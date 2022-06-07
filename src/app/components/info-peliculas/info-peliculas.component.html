@@ -24,21 +24,21 @@
 
     <div class="izquierda">
       <div>
-        <img src="{{imagen}}" style="height:400px;" />
+        <img src="{{pelicula.imagen}}" style="height:400px;" />
       </div>
 
       <ul class="info-item">
-        <li class="item"> GENERO: <span>{{genero}}</span></li>
-        <li class="item"> DURACION: <span>{{duracion}}</span></li>
-        <li class="item"> ACTORES: <span> {{actores}}</span></li>
-        <li class="item"> DIRECTOR:<span> {{director}} </span></li>
+        <li class="item"> GENERO: <span>{{pelicula.genero}}</span></li>
+        <li class="item"> DURACION: <span>{{pelicula.duracion}}</span></li>
+        <li class="item"> ACTORES: <span> {{pelicula.actores}}</span></li>
+        <li class="item"> DIRECTOR:<span> {{pelicula.director}} </span></li>
       </ul>
     </div>
 
     <div class="derecha">
 
-      <youtube-player videoId="{{trailer}}"></youtube-player>
-      <p class="descripcion">{{descripcion}}</p>
+      <youtube-player videoId="{{pelicula.trailer}}"></youtube-player>
+      <p class="descripcion">{{pelicula.descripcion}}</p>
     </div>
 
 

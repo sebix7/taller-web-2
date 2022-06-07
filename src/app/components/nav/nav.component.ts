@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ListaDePeliculasComponent } from '../lista-de-peliculas/lista-de-peliculas.component';
+import { Observable, share } from 'rxjs';
+import { Pelicula } from '../home/pelicula';
+import { HttpClient, HttpHeaders, HttpErrorResponse, JsonpClientBackend } from '@angular/common/http';
 
 @Component({
   selector: 'app-nav',
@@ -13,15 +15,31 @@ export class NavComponent implements OnInit {
   buscador: boolean = false;
   formBusqueda: FormGroup;
   peliculaBuscada:string ="";
-  lista:ListaDePeliculasComponent = new ListaDePeliculasComponent;
+  
+  peliculas: Pelicula[] = []
+  Peliculas: any;
 
-  constructor(protected router:Router, private formBuilder: FormBuilder) {
+  constructor(protected router:Router, private formBuilder: FormBuilder, protected httpClient: HttpClient) {
     this.formBusqueda = this.formBuilder.group({
       titulo: new FormControl('',  Validators.required),
     });
   }
 
   ngOnInit(): void {
+    let res: Observable<Pelicula[]> =
+    this.httpClient.get<Pelicula[]>('http://localhost:3000/')
+    .pipe(share());
+
+    res.subscribe( 
+
+     value => { 
+        this.Peliculas = value;
+        this.peliculas = this.Peliculas;
+     },
+     error => {
+       console.log('ocurrio un error');
+     });
+
   }
   
   onSubmit(){
@@ -33,17 +51,10 @@ export class NavComponent implements OnInit {
   }
 
   mostrarBusqueda() {
-    this.lista.peliculas.forEach(pelicula => {
+    this.peliculas.forEach(pelicula => {
       if(pelicula.titulo.toLowerCase().includes(this.formBusqueda.controls['titulo'].value.toLowerCase())) {
         this.router.navigate(['/info/'+pelicula.id]);
         this.buscador = false;
-        localStorage.setItem("titulo",pelicula.titulo);
-        localStorage.setItem("descripcion",pelicula.descripcion)
-        localStorage.setItem("imagen",pelicula.imagen);
-        localStorage.setItem("genero",pelicula.genero);
-        localStorage.setItem("duracion",pelicula.duracion);
-        localStorage.setItem("actores",pelicula.actores);
-        localStorage.setItem("director",pelicula.director);
       }
     });
   }
