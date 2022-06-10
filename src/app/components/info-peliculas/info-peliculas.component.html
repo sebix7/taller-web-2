@@ -5,18 +5,18 @@
 
   <div class="contenedorFunciones">
 
-    <ol class="dias">
+   <!-- <ol class="dias">
 
-      <li><a class="diasLink" routerLink="/funciones" routerLinkActive="active-link">Lunes <br /> 6/6/22</a> </li>
-      <li> <a class="diasLink" routerLink="/funciones" routerLinkActive="active">Martes <br /> 7/6/22 </a> </li>
-      <li> <a class="diasLink" routerLink="/funciones" routerLinkActive="active">Miercoles <br /> 8/6/22 </a></li>
-      <li> <a class="diasLink" routerLink="/funciones" routerLinkActive="active">Jueves <br /> 9/6/22 </a></li>
-      <li> <a class="diasLink" routerLink="/funciones" routerLinkActive="active">Viernes <br /> 10/6/22 </a></li>
-      <li><a class="diasLink" routerLink="/funciones" routerLinkActive="active">Sabado <br /> 11/6/22</a></li>
-      <li> <a class="diasLink" routerLink="/funciones" routerLinkActive="active">Domingo <br /> 12/6/22 </a></li>
+      <li><a class="diasLink" routerLink="/funciones/{{pelicula.titulo}}" routerLinkActive="active-link">Lunes <br /> 6/6/22</a> </li>
+      <li> <a class="diasLink" routerLink="/funciones/{{pelicula.titulo}}" routerLinkActive="active">Martes <br /> 7/6/22 </a> </li>
+      <li> <a class="diasLink" routerLink="/funciones/{{pelicula.titulo}}" routerLinkActive="active">Miercoles <br /> 8/6/22 </a></li>
+      <li> <a class="diasLink" routerLink="/funciones/{{pelicula.titulo}}" routerLinkActive="active">Jueves <br /> 9/6/22 </a></li>
+      <li> <a class="diasLink" routerLink="/funciones/{{pelicula.titulo}}" routerLinkActive="active">Viernes <br /> 10/6/22 </a></li>
+      <li><a class="diasLink" routerLink="/funciones/{{pelicula.titulo}}" routerLinkActive="active">Sabado <br /> 11/6/22</a></li>
+      <li> <a class="diasLink" routerLink="/funciones/{{pelicula.titulo}}" routerLinkActive="active">Domingo <br /> 12/6/22 </a></li>
 
     </ol>
-    <!--Hacerlo mediante una funcion-->
+  -->
     
 
   </div>
@@ -39,8 +39,10 @@
 
       <youtube-player videoId="{{pelicula.trailer}}"></youtube-player>
       <p class="descripcion">{{pelicula.descripcion}}</p>
-    </div>
 
+      <button class="botonFunciones"routerLink="/funciones/{{pelicula.titulo}}/{{idPelicula}}" routerLinkActive="active" >Ver funciones</button>
+
+    </div>
 
 
   </div>

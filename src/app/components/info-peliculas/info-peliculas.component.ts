@@ -27,7 +27,7 @@ export class InfoPeliculasComponent implements OnInit {
   };
 
   Peliculas: any;
-  
+  idPelicula:any;
   constructor(protected router: Router, protected httpClient: HttpClient,protected route: ActivatedRoute) {
 
   }
@@ -37,10 +37,10 @@ export class InfoPeliculasComponent implements OnInit {
     tag.src = 'https://www.youtube.com/iframe_api';
     document.body.appendChild(tag);
 
-    let idPelicula = this.route.snapshot.paramMap.get("id");
+    this.idPelicula = this.route.snapshot.paramMap.get("id");
 
     let res: Observable<Pelicula[]> =
-     this.httpClient.get<Pelicula[]>(`http://localhost:3000/${idPelicula}`)
+     this.httpClient.get<Pelicula[]>(`http://localhost:3000/${this.idPelicula}`)
      .pipe(share());
 
      res.subscribe( 

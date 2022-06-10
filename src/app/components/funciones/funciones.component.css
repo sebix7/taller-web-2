@@ -1,0 +1,37 @@
+.principal{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.funcionesContainer{
+    width: 90%;
+    background-color: #010c17;
+    padding:30px
+
+}
+.dia{
+    color:aliceblue;
+    border-bottom: 2px solid white;
+}
+.funcion{
+    margin:25px;
+    border: 2px solid rgb(102, 12, 12);
+    padding:5px;
+    border-radius: 10px;
+}
+
+.funcion:hover{
+
+    background-color: #020e18;
+
+}
+
+
+a{
+    color:rgb(133, 150, 75)
+}
+
+a:hover{
+    color:rgb(168, 207, 40)
+}
