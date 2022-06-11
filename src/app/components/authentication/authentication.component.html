@@ -1,98 +1,137 @@
-<div class="divContainer container-fluid d-flex flex-row col-12 p-0" style="padding-top: 180px;">
-    <div class="divPicture d-none d-md-block col-6"></div>
+<div
+  class="divContainer d-flex justify-content-center align-items-center col-12"
+>
+  <div *ngIf="1 >= screen; then thenBlock; else elseBlock"></div>
+  <ng-template #thenBlock>
+    <div class="d-flex flex-column col-10 col-sm-6 col-md-4">
+      <div>
+        <p class="loginBienvenido">Bienvenido!</p>
+        <p class="mb-3 fs-3 fw-bold">Ingresá a tu cuenta</p>
 
+        <form [formGroup]="formLogin" (submit)="login()" class="mb-3">
+          <div class="form-group d-flex flex-column">
+            <label class="text-muted mb-1" htmlFor="exampleInputEmail1">
+              Email
+            </label>
+            <input
+              type="text"
+              class="form-control bg-white"
+              id="email"
+              formControlName="email"
+              placeholder="Ingresar email"
+            />
 
-    <div *ngIf="1 >= screen; then thenBlock; else elseBlock"></div>
+            <label class="text-muted mt-2 mb-1" htmlFor="exampleInputPassword1">
+              Contraseña
+            </label>
+            <input
+              type="password"
+              class="form-control bg-white"
+              id="password"
+              formControlName="password"
+              placeholder="Ingresar contraseña"
+            />
+            <p id="emailHelp" class="forgotPassword form-text">
+              Olvidaste tu contraseña?
+            </p>
 
-    <!-- login -->
-    <ng-template #thenBlock>
-        <div class="divColForm col-12 animate__animated animate__fadeIn col-md-6 d-flex justify-content-center text-white">
-            <div class="d-flex flex-column align-self-center col-8 col-sm-6 col-md-8 col-xl-5">
-                <div>
-                    <p class="loginBienvenido">Bienvenido!</p>
-                    <p class="mb-3 fs-3 fw-bold">Ingresá a tu cuenta</p>
+            <button type="submit" class="buttonLogin mt-2 mb-2 btn btn-primary">
+              Ingresar
+            </button>
 
-                    <form class="mb-3">
-                        <div class="form-group d-flex flex-column">
-                            <label class="text-muted mb-1" htmlFor="exampleInputEmail1">
-                Email
-              </label>
-                            <input type="text" class="form-control bg-black" name="lEmail" onChange="{handleInputChange}" placeholder="Ingresar email" />
+            <!-- <h1 class="text-danger">
+              {{  }}
+            </h1> -->
+          </div>
+        </form>
 
-                            <label class="text-muted mt-2 mb-1" htmlFor="exampleInputPassword1">
-                Contraseña
-              </label>
-                            <input type="password" class="form-control bg-black" name="lPassword" onChange="{handleInputChange}" placeholder="Ingresar contraseña" />
-                            <p id="emailHelp" class="forgotPassword form-text">
-                                Olvidaste tu contraseña?
-                            </p>
-
-                            <button type="submit" class="buttonLogin mt-2 mb-2 btn">
-                Ingresar
-              </button>
-
-                            <button type="submit" class="buttonLoginGoogle btn">
-                <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"
-                  alt="google"
-                  class="googleLogo"
-                />
-                Ingresar con Google
-              </button>
-                        </div>
-                    </form>
-
-                    <div class="registerLink text-center text-muted d-flex justify-content-center">
-                        No tenés cuenta?
-                        <p (click)="changeScreen()" class="registerLinkP ms-1">
-                            Registrate
-                        </p>
-                    </div>
-                </div>
-            </div>
+        <div
+          class="registerLink text-center text-muted d-flex justify-content-center"
+        >
+          No tenés cuenta?
+          <p (click)="changeScreen()" class="registerLinkP ms-1">Registrate</p>
         </div>
-    </ng-template>
-    <!-- fin login -->
+      </div>
+    </div>
+  </ng-template>
 
-    <!-- registro -->
-    <ng-template #elseBlock>
-        <div class="divColForm col-12 animate__animated animate__fadeIn col-md-6 d-flex justify-content-center text-white">
-            <div class="d-flex flex-column align-self-center col-8 col-sm-6 col-md-8 col-xl-5">
-                <div>
-                    <p class="mb-3 fs-3 fw-bold">Registrate!</p>
-                    <form class="mb-3" [formGroup]='formRegistro' >
-                        <div class="form-group d-flex flex-column">
-                            <div>
-                                <input type="text" class="form-control bg-black" formControlName="nombreUsuario" id="nombreUsuario" placeholder="Nombre de nombreUsuario" />
-                                <!-- <small class="text-danger">*{error.name}</small> -->
-                            </div>
-
-                            <div>
-                                <input type="text" class="form-control bg-black mt-3" formControlName="email" id="email" placeholder="Email" />
-                                <!-- <small class="text-danger">*{error.email}</small> -->
-                            </div>
-                            <div>
-                                <input type="password" class="form-control bg-black mt-3" formControlName="password" id="password"  placeholder="Contraseña" />
-                                <!-- <small class="text-danger">*{error.password}</small> -->
-                            </div>
-
-                            <div>
-                                <input type="password" class="form-control bg-black mt-3" FormControlname="passwordCopia" id="passwordCopia"  placeholder="Confirmar contraseña" />
-                                <!-- <small class="text-danger"> *{error.passwordConfirm} </small> -->
-                            </div>
-                            <button type="submit" class="buttonLogin mt-3 mb-2 btn" (click)='registrar();'>Registrarse</button>
-                        </div>
-                    </form>
-
-                    <div class="registerLink text-muted d-flex justify-content-center">
-                        Ya tenés una cuenta?
-                        <p (click)="changeScreen()" class="registerLinkP ms-1">Ingresa</p>
-                    </div>
-
-            
-                </div>
+  <ng-template #elseBlock>
+    <div class="d-flex flex-column col-10 col-sm-6 col-md-4">
+      <div>
+        <p class="mb-3 fs-3 fw-bold">Registrate!</p>
+        <form class="mb-3" [formGroup]="formRegistro" (submit)="registrar()">
+          <div class="form-group d-flex flex-column">
+            <div>
+              <input
+                type="text"
+                class="form-control bg-black"
+                formControlName="nombre"
+                id="nombre"
+                placeholder="Nombre"
+              />
+              <!-- <small class="text-danger">*{error.name}</small> -->
             </div>
+
+            <div>
+              <input
+                type="text"
+                class="form-control bg-black mt-3"
+                formControlName="apellido"
+                id="apellido"
+                placeholder="Apellido"
+              />
+              <!-- <small class="text-danger">*{error.name}</small> -->
+            </div>
+
+            <div>
+              <input
+                type="text"
+                class="form-control bg-black mt-3"
+                formControlName="direccion"
+                id="direccion"
+                placeholder="Dirección"
+              />
+              <!-- <small class="text-danger">*{error.name}</small> -->
+            </div>
+
+            <div>
+              <input
+                type="text"
+                class="form-control bg-black mt-3"
+                formControlName="email"
+                id="email"
+                placeholder="Email"
+              />
+              <!-- <small class="text-danger">*{error.email}</small> -->
+            </div>
+            <div>
+              <input
+                type="password"
+                class="form-control bg-black mt-3"
+                formControlName="password"
+                id="password"
+                placeholder="Contraseña"
+              />
+              <!-- <small class="text-danger">*{error.password}</small> -->
+            </div>
+
+            <button
+              type="submit"
+              class="buttonLogin mt-4 mb-2 btn btn-primary"
+              [disabled]="formRegistro.invalid"
+            >
+              Registrarse
+            </button>
+          </div>
+        </form>
+
+        <div class="registerLink text-muted d-flex justify-content-center">
+          Ya tenés una cuenta?
+          <p (click)="changeScreen()" class="registerLinkP ms-1">Ingresa</p>
         </div>
-    </ng-template>
-    <!-- fin registro -->
+      </div>
+      <h1 class="text-danger">{{ formRegistro.valid }}</h1>
+      <h1 class="text-danger">{{ formRegistro.email }}</h1>
+    </div>
+  </ng-template>
 </div>
