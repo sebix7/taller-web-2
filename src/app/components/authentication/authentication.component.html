@@ -60,29 +60,27 @@
             <div class="d-flex flex-column align-self-center col-8 col-sm-6 col-md-8 col-xl-5">
                 <div>
                     <p class="mb-3 fs-3 fw-bold">Registrate!</p>
-                    <form class="mb-3">
+                    <form class="mb-3" [formGroup]='formRegistro' >
                         <div class="form-group d-flex flex-column">
                             <div>
-                                <input type="text" class="form-control bg-black" name="rName" id="exampleInputName" placeholder="Nombre y apellido" />
+                                <input type="text" class="form-control bg-black" formControlName="nombreUsuario" id="nombreUsuario" placeholder="Nombre de nombreUsuario" />
                                 <!-- <small class="text-danger">*{error.name}</small> -->
                             </div>
 
                             <div>
-                                <input type="text" class="form-control bg-black mt-3" id="exampleInputEmail1" name="rEmail" placeholder="Email" />
+                                <input type="text" class="form-control bg-black mt-3" formControlName="email" id="email" placeholder="Email" />
                                 <!-- <small class="text-danger">*{error.email}</small> -->
                             </div>
                             <div>
-                                <input type="password" class="form-control bg-black mt-3" id="exampleInputPassword1" name="rPassword" placeholder="Contraseña" />
+                                <input type="password" class="form-control bg-black mt-3" formControlName="password" id="password"  placeholder="Contraseña" />
                                 <!-- <small class="text-danger">*{error.password}</small> -->
                             </div>
 
                             <div>
-                                <input type="password" class="form-control bg-black mt-3" id="exampleInputPassword2" name="rPasswordConfirm" placeholder="Confirmar contraseña" />
+                                <input type="password" class="form-control bg-black mt-3" FormControlname="passwordCopia" id="passwordCopia"  placeholder="Confirmar contraseña" />
                                 <!-- <small class="text-danger"> *{error.passwordConfirm} </small> -->
                             </div>
-                            <button type="submit" class="buttonLogin mt-3 mb-2 btn">
-                Registrarse
-              </button>
+                            <button type="submit" class="buttonLogin mt-3 mb-2 btn" (click)='registrar();'>Registrarse</button>
                         </div>
                     </form>
 
@@ -90,6 +88,8 @@
                         Ya tenés una cuenta?
                         <p (click)="changeScreen()" class="registerLinkP ms-1">Ingresa</p>
                     </div>
+
+            
                 </div>
             </div>
         </div>

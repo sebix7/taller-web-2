@@ -1,6 +1,6 @@
 
 .principal {
-  margin-top: 100px;
+  margin-top: 80px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -71,7 +71,7 @@ li {
 }
 
 .derecha {
-  width: 80%;
+  width: 60%;
   display: flex;
   flex-direction: column;
   align-content: center;
@@ -84,4 +84,16 @@ li {
   text-align: center
 }
 
+.botonFunciones{
+  background-color: rgb(133, 29, 29);
+  padding: 10px;
+  border:none;
+  border-radius: 10px;
+  color:white
 
+}
+
+.botonFunciones:hover{
+  background-color: rgb(170, 16, 16);
+  transition: 0.4s;
+}

@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'peliculas', component: ListaDePeliculasComponent },
   { path: 'info/:id', component: InfoPeliculasComponent },
   { path: 'login', component: AuthenticationComponent },
-  { path: 'funciones', component: FuncionesComponent },
+  { path: 'funciones/:titulo/:idPeli', component: FuncionesComponent },
   { path: 'reserva', component: ReservaComponent },
   { path: 'administrador/funciones', component: FuncionesAdminComponent },
 ];
