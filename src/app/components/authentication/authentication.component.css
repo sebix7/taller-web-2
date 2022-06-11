@@ -1,72 +1,47 @@
 .divContainer {
-    height: 100vh;
-    /* width: 100vw; */
+  height: 100vh;
+  /* width: 100vw; */
 }
 
 .divPicture {
-    background-color: red;
-    background-image: url("../../../assets/cine.jpeg");
-    background-position: center;
+  background-color: red;
+  background-image: url("../../../assets/cine.jpeg");
+  background-position: center;
 }
 
 .loginBienvenido {
-    margin-bottom: -7px;
-}
-
-.buttonLogin {
-    color: white;
-    background-color: rgb(27, 23, 53);
-}
-
-.buttonLogin:hover {
-    color: white;
-    background-color: rgb(18, 7, 77);
-    transition: ease 0.4s;
-}
-
-.buttonLoginGoogle {
-    color: white;
-    background-color: rgb(136, 20, 20);
-}
-
-.buttonLoginGoogle:hover {
-    background-color: rgb(189, 30, 30);
-    transition: ease 0.4s;
+  margin-bottom: -7px;
 }
 
 .googleLogo {
-    width: 15px;
-    height: 15px;
-    margin-right: 10px;
+  width: 15px;
+  height: 15px;
+  margin-right: 10px;
 }
 
 .forgotPassword {
-    color: #2474b6;
-    cursor: pointer;
-    text-decoration: none;
-    font-size: 14px;
+  color: #2474b6;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 14px;
 }
 
 .registerLink {
-    font-size: 14px;
+  font-size: 14px;
 }
 
 .registerLinkP {
-    color: #2474b6;
-    text-decoration: none;
-    cursor: pointer;
+  color: #2474b6;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .registerLinkP:hover {
-    color: #08497e;
-    text-decoration: underline;
-    /* transition: ease 0.4s; */
+  color: #08497e;
+  text-decoration: underline;
+  /* transition: ease 0.4s; */
 }
 
 .form-control {
-    border: 1px solid #333333;
-}
-
-.divColForm {
-    background-color: #00000048;
+  border: 1px solid #333333;
 }
