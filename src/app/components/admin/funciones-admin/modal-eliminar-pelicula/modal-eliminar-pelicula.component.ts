@@ -18,6 +18,7 @@ export class ModalEliminarPeliculaComponent implements OnInit {
     duracion: '',
     actores: '',
     director: '',
+    estreno: true,
   };
 
   constructor() {}

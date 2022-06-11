@@ -7,6 +7,6 @@ export interface Pelicula{
     duracion:string;
     actores:string;
     director:string;
+    trailer:string;
     estreno:true
-
 }

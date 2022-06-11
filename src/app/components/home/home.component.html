@@ -1,5 +1,4 @@
-
-<div class="container" style="padding-top: 125px; opacity: 0.7;">
+<div class="movie-items full-width" style="padding-top: 125px; background-color: transparent;">
     <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleCaptions" *ngFor="let image of images, let i = index" attr.data-slide-to="{{i}}" [ngClass]="{'active': i === 0, 'inactive': i !== 0}" [id]="i" style="margin-left: 2px; margin-right: 2px;"></li>
@@ -26,22 +25,22 @@
                             <div style="opacity: 0; cursor: default;">#Popular</div>
                         </a>
                     </li>
-                 
+
                 </ul>
                 <div class="tab-content">
                     <div id="tab1-h2" class="tab active">
                         <div class="row">
                             <div class="slick-multiItem2">
-                                <div class="slide-it" *ngFor="let estreno of estrenos">
+                                <div class="slide-it" *ngFor="let pelicula of peliculas">
                                     <div class="movie-item">
                                         <div class="mv-img">
-                                            <img [src]="estreno.img" alt="" style="height: 254px; width: 203px; object-fit: cover;">
+                                            <img [src]="pelicula.imagen" alt="" style="height: 254px; width: 203px; object-fit: cover;">
                                         </div>
                                         <div class="hvr-inner">
                                             <a href="javascript:void(0);"> Leer más <i class="ion-android-arrow-dropright"></i> </a>
                                         </div>
                                         <div class="title-in">
-                                            <h6><a href="#">{{estreno.titulo}}</a></h6>
+                                            <h6><a href="#">{{pelicula.titulo}}</a></h6>
                                             <p>ESTRENO</p>
                                         </div>
                                     </div>
@@ -69,7 +68,7 @@
                             <div style="opacity: 0; cursor: default;">#Popular</div>
                         </a>
                     </li>
-               
+
                 </ul>
                 <div class="tab-content">
                     <div id="tab1-h2" class="tab active">
@@ -78,7 +77,7 @@
                                 <div class="slide-it" *ngFor="let pelicula of peliculas">
                                     <div class="movie-item">
                                         <div class="mv-img">
-                                            <img [src]="pelicula.img" alt="" style="height: 254px; width: 203px; object-fit: cover;">
+                                            <img [src]="pelicula.imagen" alt="" style="height: 254px; width: 203px; object-fit: cover;">
                                         </div>
                                         <div class="hvr-inner">
                                             <a href="javascript:void(0);"> Leer más <i class="ion-android-arrow-dropright"></i> </a>
@@ -87,50 +86,6 @@
                                             <h6><a href="#">{{pelicula.titulo}}</a></h6>
                                             <p *ngIf="pelicula.estreno == true">ESTRENO</p>
                                             <p *ngIf="pelicula.estreno != true" style="opacity: 0;">ESTRENO</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="movie-items full-width">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="title-hd">
-                <h2>Ventas anticipadas</h2>
-                <a routerLink="/peliculas" class="viewall">Ver todos <i class="ion-ios-arrow-right"></i></a>
-            </div>
-            <div class="tabs">
-                <ul class="tab-links">
-                    <li class="active">
-                        <a href="#tab1-h2">
-                            <div style="opacity: 0; cursor: default;">#Popular</div>
-                        </a>
-                    </li>
-             
-                </ul>
-                <div class="tab-content">
-                    <div id="tab1-h2" class="tab active">
-                        <div class="row">
-                            <div class="slick-multiItem2">
-                                <div class="slide-it" *ngFor="let anticipada of anticipadas">
-                                    <div class="movie-item">
-                                        <div class="mv-img">
-                                            <img [src]="anticipada.img" alt="" style="height: 254px; width: 203px; object-fit: cover;">
-                                        </div>
-                                        <div class="hvr-inner">
-                                            <a href="javascript:void(0);"> Leer más <i class="ion-android-arrow-dropright"></i> </a>
-                                        </div>
-                                        <div class="title-in">
-                                            <h6><a href="#">{{anticipada.titulo}}</a></h6>
-                                            <p *ngIf="anticipada.estreno == true">ESTRENO</p>
-                                            <p *ngIf="anticipada.estreno != true" style="opacity: 0;">ESTRENO</p>
                                         </div>
                                     </div>
                                 </div>
@@ -566,4 +521,3 @@
     </button>
     </div>
 </main>
-
