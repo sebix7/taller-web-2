@@ -8,42 +8,39 @@ import { Funcion } from './Funcion';
   selector: 'app-funciones',
 
   templateUrl: './funciones.component.html',
-  styleUrls: ['./funciones.component.css']
+  styleUrls: ['./funciones.component.css'],
 })
 export class FuncionesComponent implements OnInit {
-
-  titulo:any;
-  idPelicula:any;
+  titulo: any;
+  idPelicula: any;
 
   Funciones: any;
 
-  funciones: Funcion[] = []
-  
+  funciones: Funcion[] = [];
 
-  constructor(protected router: Router, protected httpClient: HttpClient,protected route: ActivatedRoute) {
-
-  }  
+  constructor(
+    protected router: Router,
+    protected httpClient: HttpClient,
+    protected route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-  
-     this.titulo =  this.route.snapshot.paramMap.get("titulo");
-     this.idPelicula =  this.route.snapshot.paramMap.get("idPeli");
+    this.titulo = this.route.snapshot.paramMap.get('titulo');
+    this.idPelicula = this.route.snapshot.paramMap.get('idPeli');
 
-     let res: Observable<Funcion[]> =
-     this.httpClient.get<Funcion[]>(`http://localhost:3002/${this.idPelicula}`)//me tre las funciones de una peli
-     .pipe(share());
+    let res: Observable<Funcion[]> = this.httpClient
+      .get<Funcion[]>(`http://localhost:3000/funciones/${this.idPelicula}`) //me tre las funciones de una peli
+      .pipe(share());
 
-     res.subscribe( 
-
-      value => { 
-        console.log(value)
-         this.Funciones = value;
-         this.funciones = this.Funciones;
-
+    res.subscribe(
+      (value) => {
+        console.log(value);
+        this.Funciones = value;
+        this.funciones = this.Funciones;
       },
-      error => {
+      (error) => {
         console.log('ocurrio un error');
-      });
+      }
+    );
   }
-
 }
