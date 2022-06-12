@@ -9,3 +9,35 @@
 
 .buttonComprar {
 } */
+
+.section{
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+}
+ 
+  .contenedorInformacion {
+    display: flex;
+    width: 85%;
+    background-color: #020d18;
+    color: #F5F5F5;
+  }
+
+  .pantalla{
+    font-size: 50px;
+    padding-left:20% ;
+    padding-right: 20%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+  }
+
+  .button{
+    width: auto;
+  }
+
+  .zoom{
+    font-size: 20px;
+  }
