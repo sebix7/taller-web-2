@@ -8,6 +8,7 @@ import { FuncionesComponent } from './components/funciones/funciones.component';
 import { ReservaComponent } from './components/reserva/reserva.component';
 import { FuncionesAdminComponent } from './components/admin/funciones-admin/funciones-admin.component';
 import { CandySnackStoreComponent } from './components/candy-snack-store/candy-snack-store.component';
+import { HistorialReservaComponent } from './components/reserva/historial-reserva/historial-reserva.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -17,7 +18,9 @@ const routes: Routes = [
   { path: 'funciones/:titulo/:idPeli', component: FuncionesComponent },
   { path: 'reserva', component: ReservaComponent },
   { path: 'administrador/funciones', component: FuncionesAdminComponent },
-  { path: 'store', component: CandySnackStoreComponent}
+  { path: 'store', component: CandySnackStoreComponent},
+  { path: 'historial-reservas', component: HistorialReservaComponent}
+
 ];
 
 @NgModule({

@@ -159,7 +159,7 @@ candies:Store[]=[
     img:"../assets/store/malvaviscos.jpg",
     categoria:"candy",
     producto:"Malvavisco",
-    descripcion:"Lata chica",
+    descripcion:"Paquete chico",
     cantidad:0,
     precio:200
 },

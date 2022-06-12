@@ -1,0 +1,42 @@
+<div class="section p-5">
+    <div class="contenedorInformacion p-5 d-flex flex-column">
+        <div>
+          <h2 class="text-center pb-4">Mis reservas</h2>
+        </div>
+        <div [class]="mensaje">
+            <div class="alert alert-warning" role="alert">
+               Aun no ha realizado reservas!
+              </div>
+        </div>
+        <div [class]="tabla">
+            <table class="table table-dark table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col" class="text-center">Pelicula</th>
+                    <th scope="col" class="text-center">Asiento</th>
+                    <th scope="col" class="text-center">Fecha de la funcion</th>
+                    <th scope="col" class="text-center">Candy & Snack</th>
+                    <th scope="col" class="text-center">Cancelar</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row"></th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="d-flex justify-content-center">
+                        <button type="button" class="btn btn-danger zoom" (click)="cancelarReserva()">Cancelar</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+        
+
+          <div>
+            <a [routerLink]="['/peliculas']" class="btn btn-dark zoom">Ver más peliculas</a>
+          </div>
+    </div>  
+</div>
+
