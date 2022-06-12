@@ -1,0 +1,107 @@
+
+<div class="section p-5">
+
+    <div class="contenedorInformacion p-5 d-flex flex-column">
+      <div class="pt-5">
+
+        <h2 class="text-center mb-5 title-in">COMBOS</h2>
+        <div class="d-flex flex-row justify-content-between p-5 store" >
+          <div class="card" style="width: 20rem; height: auto;" *ngFor="let combo of combos">
+                <img src="{{combo.img}}" class="card-img-top" alt="..."/>
+                <div class="card-body text-center">
+                  <h5 class="card-title text-dark">{{combo.producto}}</h5>
+                  <p class="card-text text-dark text-center mb-5" style="padding-bottom: 5px;">{{combo.descripcion}}</p>
+                  <br>
+                  <a href="#" class="comprar text-center btn btn-primary d-flex align-items-center">${{combo.precio}}</a>
+                </div> 
+           </div>
+          </div>
+
+        </div>
+
+        <div class="pt-5">
+        <h2 class="text-center mb-5 title-in">POCHOCLOS</h2>
+        <div class="d-flex flex-row justify-content-between p-5 store" >
+          <div class="card" style="width: 20rem; height: 32rem;" *ngFor="let pochoclo of pochoclos">
+                <img src="{{pochoclo.img}}" class="card-img-top" alt="..."/>
+                <div class="card-body text-center">
+                  <h5 class="card-title text-dark">{{pochoclo.producto}}</h5>
+                  <p class="card-text text-dark text-center mb-5">{{pochoclo.descripcion}}</p>
+                  <br>
+                  <a href="#" class="comprar text-center btn btn-primary d-flex align-items-center">${{pochoclo.precio}}</a>
+                </div>
+           </div>
+          </div>
+        
+        <div class="pt-5">
+
+        <h2 class="text-center mb-5 title-in">NACHOS</h2>
+        <div class="d-flex flex-row justify-content-between p-5 store" >
+          <div class="card" style="width: 20rem; height: 32rem;" *ngFor="let nac of nachos">
+                <img src="{{nac.img}}" class="card-img-top" alt="..."/>
+                <div class="card-body text-center">
+                  <h5 class="card-title text-dark">{{nac.producto}}</h5>
+                  <p class="card-text text-dark text-center mb-5">{{nac.descripcion}}</p>
+                  <br>
+                  <a href="#" class="comprar text-center btn btn-primary d-flex align-items-center">${{nac.precio}}</a>
+                </div> 
+           </div>
+          </div>
+
+        </div>
+
+        <div class="pt-5">
+
+          <h2 class="text-center mb-5 title-in">OTROS SNACKS</h2>
+          <div class="d-flex flex-row justify-content-between p-5 store" >
+            <div class="card" style="width: 20rem; height: 32rem;" *ngFor="let otro of otrosSnacks">
+                  <img src="{{otro.img}}" class="card-img-top" alt="..."/>
+                  <div class="card-body text-center">
+                    <h5 class="card-title text-dark">{{otro.producto}}</h5>
+                    <p class="card-text text-dark text-center mb-5">{{otro.descripcion}}</p>
+                    <br>
+                    <a href="#" class="comprar text-center btn btn-primary d-flex align-items-center">${{otro.precio}}</a>
+                  </div> 
+             </div>
+            </div>
+  
+          </div>
+
+          <div class="pt-5">
+
+            <h2 class="text-center mb-5 title-in">BEBIDAS</h2>
+            <div class="d-flex flex-row justify-content-between p-5 store" >
+              <div class="card" style="width: 20rem; height: 32rem;" *ngFor="let bebida of bebidas">
+                    <img src="{{bebida.img}}" class="card-img-top" alt="..."/>
+                    <div class="card-body text-center">
+                      <h5 class="card-title text-dark">{{bebida.producto}}</h5>
+                      <p class="card-text text-dark text-center mb-5">{{bebida.descripcion}}</p>
+                      <br>
+                      <a href="#" class="comprar text-center btn btn-primary d-flex align-items-center">${{bebida.precio}}</a>
+                    </div> 
+               </div>
+              </div>
+    
+            </div>
+
+            <div class="pt-5 pb-5">
+
+              <h2 class="text-center mb-5 title-in">CANDY</h2>
+              <div class="d-flex flex-row justify-content-between p-5 store" >
+                <div class="card" style="width: 20rem; height: 32rem;" *ngFor="let candy of candies">
+                      <img src="{{candy.img}}" class="card-img-top" alt="..."/>
+                      <div class="card-body text-center">
+                        <h5 class="card-title text-dark">{{candy.producto}}</h5>
+                        <p class="card-text text-dark text-center mb-5">{{candy.descripcion}}</p>
+                        <br>
+                        <a href="#" class="comprar text-center btn btn-primary d-flex align-items-center">${{candy.precio}}</a>
+                      </div> 
+                 </div>
+                </div>
+      
+              </div>
+      </div>
+    </div>
+    
+  
+  
