@@ -23,6 +23,7 @@ export class AuthenticationComponent implements OnInit {
   public screen: number;
   public formRegistro: any;
   public formLogin: any;
+  public errors: any;
 
   constructor(
     protected router: Router,
@@ -32,6 +33,7 @@ export class AuthenticationComponent implements OnInit {
     this.screen = 1;
     this.formLogin = FormGroup;
     this.formRegistro = FormGroup;
+    this.errors = { email: '', password: '' };
   }
 
   ngOnInit(): void {
@@ -60,13 +62,28 @@ export class AuthenticationComponent implements OnInit {
   }
 
   login(): any {
-    console.log(this.formLogin.controls.email.invalid);
+    // console.log(this.formLogin.controls.email.invalid);
     // console.log(this.formLogin.value.email);
   }
 
   registrar(): any {
-    console.log(this.formRegistro.value);
-  }
+    
+    
+    if(this.formRegistro.controls.email.invalid  === true||
+      this.formRegistro.controls.password.invalid === true ){
+
+        this.formRegistro.controls.email.invalid === true ? this.errors.email = 'Ingrese un email valido' : this.errors.email = '';
+        
+        this.formRegistro.controls.password.invalid === true ? this.errors.password = 'La contraseña debe tener más de 6 caracteres' : this.errors.password = '';
+      }
+      else{
+        console.log(this.formRegistro.value);
+        this.errors.email = '';
+    this.errors.password = '';
+      }
+
+    
+    }
 
   // registrar(){
   //   console.log('nombreUsuario:' + this.formRegistro.get('nombreUsuario').value);
