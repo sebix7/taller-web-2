@@ -17,6 +17,7 @@ const routes: Routes = [
   { path: 'login', component: AuthenticationComponent },
   { path: 'funciones/:titulo/:idPeli', component: FuncionesComponent },
   { path: 'reserva', component: ReservaComponent },
+  { path: 'reserva/:titulo/:idPeli/:fecha/:horario', component: ReservaComponent },
   { path: 'administrador/funciones', component: FuncionesAdminComponent },
   { path: 'store', component: CandySnackStoreComponent},
   { path: 'historial-reservas', component: HistorialReservaComponent}
