@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CandySnackStoreService } from './services/candy-snack-store.service';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { Observable, share } from 'rxjs';
 import { Store } from './store';
 
 @Component({
@@ -26,6 +29,7 @@ export class CandySnackStoreComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
   }
 
 }
