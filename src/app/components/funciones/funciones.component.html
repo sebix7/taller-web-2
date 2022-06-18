@@ -9,7 +9,7 @@
       <ul style="display:flex">
         <div *ngFor="let funcion of funciones">
           <div *ngIf="funcion.dia == 'Lunes'">
-            <li class="funcion"><a href="#">
+            <li class="funcion"><a routerLink="/reserva/{{titulo}}/{{idPelicula}}/{{funcion.fecha}}/{{funcion.horario}}" routerLinkActive="active">
                 Fecha: {{funcion.fecha}} <br>
                 Hora: {{funcion.horario}}
             </a></li>
@@ -23,7 +23,7 @@
       <ul style="display:flex">
         <div *ngFor="let funcion of funciones">
           <div *ngIf="funcion.dia == 'Martes'">
-            <li class="funcion"><a href="#">
+            <li class="funcion"><a routerLink="/reserva/{{titulo}}/{{idPelicula}}/{{funcion.fecha}}/{{funcion.horario}}" routerLinkActive="active">
                 Fecha: {{funcion.fecha}} <br>
                 Hora: {{funcion.horario}}
             </a></li>
@@ -37,7 +37,7 @@
       <ul style="display:flex">
         <div *ngFor="let funcion of funciones">
           <div *ngIf="funcion.dia == 'Miercoles'">
-            <li class="funcion"><a href="#">
+            <li class="funcion"><a routerLink="/reserva/{{titulo}}/{{idPelicula}}/{{funcion.fecha}}/{{funcion.horario}}" routerLinkActive="active">
                 Fecha: {{funcion.fecha}} <br>
                 Hora: {{funcion.horario}}
             </a></li>
@@ -51,7 +51,7 @@
       <ul style="display:flex">
         <div *ngFor="let funcion of funciones">
           <div *ngIf="funcion.dia == 'Jueves'">
-            <li class="funcion"><a href="#">
+            <li class="funcion"><a routerLink="/reserva/{{titulo}}/{{idPelicula}}/{{funcion.fecha}}/{{funcion.horario}}" routerLinkActive="active">
              Fecha: {{funcion.fecha}} <br>
              Hora: {{funcion.horario}}
             </a></li>
@@ -65,7 +65,7 @@
       <ul style="display:flex">
         <div *ngFor="let funcion of funciones">
           <div *ngIf="funcion.dia == 'Viernes'">
-            <li class="funcion"><a href="#">
+            <li class="funcion"><a routerLink="/reserva/{{titulo}}/{{idPelicula}}/{{funcion.fecha}}/{{funcion.horario}}" routerLinkActive="active">
                 Fecha: {{funcion.fecha}} <br>
                 Hora: {{funcion.horario}}
             </a> </li>
@@ -79,7 +79,7 @@
       <ul style="display:flex">
         <div *ngFor="let funcion of funciones">
           <div *ngIf="funcion.dia == 'Sabado'">
-            <li class="funcion"><a href="#">
+            <li class="funcion"><a routerLink="/reserva/{{titulo}}/{{idPelicula}}/{{funcion.fecha}}/{{funcion.horario}}" routerLinkActive="active">
                 Fecha: {{funcion.fecha}} <br>
                 Hora: {{funcion.horario}}
             </a></li>
@@ -93,7 +93,7 @@
       <ul style="display:flex">
         <div *ngFor="let funcion of funciones">
           <div *ngIf="funcion.dia == 'Domingo'">
-            <li class="funcion"><a href="#">
+            <li class="funcion"><a routerLink="/reserva/{{titulo}}/{{idPelicula}}/{{funcion.fecha}}/{{funcion.horario}}" routerLinkActive="active">
                 Fecha: {{funcion.fecha}} <br>
                 Hora: {{funcion.horario}}
             </a></li>
