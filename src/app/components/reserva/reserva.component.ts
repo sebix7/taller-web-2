@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, share } from 'rxjs';
-//import { Pelicula } from '../home/pelicula';
-import {HttpClient} from '@angular/common/http';
+import { Pelicula } from '../home/pelicula';
+import { HttpClient } from '@angular/common/http';
+import { Butacas } from './butacas';
+import { Router } from '@angular/router';
+import { Reserva } from './historial-reserva/historial-reserva';
 
 @Component({
   selector: 'app-reserva',
@@ -10,42 +13,122 @@ import {HttpClient} from '@angular/common/http';
   styleUrls: ['./reserva.component.css'],
 })
 export class ReservaComponent implements OnInit {
-  id: number;
-  titulo: string;
-  imagen: string;
-  descripcion: string;
-  genero: string;
-  duracion: string;
-  actores: string;
-  director: string;
-  //pelicula:Pelicula;
+  id: number= 0;
+  titulo: string = '';
+  imagen: string = '';
+  descripcion: string = '';
+  genero: string = '';
+  duracion: string = '';
+  actores: string = '';
+  director: string = '';
+  pelicula!: Pelicula;
+  Peliculas:any;
+  idPeli:any;
+  tituloPeli:any;
+  funcionDia:any;
+  funcionHorario:any;
+  butacas: Butacas[] = [];
+  Butacas: any;
+  filaA: Butacas[] = [];
+  filaB: Butacas[] = [];
+  filaC: Butacas[] = [];
+  filaD: Butacas[] = [];
+  filaE: Butacas[] = [];
+  filaF: Butacas[] = [];
+  filaG: Butacas[] = [];
+  filaH: Butacas[] = [];
+  reservas:Reserva[]=[];
 
-  constructor( private route:ActivatedRoute,protected httpClient: HttpClient) {
-    /*this.id=this.route.snapshot.params['id'];
+  constructor(protected router: Router, protected httpClient: HttpClient,private route:ActivatedRoute) {
+    this.tituloPeli = this.route.snapshot.paramMap.get('titulo');
+    this.idPeli = this.route.snapshot.paramMap.get('idPeli');
+    this.funcionDia = this.route.snapshot.paramMap.get('fecha');
+    this.funcionHorario = this.route.snapshot.paramMap.get('horario');
     let res: Observable<Pelicula[]> = this.httpClient
-      .get<Pelicula[]>(`http://localhost:3000/peliculas/${this.id}`)
+      .get<Pelicula[]>(`http://localhost:3000/peliculas/${this.idPeli}`)
       .pipe(share());
 
     res.subscribe(
       (value) => {
         console.log(value);
-        this.pelicula = value[0];
+        this.Peliculas = value[0];
+        this.pelicula = this.Peliculas;
+        this.id=this.pelicula.id;
+        this.titulo = this.pelicula.titulo;
+        this.imagen=this.pelicula.imagen;
+        this.descripcion = this.pelicula.descripcion;
+        this.genero = this.pelicula.genero;
+        this.duracion=this.duracion;
+        this.actores = this.pelicula.actores;
+        this.director = this.pelicula.director;
       },
       (error) => {
         console.log('ocurrio un error');
       }
-    );*/
-    
-    (this.id = 2),
-      (this.titulo = "Joker"),
-      (this.imagen = './assets/img/peliculas/joker.jpg'),
-      (this.descripcion =
-        'Joker mostrará por primera vez los orígenes del icónico archienemigo por excelencia de Bruce Wayne/Batman. La historia sigue de cerca la vida de Arthur Fleck (Joaquin Phoenix), un hombre con problemas psiquiátricos que vivirá una serie de acontecimientos que le harán convertirse en uno de los grandes villanos de DC Comics. El Príncipe Payaso del Crimen se cruzará en el camino de Thomas Wayne (Brett Cullen) y se acercará a su hijo, el futuro Caballero Oscuro en su versión joven (Dante Pereira-Olson).'),
-      (this.genero = 'Drama'),
-      (this.duracion = '2h 02 MIN'),
-      (this.actores = 'Joaquin Phoenix, Robert De Niro, Zazie Beetz'),
-      (this.director = 'Todd Phillips');
+    );
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { 
+
+    console.log(this.reservas)
+    let res: Observable<Butacas[]> = this.httpClient
+    .get<Butacas[]>('http://localhost:3000/reserva')
+    .pipe(share());
+
+  res.subscribe(
+    (value) => {
+      this.Butacas = value;
+      this.butacas = this.Butacas;
+      this.butacas.find((butaca) => {
+        this.butacas.push(butaca);
+        switch (butaca.fila) {
+          case 'A':
+            this.filaA.push(butaca);
+            break;
+          case 'B':
+            this.filaB.push(butaca);
+            break;
+          case 'C':
+            this.filaC.push(butaca);
+            break;
+          case 'D':
+            this.filaD.push(butaca);
+            break;
+          case 'E':
+            this.filaE.push(butaca);
+            break;
+          case 'F':
+            this.filaF.push(butaca);
+            break;
+          case 'G':
+            this.filaG.push(butaca);
+            break;
+          case 'H':
+            this.filaH.push(butaca);
+            break;
+        }
+      })
+
+    },
+    (error) => {
+      console.log('ocurrio un error');
+    }
+  );
+  }
+
+  reservar(){
+
+      this.reservas.push({
+        id:1,
+        pelicula:this.titulo,
+        asiento:'A4',
+        fechaFuncion:this.funcionDia+" "+this.funcionHorario,
+        candySnack:"-"
+      });
+
+      alert("Reservado con exito!");
+      //this.router.navigate(["/historial-reservas"]);
+      this.router.navigate([""]);
+
+  }
 }

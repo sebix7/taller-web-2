@@ -9,7 +9,6 @@ export class HistorialReservaComponent implements OnInit {
 
   mensaje:string="d-none";
   tabla:string="d-block";
-
   constructor() { }
 
   ngOnInit(): void {

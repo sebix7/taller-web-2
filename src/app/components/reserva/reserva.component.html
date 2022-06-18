@@ -26,6 +26,11 @@
   <div class="contenedorInformacion p-5 d-flex flex-column"> 
     <div class="mb-5">
         <h2>Hola usuario elegi tu butaca!</h2>
+        <br>
+        <div class="alert alert-info p-5" role="alert">
+          Selecciono funcion para el dia {{funcionDia}} y horario {{funcionHorario}}
+        </div>
+
     </div>
     <div class="d-flex flex-column">
 
@@ -33,17 +38,15 @@
 
         <div class="ms-5 contenedor butacas-pantalla d-flex flex-row">
 
-          
-
-          <div class="datos-peli">
-            <div class="card" style="width: 30rem;">
+          <div class="datos-peli mt-5">
+            <div class=" card info-items" style="width: 30rem;">
               <img src="{{imagen}}" class="card-img-top" alt="...">
               <div class="card-body">
-                <h5 class="card-title text-dark">{{titulo}}</h5>
-                <p class="card-text text-dark">Genero: {{genero}}</p>
-                <p class="card-text text-dark">Duracion: {{duracion}}</p>
-                <p class="card-text text-dark">Actores: {{actores}}</p>
-                <p class="card-text text-dark">Director: {{director}}</p>
+                <h5 class="card-title text-light ">{{titulo}}</h5>
+                <p class="card-text text-light ">Genero: {{genero}}</p>
+                <p class="card-text text-light ">Duracion: {{duracion}}</p>
+                <p class="card-text text-light ">Actores: {{actores}}</p>
+                <p class="card-text text-light ">Director: {{director}}</p>
               </div>
             </div>
           </div>
@@ -55,288 +58,99 @@
               <button type="button" class="btn btn-secondary zoom pantalla mb-5">PANTALLA</button>
             </div>
             <!----------->
+            <div class="butacas">
 
-            <div class="butacas d-flex flex-row justify-content-center">
-                   <!--izquierda-->
-                <div class="me-5">
-                  <div class="d-flex flex-row mb-3">
-                    <button type="button" class="btn btn-success me-3">D</button>
-                    <button type="button" class="btn btn-success">D</button>
+              <div class="butacas-A d-flex flex-row">
+                  <div *ngFor="let a of filaA" class="">
+                      <div *ngIf="a.disponible==true">
+                        <button type="button" class="btn btn-success me-3 p-3 btn-butaca">{{a.columna}}</button>
+                      </div>
+                      <div *ngIf="a.disponible==false">
+                        <button type="button" class="btn btn-danger me-3 p-3 btn-butaca">{{a.columna}}</button>
+                      </div>
                   </div>
-                  <div class="d-flex flex-row mb-3">
-                    <button type="button" class="btn btn-success me-3">D</button>
-                    <button type="button" class="btn btn-success">D</button>
-                  </div>
-                  
-                  <div class="d-flex flex-row mb-3">
-                    <button type="button" class="btn btn-success me-3">D</button>
-                    <button type="button" class="btn btn-success">D</button>
-                  </div>
-
-                  <div class="d-flex flex-row mb-3">
-                    <button type="button" class="btn btn-success me-3">D</button>
-                    <button type="button" class="btn btn-success">D</button>
-                  </div>
-
-                  <div class="d-flex flex-row mb-3">
-                    <button type="button" class="btn btn-success me-3">D</button>
-                    <button type="button" class="btn btn-success">D</button>
-                  </div>
-
-                  <div class="d-flex flex-row mb-3">
-                    <button type="button" class="btn btn-success me-3">D</button>
-                    <button type="button" class="btn btn-success">D</button>
-                  </div>
-
-                  <div class="d-flex flex-row mb-3">
-                    <button type="button" class="btn btn-success me-3">D</button>
-                    <button type="button" class="btn btn-success">D</button>
-                  </div>
-                  <div class="d-flex flex-row mb-3">
-                    <button type="button" class="btn btn-success me-3">D</button>
-                    <button type="button" class="btn btn-success">D</button>
-                  </div>
-                  <div class="d-flex flex-row mb-3">
-                    <button type="button" class="btn btn-success me-3">D</button>
-                    <button type="button" class="btn btn-success">D</button>
-                  </div>
-                  <div class="d-flex flex-row mb-3">
-                    <button type="button" class="btn btn-success me-3">D</button>
-                    <button type="button" class="btn btn-success">D</button>
-                  </div>
-              
                 </div>
-                <!------------->
-
-                <!--medio------>
-                <div class="me-5">
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-success m-1">D</button>
-                  <button type="button" class="btn btn-success m-1">D</button>
-                  <button type="button" class="btn btn-success m-1">D</button>
-                  <button type="button" class="btn btn-success m-1">D</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-success m-1">D</button>
-                  <button type="button" class="btn btn-success m-1">D</button>
-                  <button type="button" class="btn btn-success m-1">D</button>
-                  <button type="button" class="btn btn-success m-1">D</button>
-                  <button type="button" class="btn btn-success m-1">D</button>
-                  <button type="button" class="btn btn-success m-1">D</button>
-                  <button type="button" class="btn btn-success m-1">D</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
-                  <button type="button" class="btn btn-danger m-1">O</button>
+                <br>
+                <div class="butacas-B d-flex flex-row">
+                  <div *ngFor="let b of filaB" class="">
+                    <div *ngIf="b.disponible==true">
+                      <button type="button" class="btn btn-success me-3 p-3 btn-butaca">{{b.columna}}</button>
+                    </div>
+                    <div *ngIf="b.disponible==false">
+                      <button type="button" class="btn btn-danger me-3 p-3 btn-butaca">{{b.columna}}</button>
+                    </div>
                  </div>
-      
-                <!------------->
-
-
-                <!---derecha--->
-                <div class="me-5">
-                  <div class="d-flex flex-row mb-3">
-                    <button type="button" class="btn btn-success me-3">D</button>
-                    <button type="button" class="btn btn-success">D</button>
-                  </div>
-                  <div class="d-flex flex-row mb-3">
-                    <button type="button" class="btn btn-danger me-3">O</button>
-                    <button type="button" class="btn btn-danger">O</button>
-                  </div>
-                  
-                  <div class="d-flex flex-row mb-3">
-                    <button type="button" class="btn btn-success me-3">D</button>
-                    <button type="button" class="btn btn-danger">O</button>
-                  </div>
-  
-                  <div class="d-flex flex-row mb-3">
-                    <button type="button" class="btn btn-success me-3">D</button>
-                    <button type="button" class="btn btn-success">D</button>
-                  </div>
-  
-                  <div class="d-flex flex-row mb-3">
-                    <button type="button" class="btn btn-success me-3">D</button>
-                    <button type="button" class="btn btn-danger">O</button>
-                  </div>
-  
-                  <div class="d-flex flex-row mb-3">
-                    <button type="button" class="btn btn-success me-3">D</button>
-                    <button type="button" class="btn btn-success">D</button>
-                  </div>
-  
-                  <div class="d-flex flex-row mb-3">
-                    <button type="button" class="btn btn-success me-3">D</button>
-                    <button type="button" class="btn btn-success">D</button>
-                  </div>
-                  <div class="d-flex flex-row mb-3">
-                    <button type="button" class="btn btn-success me-3">D</button>
-                    <button type="button" class="btn btn-success">D</button>
-                  </div>
-                  <div class="d-flex flex-row mb-3">
-                    <button type="button" class="btn btn-success me-3">D</button>
-                    <button type="button" class="btn btn-success">D</button>
-                  </div>
-                  <div class="d-flex flex-row mb-3">
-                    <button type="button" class="btn btn-success me-3">D</button>
-                    <button type="button" class="btn btn-success">D</button>
-                  </div>
-              
+                </div>
+                <br>
+                <div class="butacas-C d-flex flex-row">
+                  <div *ngFor="let c of filaC" class="">
+                    <div *ngIf="c.disponible==true">
+                      <button type="button" class="btn btn-success me-3 p-3 btn-butaca">{{c.columna}}</button>
+                    </div>
+                    <div *ngIf="c.disponible==false">
+                      <button type="button" class="btn btn-danger me-3 p-3 btn-butaca">{{c.columna}}</button>
+                    </div>
+                   </div>
+                </div>
+                <br>
+                <div class="butacas-D d-flex flex-row">
+                  <div *ngFor="let d of filaD" class="">
+                    <div *ngIf="d.disponible==true">
+                      <button type="button" class="btn btn-success me-3 p-3 btn-butaca">{{d.columna}}</button>
+                    </div>
+                    <div *ngIf="d.disponible==false">
+                      <button type="button" class="btn btn-danger me-3 p-3 btn-butaca">{{d.columna}}</button>
+                    </div>
+                   </div>
+                </div>
+                <br>
+                <div class="butacas-E d-flex flex-row">
+                  <div *ngFor="let e of filaE" class="">
+                    <div *ngIf="e.disponible==true">
+                      <button type="button" class="btn btn-success me-3 p-3 btn-butaca">{{e.columna}}</button>
+                    </div>
+                    <div *ngIf="e.disponible==false">
+                      <button type="button" class="btn btn-danger me-3 p-3 btn-butaca">{{e.columna}}</button>
+                    </div>
+                   </div>
+                </div>
+                <br>
+                <div class="butacas-F d-flex flex-row">
+                  <div *ngFor="let f of filaF" class="">
+                    <div *ngIf="f.disponible==true">
+                      <button type="button" class="btn btn-success me-3 p-3 btn-butaca">{{f.columna}}</button>
+                    </div>
+                    <div *ngIf="f.disponible==false">
+                      <button type="button" class="btn btn-danger me-3 p-3 btn-butaca">{{f.columna}}</button>
+                    </div>
+                   </div>
+                </div>
+                <br>
+                <div class="butacas-G d-flex flex-row">
+                  <div *ngFor="let g of filaG" class="">
+                    <div *ngIf="g.disponible==true">
+                      <button type="button" class="btn btn-success me-3 p-3 btn-butaca">{{g.columna}}</button>
+                    </div>
+                    <div *ngIf="g.disponible==false">
+                      <button type="button" class="btn btn-danger me-3 p-3 btn-butaca">{{g.columna}}</button>
+                    </div>
+                   </div>
+                </div>
+                <br>
+                <div class="butacas-H d-flex flex-row">
+                  <div *ngFor="let h of filaH" class="">
+                    <div *ngIf="h.disponible==true">
+                      <button type="button" class="btn btn-success me-3 p-3 btn-butaca">{{h.columna}}</button>
+                    </div>
+                    <div *ngIf="h.disponible==false">
+                      <button type="button" class="btn btn-danger me-3 p-3 btn-butaca">{{h.columna}}</button>
+                    </div>
+                   </div>
+                </div>
+                <div class="mt-5 d-flex justify-content-center">
+                  <button type="button" class="btn btn-dark zoom" (click)="reservar()">Reservar</button>
+                </div>
             </div>
-            <!------------->
-
-            </div>
-
-
           </div>
           <!----------------------->
 
@@ -344,9 +158,7 @@
     
   </div>
 
-    <div class="mt-5">
-      <button type="button" class="btn btn-dark zoom">Reservar</button>
-    </div>
+  
     
   </div>
 </div>
