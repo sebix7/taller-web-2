@@ -69,7 +69,7 @@
                 id="nombre"
                 placeholder="Nombre"
               />
-              <!-- <small class="text-danger">*{error.name}</small> -->
+              
             </div>
 
             <div>
@@ -80,7 +80,7 @@
                 id="apellido"
                 placeholder="Apellido"
               />
-              <!-- <small class="text-danger">*{error.name}</small> -->
+              
             </div>
 
             <div>
@@ -91,7 +91,7 @@
                 id="direccion"
                 placeholder="Dirección"
               />
-              <!-- <small class="text-danger">*{error.name}</small> -->
+              
             </div>
 
             <div>
@@ -102,8 +102,15 @@
                 id="email"
                 placeholder="Email"
               />
-              <!-- <small class="text-danger">*{error.email}</small> -->
+              
             </div>
+
+            <div *ngIf="!!errors.email; then errorEmailBlock"></div>
+  <ng-template #errorEmailBlock>
+    <small class="text-danger">{{ errors.email }}</small>
+  </ng-template>
+
+
             <div>
               <input
                 type="password"
@@ -112,14 +119,14 @@
                 id="password"
                 placeholder="Contraseña"
               />
-              <!-- <small class="text-danger">*{error.password}</small> -->
             </div>
+            <div *ngIf="!!errors.password; then errorPasswordBlock"></div>
+  <ng-template #errorPasswordBlock>
+    <small class="text-danger">{{ errors.password }}</small>
+  </ng-template>
+    
 
-            <button
-              type="submit"
-              class="buttonLogin mt-4 mb-2 btn btn-primary"
-              [disabled]="formRegistro.invalid"
-            >
+            <button type="submit" class="buttonLogin mt-4 mb-2 btn btn-primary">
               Registrarse
             </button>
           </div>
@@ -130,8 +137,7 @@
           <p (click)="changeScreen()" class="registerLinkP ms-1">Ingresa</p>
         </div>
       </div>
-      <h1 class="text-danger">{{ formRegistro.valid }}</h1>
-      <h1 class="text-danger">{{ formRegistro.email }}</h1>
+      
     </div>
   </ng-template>
 </div>
