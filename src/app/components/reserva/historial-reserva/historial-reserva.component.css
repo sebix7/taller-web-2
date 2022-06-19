@@ -1,0 +1,19 @@
+.section{
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+}
+ 
+  .contenedorInformacion {
+    display: flex;
+    width: 85%;
+    background-color: #020d18;
+    color: #F5F5F5;
+  }
+
+  .zoom{
+    font-size: 15px;
+  }

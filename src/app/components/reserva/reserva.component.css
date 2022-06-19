@@ -9,3 +9,70 @@
 
 .buttonComprar {
 } */
+
+.section{
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+}
+ 
+  .contenedorInformacion {
+    display: flex;
+    width: 85%;
+    background-color: #020d18;
+    color: #F5F5F5;
+  }
+
+  .info-item {
+    border: 1px solid black;
+  }
+
+  .item {
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size:small;
+  }
+
+  .pantalla{
+    font-size: 50px;
+    padding-left:40% ;
+    padding-right: 40%;
+    padding-top: 10%;
+    padding-bottom: 5%;
+  }
+
+  .button{
+    width: auto;
+  }
+
+  .zoom{
+    font-size: 20px;
+  }
+  .card{
+    background-color: #020d18;
+    color: #fff;
+    border: 1px solid black;
+  }
+
+  .card-body>h5, .card-body>p{
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+
+  }
+  .butacas{
+
+    display: grid;
+    grid-template-columns: 3;
+
+  }
+
+  .btn-butaca{
+    font-size:1.3rem;
+    width:38px ;
+  }
