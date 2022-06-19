@@ -21,6 +21,8 @@ import { ModalEditarPeliculaComponent } from './components/admin/funciones-admin
 import { ModalEliminarPeliculaComponent } from './components/admin/funciones-admin/modal-eliminar-pelicula/modal-eliminar-pelicula.component';
 import { ModalFuncionesPeliculaComponent } from './components/admin/funciones-admin/modal-funciones-pelicula/modal-funciones-pelicula.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CandySnackStoreComponent } from './components/candy-snack-store/candy-snack-store.component';
+import { HistorialReservaComponent } from './components/reserva/historial-reserva/historial-reserva.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,8 @@ import { HttpClientModule } from '@angular/common/http';
     ModalEditarPeliculaComponent,
     ModalEliminarPeliculaComponent,
     ModalFuncionesPeliculaComponent,
+    CandySnackStoreComponent,
+    HistorialReservaComponent,
   ],
   imports: [
     BrowserModule,
