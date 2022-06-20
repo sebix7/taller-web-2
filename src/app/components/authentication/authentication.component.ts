@@ -33,7 +33,13 @@ export class AuthenticationComponent implements OnInit {
     this.screen = 1;
     this.formLogin = FormGroup;
     this.formRegistro = FormGroup;
-    this.errors = { email: '', password: '' };
+    this.errors = {
+      nombre: '',
+      apellido: '',
+      direccion: '',
+      email: '',
+      password: '',
+    };
   }
 
   ngOnInit(): void {
@@ -68,9 +74,24 @@ export class AuthenticationComponent implements OnInit {
 
   registrar(): any {
     if (
+      this.formRegistro.controls.nombre.invalid === true ||
+      this.formRegistro.controls.apellido.invalid === true ||
+      this.formRegistro.controls.direccion.invalid === true ||
       this.formRegistro.controls.email.invalid === true ||
       this.formRegistro.controls.password.invalid === true
     ) {
+      this.formRegistro.controls.nombre.invalid === true
+        ? (this.errors.nombre = 'El nombre es obligatorio')
+        : (this.errors.nombre = '');
+
+      this.formRegistro.controls.apellido.invalid === true
+        ? (this.errors.apellido = 'El apellido es obligatorio')
+        : (this.errors.apellido = '');
+
+      this.formRegistro.controls.direccion.invalid === true
+        ? (this.errors.direccion = 'La direccion es obligatoria')
+        : (this.errors.direccion = '');
+
       this.formRegistro.controls.email.invalid === true
         ? (this.errors.email = 'Ingrese un email valido')
         : (this.errors.email = '');
@@ -83,9 +104,7 @@ export class AuthenticationComponent implements OnInit {
       const body = this.formRegistro.value;
 
       let res: Observable<Response[]> = this.httpClient
-        .post<Response[]>(`http://localhost:3000/auth`, {
-          body,
-        })
+        .post<Response[]>(`http://localhost:3000/auth`, body)
         .pipe(share());
 
       res.subscribe(
@@ -97,35 +116,11 @@ export class AuthenticationComponent implements OnInit {
         }
       );
 
+      this.errors.nombre = '';
+      this.errors.apellido = '';
+      this.errors.direccion = '';
       this.errors.email = '';
       this.errors.password = '';
     }
   }
-
-  // registrar(){
-  //   console.log('nombreUsuario:' + this.formRegistro.get('nombreUsuario').value);
-  //   this.datosRegistro.nombreDeUsuario = this.formRegistro.get('nombreUsuario').value;
-  //   this.datosRegistro.nombreDeUsuario = this.formRegistro.get('nombreUsuario').value;
-  //   this.datosRegistro.nombreDeUsuario = this.formRegistro.get('nombreUsuario').value;
-  //   this.datosRegistro.nombreDeUsuario = this.formRegistro.get('nombreUsuario').value;
-
-  //   this.cognitoReg(this.datosRegistro)
-  // }
-
-  // cognitoReg(datosRegistro: datosDeRegistro) {
-
-  //   let res: Observable<datosDeRegistro[]> =
-  //    this.httpClient.post<datosDeRegistro[]>('http://localhost:3002/registro', datosRegistro)
-  //    .pipe(share());
-
-  //    res.subscribe(
-
-  //     value => {
-  //       console.log(value)
-  //     },
-  //     error => {
-  //       console.log('ocurrio un error');
-  //     });
-
-  // }
 }
