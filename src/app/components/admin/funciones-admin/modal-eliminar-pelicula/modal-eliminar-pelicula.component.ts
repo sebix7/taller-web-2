@@ -19,12 +19,14 @@ export class ModalEliminarPeliculaComponent implements OnInit {
     actores: '',
     director: '',
     estreno: true,
+    trailer: '',
   };
 
   constructor() {}
 
   onDelete(id: number): void {
     console.log('Eliminado: ' + id);
+    location.reload();
   }
 
   ngOnInit(): void {}

@@ -17,7 +17,8 @@ export class ModalDetallesPeliculaComponent implements OnInit {
     duracion: '',
     actores: '',
     director: '',
-    estreno:true,
+    estreno: true,
+    trailer: '',
   };
   titulo: string = 'Detalles de la película';
 

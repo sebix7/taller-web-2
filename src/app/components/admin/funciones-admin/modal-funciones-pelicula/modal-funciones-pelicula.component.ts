@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {
   FormArray,
   FormBuilder,
@@ -7,6 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Funcion } from './Funcion';
+import { ListaFunciones } from './ListaFunciones';
 
 @Component({
   selector: 'app-modal-funciones-pelicula',
@@ -21,11 +22,16 @@ export class ModalFuncionesPeliculaComponent implements OnInit {
     fecha: ['', Validators.required],
     horario: ['', Validators.required],
   };
+  @Input() idPelicula: number = 0;
 
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
       funciones: this.fb.array([this.fb.group(this.funcion)]),
     });
+  }
+
+  ngOnChanges(cambios: any): void {
+    this.idPelicula = cambios['idPelicula'].currentValue;
   }
 
   agregarFuncion(): void {
@@ -39,7 +45,12 @@ export class ModalFuncionesPeliculaComponent implements OnInit {
   }
 
   submit(): void {
-    console.log(this.form.controls['funciones'].value);
+    const listaFunciones = {
+      idPelicula: this.idPelicula,
+      funciones: this.form.value,
+    } as ListaFunciones;
+    console.log(listaFunciones);
+    location.reload();
   }
 
   ngOnInit(): void {}

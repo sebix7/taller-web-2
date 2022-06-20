@@ -8,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ModalGeneralComponent implements OnInit {
   @Input() target: String = '';
   @Input() titulo: String = '';
-  @Input() cerrarAction: boolean = false;
+  @Input() cerrarButton: boolean = false;
 
   constructor() {}
 

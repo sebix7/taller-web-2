@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Pelicula } from 'src/app/components/lista-de-peliculas/pelicula';
 
 @Component({
@@ -18,6 +18,8 @@ export class ModalEditarPeliculaComponent implements OnInit {
     duracion: '',
     actores: '',
     director: '',
+    estreno: true,
+    trailer: '',
   };
 
   constructor() {}

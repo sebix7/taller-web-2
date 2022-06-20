@@ -53,16 +53,23 @@
     [mensajeError]="'Debe ingresar el director de la película'"
     [value]="pelicula.director"
   ></app-input>
+  <app-input
+    [label]="'Trailer'"
+    [placeholder]="'Ingrese el link para ver el trailer'"
+    [name]="'trailer'"
+    [formGroup]="cargarPelicula"
+    [condicionError]="cargarPelicula.get('trailer')?.touched && cargarPelicula.get('trailer')?.errors?.['required']"
+    [mensajeError]="'Debe ingresar el trailer de la película'"
+    [value]="pelicula.trailer"
+  ></app-input>
   <div class="modal-footer">
     <button
       type="submit"
       class="btn btn-primary"
-      [disabled]="!cargarPelicula.valid"
-      [attr.data-dismiss]="cargarPelicula.valid ? 'modal' : null"
+      [disabled]="cargarPelicula.invalid"
     >
       Guardar
     </button>
-
     <button type="button" class="btn btn-secondary" data-dismiss="modal">
       Cerrar
     </button>
