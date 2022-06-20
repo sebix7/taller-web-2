@@ -69,8 +69,12 @@
                 id="nombre"
                 placeholder="Nombre"
               />
-              
             </div>
+
+            <div *ngIf="!!errors.nombre; then errorNombreBlock"></div>
+            <ng-template #errorNombreBlock>
+              <small class="text-danger">{{ errors.nombre }}</small>
+            </ng-template>
 
             <div>
               <input
@@ -80,8 +84,12 @@
                 id="apellido"
                 placeholder="Apellido"
               />
-              
             </div>
+
+            <div *ngIf="!!errors.apellido; then errorApellidoBlock"></div>
+            <ng-template #errorApellidoBlock>
+              <small class="text-danger">{{ errors.apellido }}</small>
+            </ng-template>
 
             <div>
               <input
@@ -91,8 +99,12 @@
                 id="direccion"
                 placeholder="Dirección"
               />
-              
             </div>
+
+            <div *ngIf="!!errors.direccion; then errorDireccionBlock"></div>
+            <ng-template #errorDireccionBlock>
+              <small class="text-danger">{{ errors.direccion }}</small>
+            </ng-template>
 
             <div>
               <input
@@ -102,14 +114,12 @@
                 id="email"
                 placeholder="Email"
               />
-              
             </div>
 
             <div *ngIf="!!errors.email; then errorEmailBlock"></div>
-  <ng-template #errorEmailBlock>
-    <small class="text-danger">{{ errors.email }}</small>
-  </ng-template>
-
+            <ng-template #errorEmailBlock>
+              <small class="text-danger">{{ errors.email }}</small>
+            </ng-template>
 
             <div>
               <input
@@ -121,10 +131,9 @@
               />
             </div>
             <div *ngIf="!!errors.password; then errorPasswordBlock"></div>
-  <ng-template #errorPasswordBlock>
-    <small class="text-danger">{{ errors.password }}</small>
-  </ng-template>
-    
+            <ng-template #errorPasswordBlock>
+              <small class="text-danger">{{ errors.password }}</small>
+            </ng-template>
 
             <button type="submit" class="buttonLogin mt-4 mb-2 btn btn-primary">
               Registrarse
@@ -137,7 +146,6 @@
           <p (click)="changeScreen()" class="registerLinkP ms-1">Ingresa</p>
         </div>
       </div>
-      
     </div>
   </ng-template>
 </div>
