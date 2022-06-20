@@ -67,23 +67,40 @@ export class AuthenticationComponent implements OnInit {
   }
 
   registrar(): any {
-    
-    
-    if(this.formRegistro.controls.email.invalid  === true||
-      this.formRegistro.controls.password.invalid === true ){
+    if (
+      this.formRegistro.controls.email.invalid === true ||
+      this.formRegistro.controls.password.invalid === true
+    ) {
+      this.formRegistro.controls.email.invalid === true
+        ? (this.errors.email = 'Ingrese un email valido')
+        : (this.errors.email = '');
 
-        this.formRegistro.controls.email.invalid === true ? this.errors.email = 'Ingrese un email valido' : this.errors.email = '';
-        
-        this.formRegistro.controls.password.invalid === true ? this.errors.password = 'La contraseña debe tener más de 6 caracteres' : this.errors.password = '';
-      }
-      else{
-        console.log(this.formRegistro.value);
-        this.errors.email = '';
-    this.errors.password = '';
-      }
+      this.formRegistro.controls.password.invalid === true
+        ? (this.errors.password =
+            'La contraseña debe tener más de 6 caracteres')
+        : (this.errors.password = '');
+    } else {
+      const body = this.formRegistro.value;
 
-    
+      let res: Observable<Response[]> = this.httpClient
+        .post<Response[]>(`http://localhost:3000/auth`, {
+          body,
+        })
+        .pipe(share());
+
+      res.subscribe(
+        (value) => {
+          console.log(value);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+
+      this.errors.email = '';
+      this.errors.password = '';
     }
+  }
 
   // registrar(){
   //   console.log('nombreUsuario:' + this.formRegistro.get('nombreUsuario').value);
