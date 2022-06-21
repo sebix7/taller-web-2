@@ -13,6 +13,7 @@ import {
 } from '@angular/common/http';
 import { datosDeRegistro } from './datosDeRegistro';
 import { Observable, share } from 'rxjs';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-authentication',
@@ -24,6 +25,7 @@ export class AuthenticationComponent implements OnInit {
   public formRegistro: any;
   public formLogin: any;
   public errors: any;
+  public passwordRegex: any;
 
   constructor(
     protected router: Router,
@@ -39,6 +41,7 @@ export class AuthenticationComponent implements OnInit {
       direccion: '',
       email: '',
       password: '',
+      registro: '',
     };
   }
 
@@ -58,7 +61,9 @@ export class AuthenticationComponent implements OnInit {
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [
         Validators.required,
-        Validators.minLength(6),
+        Validators.minLength(8),
+        // Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')
+        // Validators.pattern
       ]),
     });
   }
@@ -98,7 +103,7 @@ export class AuthenticationComponent implements OnInit {
 
       this.formRegistro.controls.password.invalid === true
         ? (this.errors.password =
-            'La contraseña debe tener más de 6 caracteres')
+            'La contraseña debe tener mínimo 8 caracteres')
         : (this.errors.password = '');
     } else {
       const body = this.formRegistro.value;
@@ -109,10 +114,12 @@ export class AuthenticationComponent implements OnInit {
 
       res.subscribe(
         (value) => {
-          console.log(value);
+          // console.log(value);
+          Swal.fire('Registro exitoso', '', 'success');
         },
         (error) => {
-          console.log(error);
+          console.log(error.errors);
+          Swal.fire('Error al registrar el usuario', '', 'error');
         }
       );
 
