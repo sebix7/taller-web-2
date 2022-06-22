@@ -73,8 +73,22 @@ export class AuthenticationComponent implements OnInit {
   }
 
   login(): any {
-    // console.log(this.formLogin.controls.email.invalid);
-    // console.log(this.formLogin.value.email);
+    const body = this.formLogin.value;
+
+    let res: Observable<Response[]> = this.httpClient
+      .post<Response[]>(`http://localhost:3000/auth/login`, body)
+      .pipe(share());
+
+    res.subscribe(
+      (value) => {
+        console.log(value);
+        // Swal.fire('Registro exitoso', '', 'success');
+      },
+      (error) => {
+        console.log(error.errors);
+        // Swal.fire('Error al registrar el usuario', '', 'error');
+      }
+    );
   }
 
   registrar(): any {
