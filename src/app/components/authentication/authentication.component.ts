@@ -21,20 +21,24 @@ import Swal from 'sweetalert2';
   styleUrls: ['./authentication.component.css'],
 })
 export class AuthenticationComponent implements OnInit {
-  public screen: number;
+  public screen: string;
   public formRegistro: any;
   public formLogin: any;
+  public formConfirmacion: any;
   public errors: any;
+  public errorsLogin: any;
   public passwordRegex: any;
+  public email: string;
 
   constructor(
     protected router: Router,
     private formBuilder: FormBuilder,
     protected httpClient: HttpClient
   ) {
-    this.screen = 1;
+    this.screen = 'login';
     this.formLogin = FormGroup;
     this.formRegistro = FormGroup;
+    this.formConfirmacion = FormGroup;
     this.errors = {
       nombre: '',
       apellido: '',
@@ -43,6 +47,11 @@ export class AuthenticationComponent implements OnInit {
       password: '',
       registro: '',
     };
+    this.errorsLogin = {
+      usuarioIncorrecto: '',
+      usuarioNoConfirmado: '',
+    };
+    this.email = '';
   }
 
   ngOnInit(): void {
@@ -66,10 +75,20 @@ export class AuthenticationComponent implements OnInit {
         // Validators.pattern
       ]),
     });
+
+    this.formConfirmacion = this.formBuilder.group({
+      codigo: new FormControl('', [Validators.required]),
+    });
   }
 
-  changeScreen() {
-    this.screen = this.screen === 1 ? 2 : 1;
+  changeScreen(screen: string, email?: string) {
+    this.screen = screen;
+
+    if (!!email) {
+      this.email = email;
+    } else {
+      this.email = '';
+    }
   }
 
   login(): any {
@@ -82,11 +101,37 @@ export class AuthenticationComponent implements OnInit {
     res.subscribe(
       (value) => {
         console.log(value);
+        this.errorsLogin.usuarioIncorrecto = '';
         // Swal.fire('Registro exitoso', '', 'success');
       },
       (error) => {
-        console.log(error.errors);
-        // Swal.fire('Error al registrar el usuario', '', 'error');
+        if (error.ok === false) {
+          if (error.error.err.name === 'UserNotConfirmedException') {
+            this.changeScreen('validar', this.formLogin.value.email);
+            this.errorsLogin.usuarioIncorrecto = '';
+          } else {
+            this.errorsLogin.usuarioIncorrecto =
+              'Usuario / Password incorrecto';
+            // console.log(this.errorsLogin.usuarioIncorrecto);
+          }
+        }
+      }
+    );
+  }
+
+  confirmar(): any {
+    const body = { codigo: this.formConfirmacion.value, email: this.email };
+    let res: Observable<Response[]> = this.httpClient
+      .post<Response[]>(`http://localhost:3000/auth/validar`, body)
+      .pipe(share());
+
+    res.subscribe(
+      (value) => {
+        this.errorsLogin.usuarioNoConfirmado = '';
+        Swal.fire('Usuario confirmado', '', 'success');
+      },
+      (error) => {
+        this.errorsLogin.usuarioNoConfirmado = 'Código incorrecto';
       }
     );
   }
@@ -127,12 +172,10 @@ export class AuthenticationComponent implements OnInit {
         .pipe(share());
 
       res.subscribe(
-        (value) => {
-          // console.log(value);
+        () => {
           Swal.fire('Registro exitoso', '', 'success');
         },
-        (error) => {
-          console.log(error.errors);
+        () => {
           Swal.fire('Error al registrar el usuario', '', 'error');
         }
       );
