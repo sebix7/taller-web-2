@@ -27,7 +27,6 @@ export class AuthenticationComponent implements OnInit {
   public formConfirmacion: any;
   public errors: any;
   public errorsLogin: any;
-  public passwordRegex: any;
   public email: string;
 
   constructor(
@@ -69,10 +68,11 @@ export class AuthenticationComponent implements OnInit {
       direccion: new FormControl('', Validators.required),
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [
-        Validators.required,
         Validators.minLength(8),
-        // Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')
-        // Validators.pattern
+        Validators.required,
+        Validators.pattern(
+          '(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[$@$ñ<>!%*?&]).{8,}'
+        ),
       ]),
     });
 
@@ -100,9 +100,11 @@ export class AuthenticationComponent implements OnInit {
 
     res.subscribe(
       (value) => {
-        console.log(value);
+        // console.log(value);
         this.errorsLogin.usuarioIncorrecto = '';
-        // Swal.fire('Registro exitoso', '', 'success');
+        this.router.navigate(['/']);
+
+        // Swal.fire('Login exitoso', '', 'success');
       },
       (error) => {
         if (error.ok === false) {
