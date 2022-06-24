@@ -9,6 +9,7 @@ import { ReservaComponent } from './components/reserva/reserva.component';
 import { FuncionesAdminComponent } from './components/admin/funciones-admin/funciones-admin.component';
 import { CandySnackStoreComponent } from './components/candy-snack-store/candy-snack-store.component';
 import { HistorialReservaComponent } from './components/reserva/historial-reserva/historial-reserva.component';
+import { CarritoComponent } from './components/carrito/carrito.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -20,8 +21,8 @@ const routes: Routes = [
   { path: 'reserva/:titulo/:idPeli/:fecha/:horario', component: ReservaComponent },
   { path: 'administrador/funciones', component: FuncionesAdminComponent },
   { path: 'store', component: CandySnackStoreComponent},
-  { path: 'historial-reservas', component: HistorialReservaComponent}
-
+  { path: 'historial-reservas', component: HistorialReservaComponent},
+  { path: 'carrito', component: CarritoComponent}
 ];
 
 @NgModule({
