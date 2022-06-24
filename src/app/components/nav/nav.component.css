@@ -1,20 +1,23 @@
 * {
-  font-family: "Dosis", sans-serif;
+    font-family: "Dosis", sans-serif;
 }
 
 .navContainer {
-  background-color: transparent;
+    background-color: transparent;
 }
 
 .pButtons {
-  font-size: 1em;
-  color: #fff;
-  font-weight: 500;
-  cursor: pointer;
+    font-size: 1em;
+    color: #fff;
+    font-weight: 500;
+    cursor: pointer;
 }
 
 .pButtons:hover {
-  color: rgb(251, 255, 0);
-  transition: ease 0.3s;
+    color: rgb(251, 255, 0);
+    transition: ease 0.3s;
 }
 
+.bi-cart-mb {
+    margin-bottom: 8px;
+}
