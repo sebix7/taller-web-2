@@ -26,6 +26,7 @@ import { HistorialReservaComponent } from './components/reserva/historial-reserv
 import { FormularioPeliculaComponent } from './components/admin/funciones-admin/formulario-pelicula/formulario-pelicula.component';
 import { InputComponent } from './components/forms/input/input.component';
 import { NavbarAdminComponent } from './components/admin/navbar-admin/navbar-admin.component';
+import { CarritoComponent } from './components/carrito/carrito.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { NavbarAdminComponent } from './components/admin/navbar-admin/navbar-adm
     FormularioPeliculaComponent,
     InputComponent,
     NavbarAdminComponent,
+    CarritoComponent,
   ],
   imports: [
     BrowserModule,
