@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CandySnackStoreService } from './services/candy-snack-store.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable, share } from 'rxjs';
@@ -12,24 +11,33 @@ import { Store } from './store';
 })
 export class CandySnackStoreComponent implements OnInit {
 
-  pochoclos:Store[]=[];
-  nachos:Store[]=[];
-  otrosSnacks:Store[]=[];
-  bebidas:Store[]=[];
-  candies:Store[]=[];
-  combos:Store[]=[];
+  Store: any;
+  productos:Store[]=[];
+
   
-  constructor(private store:CandySnackStoreService) { 
-    this.pochoclos=this.store.pochoclos;
-    this.nachos=this.store.nachos;
-    this.otrosSnacks=this.store.otrosSnacks;
-    this.bebidas=this.store.bebidas;
-    this.candies=this.store.candies;
-    this.combos=this.store.combos;
+  constructor(protected router: Router, protected httpClient: HttpClient) { 
+
   }
 
+
   ngOnInit(): void {
-    
+    let res: Observable<Store[]> = this.httpClient
+    .get<Store[]>('http://localhost:3000/store')
+    .pipe(share());
+    res.subscribe(
+      (value) => {
+        this.Store = value;
+        this.productos = this.Store.productos;
+        console.log(this.productos)
+      },
+      (error) => {
+        console.log('ocurrio un error');
+      }
+
+        
+        
+      
+    );
   }
 
 }

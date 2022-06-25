@@ -164,7 +164,7 @@ export class AuthenticationComponent implements OnInit {
 
       this.formRegistro.controls.password.invalid === true
         ? (this.errors.password =
-            'La contraseña debe tener mínimo 8 caracteres')
+            'La contraseña debe tener mínimo 8, caracteres una letra mayúscula, una minúscula, un número y un carácter especial')
         : (this.errors.password = '');
     } else {
       const body = this.formRegistro.value;
