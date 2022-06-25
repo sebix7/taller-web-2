@@ -1,0 +1,298 @@
+    card {
+        position: relative;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        flex-direction: column;
+        min-width: 0;
+        word-wrap: break-word;
+        background-color: #ffffff;
+        background-clip: border-box;
+        border-radius: 0.42rem;
+    }
+    
+    .card.card-custom {
+        box-shadow: 0px 0px 30px 0px rgb(82 63 105 / 5%);
+        border: 0;
+    }
+    
+    .gutter-b {
+        margin-bottom: 25px;
+    }
+    
+    .card.card-custom>.card-header {
+        display: flex;
+        -webkit-box-pack: justify;
+        justify-content: space-between;
+        -webkit-box-align: stretch;
+        align-items: stretch;
+        min-height: 70px;
+        background-color: transparent;
+    }
+    
+    .card-header:first-child {
+        border-radius: calc(0.42rem - 1px) calc(0.42rem - 1px) 0 0;
+    }
+    
+    .pt-6,
+    .py-6 {
+        padding-top: 1.5rem !important;
+    }
+    
+    .pb-0,
+    .py-0 {
+        padding-bottom: 0 !important;
+    }
+    
+    .flex-wrap {
+        flex-wrap: wrap !important;
+    }
+    
+    .border-0 {
+        border: 0 !important;
+    }
+    
+    .card-header {
+        padding: 2rem 2.25rem;
+        margin-bottom: 0;
+    }
+    
+    .card.card-custom>.card-header .card-title,
+    .card.card-custom>.card-header .card-title .card-label {
+        font-weight: 500;
+        font-size: 1.275rem;
+        color: #181C32;
+    }
+    
+    .card.card-custom>.card-header .card-title {
+        display: flex;
+        margin: auto;
+        margin-left: 0;
+    }
+    
+    .align-items-start {
+        -webkit-box-align: start !important;
+        align-items: flex-start !important;
+    }
+    
+    .flex-column {
+        -webkit-box-orient: vertical !important;
+        -webkit-box-direction: normal !important;
+        flex-direction: column !important;
+    }
+    
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .h1,
+    .h2,
+    .h3,
+    .h4,
+    .h5,
+    .h6 {
+        line-height: 1.2;
+    }
+    
+    .card.card-custom>.card-header .card-title .card-label {
+        margin: 0 0.75rem 0 0;
+        flex-wrap: wrap;
+    }
+    
+    .font-size-h3 {
+        font-size: 1.5rem !important;
+    }
+    
+    .text-dark {
+        color: #181C32 !important;
+    }
+    
+    .font-weight-bolder {
+        font-weight: 600 !important;
+    }
+    
+    .card.card-custom>.card-header .card-toolbar {
+        display: flex;
+        -webkit-box-align: center;
+        align-items: center;
+        margin: 0.5rem 0;
+        flex-wrap: wrap;
+    }
+    
+    .dropdown-inline {
+        display: inline-block;
+    }
+    
+    .dropup,
+    .dropright,
+    .dropdown,
+    .dropleft {
+        position: relative;
+    }
+    
+    .font-size-sm {
+        font-size: 0.925rem;
+    }
+    
+    .font-weight-bolder {
+        font-weight: 600 !important;
+    }
+    
+    a {
+        text-decoration: none;
+    }
+    
+    .card-body {
+        flex: 1 1 auto;
+        min-height: 1px;
+    }
+    
+    .card.card-custom>.card-body {
+        padding: 2rem 2.25rem;
+    }
+    
+    .table-responsive {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+    }
+    /* table {
+        border-collapse: collapse;
+    } */
+    
+    .table {
+        width: 100%;
+        margin-bottom: 1rem;
+        color: #3F4254;
+        background-color: transparent;
+    }
+    
+    .table:not(.table-bordered) thead th,
+    .table:not(.table-bordered) thead td {
+        border-top: 0;
+    }
+    
+    .table thead th,
+    .table thead td {
+        font-weight: 600;
+        font-size: 1rem;
+        border-bottom-width: 1px;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+    
+    .table thead th {
+        vertical-align: bottom;
+        border-bottom: 2px solid #EBEDF3;
+    }
+    
+    .table th,
+    .table td {
+        padding: 0.75rem;
+    }
+    
+    th {
+        text-align: -webkit-match-parent;
+    }
+    
+    .text-center {
+        text-align: center !important;
+    }
+    
+    .text-right {
+        text-align: right !important;
+    }
+    
+    .table th,
+    .table td {
+        padding: 0.75rem;
+        vertical-align: top;
+        border-top: 1px solid #EBEDF3;
+    }
+    
+    .font-weight-bolder {
+        font-weight: 600 !important;
+    }
+    
+    .align-items-center {
+        -webkit-box-align: center !important;
+        align-items: center !important;
+    }
+    
+    .d-flex {
+        display: flex !important;
+    }
+    
+    .symbol {
+        display: inline-block;
+        position: relative;
+        border-radius: 0.42rem;
+    }
+    
+    .mr-4,
+    .mx-4 {
+        margin-right: 1rem !important;
+    }
+    
+    .flex-shrink-0 {
+        flex-shrink: 0 !important;
+    }
+    
+    .bg-light {
+        background-color: #F3F6F9 !important;
+    }
+    
+    .symbol.symbol-60 .symbol-label {
+        width: 60px;
+        height: 60px;
+    }
+    
+    @media (min-width: 1200px) {
+        .symbol .symbol-label {
+            width: 50px;
+            height: 50px;
+        }
+    }
+    
+    @media (min-width: 992px) {
+        .symbol .symbol-label {
+            width: 50px;
+            height: 50px;
+        }
+    }
+    
+    @media (min-width: 768px) {
+        .symbol .symbol-label {
+            width: 50px;
+            height: 50px;
+        }
+    }
+    
+    @media (min-width: 576px) {
+        .symbol .symbol-label {
+            width: 50px;
+            height: 50px;
+        }
+    }
+    
+    .symbol .symbol-label {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .symbol .symbol-label {
+        display: flex;
+        -webkit-box-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        justify-content: center;
+        font-weight: 500;
+        color: #3F4254;
+        background-color: #F3F6F9;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        border-radius: 0.42rem;
+    }

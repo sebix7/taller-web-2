@@ -23,6 +23,7 @@ import { ModalFuncionesPeliculaComponent } from './components/admin/funciones-ad
 import { HttpClientModule } from '@angular/common/http';
 import { CandySnackStoreComponent } from './components/candy-snack-store/candy-snack-store.component';
 import { HistorialReservaComponent } from './components/reserva/historial-reserva/historial-reserva.component';
+import { CarritoComponent } from './components/carrito/carrito.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { HistorialReservaComponent } from './components/reserva/historial-reserv
     ModalFuncionesPeliculaComponent,
     CandySnackStoreComponent,
     HistorialReservaComponent,
+    CarritoComponent,
   ],
   imports: [
     BrowserModule,

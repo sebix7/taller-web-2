@@ -1,8 +1,9 @@
 <div
   class="divContainer d-flex justify-content-center align-items-center col-12"
 >
-  <div *ngIf="1 >= screen; then thenBlock; else elseBlock"></div>
-  <ng-template #thenBlock>
+  <!-- <div *ngIf="'login' === screen; then thenBlock; else elseBlock"></div> -->
+
+  <ng-template [ngIf]="'login' === screen">
     <div class="d-flex flex-column col-10 col-sm-6 col-md-4">
       <div>
         <p class="loginBienvenido">Bienvenido!</p>
@@ -39,9 +40,14 @@
               Ingresar
             </button>
 
-            <!-- <h1 class="text-danger">
-              {{  }}
-            </h1> -->
+            <div
+              *ngIf="!!errorsLogin.usuarioIncorrecto; then errorLoginUsuario"
+            ></div>
+            <ng-template #errorLoginUsuario>
+              <small class="text-danger mt-2">{{
+                errorsLogin.usuarioIncorrecto
+              }}</small>
+            </ng-template>
           </div>
         </form>
 
@@ -49,13 +55,15 @@
           class="registerLink text-center text-muted d-flex justify-content-center"
         >
           No tenés cuenta?
-          <p (click)="changeScreen()" class="registerLinkP ms-1">Registrate</p>
+          <p (click)="changeScreen('registro')" class="registerLinkP ms-1">
+            Registrate
+          </p>
         </div>
       </div>
     </div>
   </ng-template>
 
-  <ng-template #elseBlock>
+  <ng-template [ngIf]="'registro' === screen">
     <div class="d-flex flex-column col-10 col-sm-6 col-md-4">
       <div>
         <p class="mb-3 fs-3 fw-bold">Registrate!</p>
@@ -69,8 +77,12 @@
                 id="nombre"
                 placeholder="Nombre"
               />
-              
             </div>
+
+            <div *ngIf="!!errors.nombre; then errorNombreBlock"></div>
+            <ng-template #errorNombreBlock>
+              <small class="text-danger">{{ errors.nombre }}</small>
+            </ng-template>
 
             <div>
               <input
@@ -80,8 +92,12 @@
                 id="apellido"
                 placeholder="Apellido"
               />
-              
             </div>
+
+            <div *ngIf="!!errors.apellido; then errorApellidoBlock"></div>
+            <ng-template #errorApellidoBlock>
+              <small class="text-danger">{{ errors.apellido }}</small>
+            </ng-template>
 
             <div>
               <input
@@ -91,8 +107,12 @@
                 id="direccion"
                 placeholder="Dirección"
               />
-              
             </div>
+
+            <div *ngIf="!!errors.direccion; then errorDireccionBlock"></div>
+            <ng-template #errorDireccionBlock>
+              <small class="text-danger">{{ errors.direccion }}</small>
+            </ng-template>
 
             <div>
               <input
@@ -102,14 +122,12 @@
                 id="email"
                 placeholder="Email"
               />
-              
             </div>
 
             <div *ngIf="!!errors.email; then errorEmailBlock"></div>
-  <ng-template #errorEmailBlock>
-    <small class="text-danger">{{ errors.email }}</small>
-  </ng-template>
-
+            <ng-template #errorEmailBlock>
+              <small class="text-danger">{{ errors.email }}</small>
+            </ng-template>
 
             <div>
               <input
@@ -121,10 +139,9 @@
               />
             </div>
             <div *ngIf="!!errors.password; then errorPasswordBlock"></div>
-  <ng-template #errorPasswordBlock>
-    <small class="text-danger">{{ errors.password }}</small>
-  </ng-template>
-    
+            <ng-template #errorPasswordBlock>
+              <small class="text-danger">{{ errors.password }}</small>
+            </ng-template>
 
             <button type="submit" class="buttonLogin mt-4 mb-2 btn btn-primary">
               Registrarse
@@ -134,10 +151,68 @@
 
         <div class="registerLink text-muted d-flex justify-content-center">
           Ya tenés una cuenta?
-          <p (click)="changeScreen()" class="registerLinkP ms-1">Ingresa</p>
+          <p (click)="changeScreen('login')" class="registerLinkP ms-1">
+            Ingresa
+          </p>
         </div>
       </div>
-      
+    </div>
+  </ng-template>
+
+  <ng-template [ngIf]="'validar' === screen">
+    <div class="d-flex flex-column col-10 col-sm-6 col-md-4">
+      <div>
+        <p class="mb-3 fs-3 fw-bold text-center">
+          Ingresá el código de confirmación.
+        </p>
+
+        <form
+          [formGroup]="formConfirmacion"
+          (submit)="confirmar()"
+          class="mb-3"
+        >
+          <div class="form-group d-flex flex-column">
+            <label class="text-muted mb-1" htmlFor="exampleInputEmail1">
+              Código de confirmación
+            </label>
+            <input
+              type="number"
+              class="form-control bg-white"
+              id="codigo"
+              formControlName="codigo"
+              placeholder="Ingresar codigo"
+            />
+
+            <p id="codeHelp" class="forgotPassword form-text">
+              No te llego todavía?
+            </p>
+
+            <button type="submit" class="buttonLogin mt-2 mb-2 btn btn-primary">
+              Ingresar código
+            </button>
+
+            <div
+              *ngIf="
+                !!errorsLogin.usuarioNoConfirmado;
+                then errorUsuarioNoConfirmado
+              "
+            ></div>
+            <ng-template #errorUsuarioNoConfirmado>
+              <small class="text-danger mt-2">{{
+                errorsLogin.usuarioNoConfirmado
+              }}</small>
+            </ng-template>
+          </div>
+        </form>
+
+        <div
+          class="registerLink text-center text-muted d-flex justify-content-center"
+        >
+          <p (click)="changeScreen('login')" class="registerLinkP ms-1">
+            Volver a login
+          </p>
+        </div>
+      </div>
     </div>
   </ng-template>
 </div>
