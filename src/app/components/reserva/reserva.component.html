@@ -52,10 +52,12 @@
           </div>
 
           <!-- pantalla + butacas-->
-          <div class="m-5">
+          <form class="m-5" (submit)="reservar()">
             <!---pantalla-->
             <div class="d-flex justify-content-center contenedor-pantalla">
               <button type="button" class="btn btn-secondary zoom pantalla mb-5">PANTALLA</button>
+              <input type="hidden" name="pelicula" value="{{titulo}}">
+              <input type="hidden" name="fechaFuncion" value="{{funcionDia}} {{funcionHorario}}">
             </div>
             <!----------->
             <div class="butacas">
@@ -64,9 +66,14 @@
                   <div *ngFor="let a of filaA" class="">
                       <div *ngIf="a.disponible==true">
                         <button type="button" class="btn btn-success me-3 p-3 btn-butaca">{{a.columna}}</button>
+                        <input type="radio" id="a.columna" name="asiento"  id="a.columna" value="{{a.columna}}" [(ngModel)]="butacaReservada">
+                        <label for="a.columna"></label>
                       </div>
                       <div *ngIf="a.disponible==false">
-                        <button type="button" class="btn btn-danger me-3 p-3 btn-butaca">{{a.columna}}</button>
+                        <button type="button" class="btn btn-danger me-3 p-3 btn-butaca" disabled>{{a.columna}}</button>
+                        <input type="radio" id="a.columna" name="asiento" id="a.columna" value="{{a.columna}}" disabled>
+                        <label for="a.columna"></label>
+
                       </div>
                   </div>
                 </div>
@@ -74,10 +81,14 @@
                 <div class="butacas-B d-flex flex-row">
                   <div *ngFor="let b of filaB" class="">
                     <div *ngIf="b.disponible==true">
-                      <button type="button" class="btn btn-success me-3 p-3 btn-butaca">{{b.columna}}</button>
+                      <button type="button" class="btn btn-success me-3 p-3 btn-butaca" >{{b.columna}}</button>
+                      <input type="radio" id="b.columna" name="asiento" id="b.columna" value="{{b.columna}}" [(ngModel)]="butacaReservada">
+                      <label for="b.columna"></label>
                     </div>
                     <div *ngIf="b.disponible==false">
-                      <button type="button" class="btn btn-danger me-3 p-3 btn-butaca">{{b.columna}}</button>
+                      <button type="button" class="btn btn-danger me-3 p-3 btn-butaca" disabled>{{b.columna}}</button>
+                      <input type="radio" id="b.columna" name="asiento"  id="b.columna" value="{{b.columna}}" disabled>
+                      <label for="b.columna"></label>
                     </div>
                  </div>
                 </div>
@@ -86,9 +97,13 @@
                   <div *ngFor="let c of filaC" class="">
                     <div *ngIf="c.disponible==true">
                       <button type="button" class="btn btn-success me-3 p-3 btn-butaca">{{c.columna}}</button>
+                      <input type="radio" id="c.columna" name="asiento"  id="c.columna" value="{{c.columna}}" [(ngModel)]="butacaReservada">
+                      <label for="c.columna"></label>
                     </div>
                     <div *ngIf="c.disponible==false">
-                      <button type="button" class="btn btn-danger me-3 p-3 btn-butaca">{{c.columna}}</button>
+                      <button type="button" class="btn btn-danger me-3 p-3 btn-butaca" disabled>{{c.columna}}</button>
+                      <input type="radio" id="c.columna" name="asiento"  id="c.columna" value="{{c.columna}}" disabled>
+                      <label for="c.columna"></label>
                     </div>
                    </div>
                 </div>
@@ -97,9 +112,13 @@
                   <div *ngFor="let d of filaD" class="">
                     <div *ngIf="d.disponible==true">
                       <button type="button" class="btn btn-success me-3 p-3 btn-butaca">{{d.columna}}</button>
+                      <input type="radio" id="d.columna" name="asiento" id="d.columna" value="{{d.columna}}" [(ngModel)]="butacaReservada">
+                      <label for="d.columna"></label>
                     </div>
                     <div *ngIf="d.disponible==false">
-                      <button type="button" class="btn btn-danger me-3 p-3 btn-butaca">{{d.columna}}</button>
+                      <button type="button" class="btn btn-danger me-3 p-3 btn-butaca" disabled>{{d.columna}}</button>
+                      <input type="radio" id="d.columna" name="asiento" id="d.columna" value="{{d.columna}}" disabled>
+                      <label for="d.columna"></label>
                     </div>
                    </div>
                 </div>
@@ -108,9 +127,13 @@
                   <div *ngFor="let e of filaE" class="">
                     <div *ngIf="e.disponible==true">
                       <button type="button" class="btn btn-success me-3 p-3 btn-butaca">{{e.columna}}</button>
+                      <input type="radio" id="e.columna" name="asiento" id="e.columna" value="{{e.columna}}" [(ngModel)]="butacaReservada">
+                      <label for="e.columna"></label>
                     </div>
                     <div *ngIf="e.disponible==false">
-                      <button type="button" class="btn btn-danger me-3 p-3 btn-butaca">{{e.columna}}</button>
+                      <button type="button" class="btn btn-danger me-3 p-3 btn-butaca" disabled>{{e.columna}}</button>
+                      <input type="radio" id="e.columna" name="asiento" value="{{e.columna}}" disabled>
+                      <label for="e.columna"></label>
                     </div>
                    </div>
                 </div>
@@ -119,9 +142,13 @@
                   <div *ngFor="let f of filaF" class="">
                     <div *ngIf="f.disponible==true">
                       <button type="button" class="btn btn-success me-3 p-3 btn-butaca">{{f.columna}}</button>
+                      <input type="radio" id="f.columna" name="asiento" id="f.columna" value="{{f.columna}}" [(ngModel)]="butacaReservada">
+                      <label for="f.columna"></label>
                     </div>
                     <div *ngIf="f.disponible==false">
-                      <button type="button" class="btn btn-danger me-3 p-3 btn-butaca">{{f.columna}}</button>
+                      <button type="button" class="btn btn-danger me-3 p-3 btn-butaca" disabled>{{f.columna}}</button>
+                      <input type="radio" id="f.columna" name="asiento" id="f.columna"  value="{{f.columna}}" disabled>
+                      <label for="f.columna"></label>
                     </div>
                    </div>
                 </div>
@@ -130,9 +157,13 @@
                   <div *ngFor="let g of filaG" class="">
                     <div *ngIf="g.disponible==true">
                       <button type="button" class="btn btn-success me-3 p-3 btn-butaca">{{g.columna}}</button>
+                      <input type="radio" id="g.columna" name="asiento" id="g.columna" value="{{g.columna}}" [(ngModel)]="butacaReservada">
+                      <label for="g.columna"></label>
                     </div>
                     <div *ngIf="g.disponible==false">
-                      <button type="button" class="btn btn-danger me-3 p-3 btn-butaca">{{g.columna}}</button>
+                      <button type="button" class="btn btn-danger me-3 p-3 btn-butaca" disabled>{{g.columna}}</button>
+                      <input type="radio" id="g.columna" name="asiento" id="g.columna" value="{{g.columna}}" disabled>
+                      <label for="g.columna"></label>
                     </div>
                    </div>
                 </div>
@@ -141,17 +172,21 @@
                   <div *ngFor="let h of filaH" class="">
                     <div *ngIf="h.disponible==true">
                       <button type="button" class="btn btn-success me-3 p-3 btn-butaca">{{h.columna}}</button>
+                      <input type="radio" id="h.columna" name="asiento" value="{{h.columna}}" [(ngModel)]="butacaReservada">
+                      <label for="h.columna"></label>
                     </div>
                     <div *ngIf="h.disponible==false">
-                      <button type="button" class="btn btn-danger me-3 p-3 btn-butaca">{{h.columna}}</button>
+                      <button type="button" class="btn btn-danger me-3 p-3 btn-butaca" disabled>{{h.columna}}</button>
+                      <input type="radio" id="h.columna" name="asiento" id="h.columna" value="{{h.columna}}" disabled>
+                      <label for="h.columna"></label>
                     </div>
                    </div>
                 </div>
                 <div class="mt-5 d-flex justify-content-center">
-                  <button type="button" class="btn btn-dark zoom" (click)="reservar()">Reservar</button>
+                  <button type="submit" class="btn btn-dark zoom">Reservar</button>
                 </div>
             </div>
-          </div>
+          </form>
           <!----------------------->
 
         </div>

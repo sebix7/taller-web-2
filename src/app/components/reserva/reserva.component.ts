@@ -12,6 +12,7 @@ import { Reserva } from './historial-reserva/historial-reserva';
   templateUrl: './reserva.component.html',
   styleUrls: ['./reserva.component.css'],
 })
+
 export class ReservaComponent implements OnInit {
   id: number= 0;
   titulo: string = '';
@@ -27,6 +28,7 @@ export class ReservaComponent implements OnInit {
   tituloPeli:any;
   funcionDia:any;
   funcionHorario:any;
+
   butacas: Butacas[] = [];
   Butacas: any;
   filaA: Butacas[] = [];
@@ -37,7 +39,10 @@ export class ReservaComponent implements OnInit {
   filaF: Butacas[] = [];
   filaG: Butacas[] = [];
   filaH: Butacas[] = [];
+
   reservas:Reserva[]=[];
+  //butacasReservadas:string[]=[];
+  butacaReservada:string="";
 
   constructor(protected router: Router, protected httpClient: HttpClient,private route:ActivatedRoute) {
     this.tituloPeli = this.route.snapshot.paramMap.get('titulo');
@@ -69,8 +74,6 @@ export class ReservaComponent implements OnInit {
   }
 
   ngOnInit(): void { 
-
-    console.log(this.reservas)
     let res: Observable<Butacas[]> = this.httpClient
     .get<Butacas[]>('http://localhost:3000/reserva')
     .pipe(share());
@@ -116,19 +119,32 @@ export class ReservaComponent implements OnInit {
   );
   }
 
-  reservar(){
+  generarId(){
+    let idUltimoElemento= this.reservas.pop()?.id;
+    let idGenerado = 1;
+    if(idUltimoElemento!=null && idUltimoElemento!=1){
+      idGenerado= idUltimoElemento+1;
+    }
 
+    return idGenerado;
+  }
+
+  reservar(){    
       this.reservas.push({
-        id:1,
+        id:this.generarId(),
         pelicula:this.titulo,
-        asiento:'A4',
+        asiento:this.butacaReservada,
         fechaFuncion:this.funcionDia+" "+this.funcionHorario,
         candySnack:"-"
       });
+      console.log(this.reservas)
+      localStorage.setItem("peliculaReservada", this.reservas[0].pelicula);
+      localStorage.setItem("asientoReservada", this.reservas[0].asiento);
+      localStorage.setItem("fechaFuncion", this.reservas[0].fechaFuncion);
 
-      alert("Reservado con exito!");
-      //this.router.navigate(["/historial-reservas"]);
-      this.router.navigate([""]);
+      //alert("Reservado con exito!");
+       this.router.navigate(["/historial-reservas"]);
+      //this.router.navigate([""]);
 
   }
 }
