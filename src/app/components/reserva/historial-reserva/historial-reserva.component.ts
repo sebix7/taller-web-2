@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Reserva } from './historial-reserva';
 
 @Component({
   selector: 'app-historial-reserva',
@@ -9,7 +10,12 @@ export class HistorialReservaComponent implements OnInit {
 
   mensaje:string="d-none";
   tabla:string="d-block";
-  constructor() { }
+  reservas:Reserva[]=[];
+
+  constructor() {
+    this.reservas =JSON.parse(localStorage.getItem('reservas') || '{}');
+    console.log(this.reservas);
+   }
 
   ngOnInit(): void {
   }

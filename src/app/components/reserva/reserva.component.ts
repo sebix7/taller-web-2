@@ -148,6 +148,7 @@ export class ReservaComponent implements OnInit {
         this.reservas = [];
       }
 
+      console.log(this.reservas)
       // alert("Reservado con exito!");
       //this.router.navigate(["/historial-reservas"]);
       this.router.navigate(["/carrito"]);

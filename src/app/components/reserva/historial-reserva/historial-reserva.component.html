@@ -20,16 +20,12 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row"></th>
-                    <!--<div *ngFor="let reserva of reservas">
-                      <td>{{reserva.pelicula}}</td>
-                      <td>{{reserva.asiento}}</td>
-                      <td>{{reserva.fechaFuncion}}</td>
-                      <td>{{reserva.candySnack}}</td>-->
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                  <tr *ngFor="let reserva of reservas">
+                    <!--<div >-->
+                      <td class="text-center">{{reserva.pelicula}}</td>
+                      <td class="text-center">{{reserva.asiento}}</td>
+                      <td class="text-center">{{reserva.fechaFuncion}}</td>
+                      <td class="text-center">{{reserva.candySnack}}</td>
                       <td class="d-flex justify-content-center">
                           <button type="button" class="btn btn-danger zoom" (click)="cancelarReserva()">Cancelar</button>
                       </td>
