@@ -23,6 +23,9 @@ import { ModalFuncionesPeliculaComponent } from './components/admin/funciones-ad
 import { HttpClientModule } from '@angular/common/http';
 import { CandySnackStoreComponent } from './components/candy-snack-store/candy-snack-store.component';
 import { HistorialReservaComponent } from './components/reserva/historial-reserva/historial-reserva.component';
+import { FormularioPeliculaComponent } from './components/admin/funciones-admin/formulario-pelicula/formulario-pelicula.component';
+import { InputComponent } from './components/forms/input/input.component';
+import { NavbarAdminComponent } from './components/admin/navbar-admin/navbar-admin.component';
 import { CarritoComponent } from './components/carrito/carrito.component';
 
 @NgModule({
@@ -45,6 +48,9 @@ import { CarritoComponent } from './components/carrito/carrito.component';
     ModalFuncionesPeliculaComponent,
     CandySnackStoreComponent,
     HistorialReservaComponent,
+    FormularioPeliculaComponent,
+    InputComponent,
+    NavbarAdminComponent,
     CarritoComponent,
   ],
   imports: [
@@ -55,7 +61,6 @@ import { CarritoComponent } from './components/carrito/carrito.component';
     YouTubePlayerModule,
     HttpClientModule,
     ReactiveFormsModule,
-
   ],
   providers: [],
   bootstrap: [AppComponent],

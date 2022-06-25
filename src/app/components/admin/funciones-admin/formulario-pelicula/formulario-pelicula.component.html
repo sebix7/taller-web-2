@@ -1,0 +1,92 @@
+<form [formGroup]="cargarPelicula" (ngSubmit)="submit()">
+  <app-input
+    [label]="'Título'"
+    [placeholder]="'Ingrese el título de la Película'"
+    [name]="'titulo'"
+    [formGroup]="cargarPelicula"
+    [condicionError]="cargarPelicula.get('titulo')?.touched && cargarPelicula.get('titulo')?.errors?.['required']"
+    [mensajeError]="'Debe ingresar un título para la película'"
+    [value]="pelicula.titulo"
+  ></app-input>
+  <div class="form-group">
+    <label>Imagen</label>
+    <input
+      type="file"
+      class="form-control"
+      [attr.formControlName]="pelicula.imagen"
+      [attr.value]="pelicula.imagen"
+      (change)="tomarImagen($event)"
+    />
+    <small
+      class="text-danger"
+      *ngIf="cargarPelicula.get('imagen')?.touched && cargarPelicula.get('imagen')?.errors?.['required']"
+      >Debe ingresar un archivo de tipo imagen</small
+    >
+  </div>
+  <app-input
+    [label]="'Descripción'"
+    [placeholder]="'Ingrese la descripción de la Película'"
+    [name]="'descripcion'"
+    [formGroup]="cargarPelicula"
+    [condicionError]="cargarPelicula.get('descripcion')?.touched && cargarPelicula.get('descripcion')?.errors?.['required']"
+    [mensajeError]="'Debe ingresar una descripción para la película'"
+    [value]="pelicula.descripcion"
+  ></app-input>
+  <app-input
+    [label]="'Género'"
+    [placeholder]="'Ingrese en género de la Película'"
+    [name]="'genero'"
+    [formGroup]="cargarPelicula"
+    [condicionError]="cargarPelicula.get('genero')?.touched && cargarPelicula.get('genero')?.errors?.['required']"
+    [mensajeError]="'Debe ingresar un género para la película'"
+    [value]="pelicula.genero"
+  ></app-input>
+  <app-input
+    [label]="'Duración'"
+    [placeholder]="'Ingrese la duración de la Película'"
+    [name]="'duracion'"
+    [formGroup]="cargarPelicula"
+    [condicionError]="cargarPelicula.get('duracion')?.touched && cargarPelicula.get('duracion')?.errors?.['required']"
+    [mensajeError]="'Debe ingresar una duración para la película'"
+    [value]="pelicula.duracion"
+  ></app-input>
+  <app-input
+    [label]="'Actores'"
+    [placeholder]="'Ingrese los actores de la Película'"
+    [name]="'actores'"
+    [formGroup]="cargarPelicula"
+    [condicionError]="cargarPelicula.get('actores')?.touched && cargarPelicula.get('actores')?.errors?.['required']"
+    [mensajeError]="'Debe ingresar al menos un actor de la película'"
+    [value]="pelicula.actores"
+  ></app-input>
+  <app-input
+    [label]="'Director'"
+    [placeholder]="'Ingrese el director de la Película'"
+    [name]="'director'"
+    [formGroup]="cargarPelicula"
+    [condicionError]="cargarPelicula.get('director')?.touched && cargarPelicula.get('director')?.errors?.['required']"
+    [mensajeError]="'Debe ingresar el director de la película'"
+    [value]="pelicula.director"
+  ></app-input>
+  <app-input
+    [label]="'Trailer'"
+    [placeholder]="'Ingrese el link para ver el trailer'"
+    [name]="'trailer'"
+    [formGroup]="cargarPelicula"
+    [condicionError]="cargarPelicula.get('trailer')?.touched && cargarPelicula.get('trailer')?.errors?.['required']"
+    [mensajeError]="'Debe ingresar el trailer de la película'"
+    [value]="pelicula.trailer"
+  ></app-input>
+  <div class="modal-footer">
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="cargarPelicula.invalid"
+    >
+      Guardar
+    </button>
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+      Cerrar
+    </button>
+  </div>
+</form>

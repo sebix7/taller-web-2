@@ -9,6 +9,18 @@ import { Pelicula } from 'src/app/components/lista-de-peliculas/pelicula';
 export class ModalNuevaPeliculaComponent implements OnInit {
   target: string = 'nuevaPelicula';
   titulo: string = 'Nueva Película';
+  pelicula: Pelicula = {
+    id: 0,
+    titulo: '',
+    imagen: null,
+    descripcion: '',
+    genero: '',
+    duracion: '',
+    actores: '',
+    director: '',
+    estreno: true,
+    trailer: '',
+  };
 
   constructor() {}
 

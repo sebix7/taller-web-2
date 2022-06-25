@@ -1,0 +1,11 @@
+<div class="form-group" [formGroup]="formGroup">
+  <label>{{ label }}</label>
+  <input
+    type="{{ type }}"
+    class="form-control"
+    placeholder="{{ placeholder }}"
+    formControlName="{{ name }}"
+    value="{{ value }}"
+  />
+  <small class="text-danger" *ngIf="condicionError">{{ mensajeError }}</small>
+</div>
