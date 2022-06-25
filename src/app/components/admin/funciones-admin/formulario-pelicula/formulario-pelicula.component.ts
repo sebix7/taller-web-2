@@ -69,6 +69,7 @@ export class FormularioPeliculaComponent implements OnInit {
   }
 
   tomarImagen(e: any) {
+    this.cargarPelicula.get('imagen')?.markAsTouched();
     const archivo = e.target.files[0] as File;
     const listaFormatos = ['jpg', 'jpeg', 'png'];
     const formatoArchivo = archivo.type.split('/')[1];
