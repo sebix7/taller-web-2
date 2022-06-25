@@ -38,6 +38,7 @@ export class ReservaComponent implements OnInit {
   filaG: Butacas[] = [];
   filaH: Butacas[] = [];
   reservas:Reserva[]=[];
+  columna: any[] = [];
 
   constructor(protected router: Router, protected httpClient: HttpClient,private route:ActivatedRoute) {
     this.tituloPeli = this.route.snapshot.paramMap.get('titulo');
@@ -51,7 +52,7 @@ export class ReservaComponent implements OnInit {
     res.subscribe(
       (value) => {
         console.log(value);
-        this.Peliculas = value[0];
+        this.Peliculas = value;
         this.pelicula = this.Peliculas;
         this.id=this.pelicula.id;
         this.titulo = this.pelicula.titulo;
@@ -116,19 +117,41 @@ export class ReservaComponent implements OnInit {
   );
   }
 
+  reservarCol(columna: string, numero: number){
+    this.columna.push(columna+''+(numero+1));
+    console.log(this.columna);
+  }
   reservar(){
 
+    if(this.columna.length > 0){
+    this.columna.forEach(col => {
+      
       this.reservas.push({
-        id:1,
+        id:this.id,
         pelicula:this.titulo,
-        asiento:'A4',
+        asiento:col,
         fechaFuncion:this.funcionDia+" "+this.funcionHorario,
         candySnack:"-"
       });
+    });
 
-      alert("Reservado con exito!");
+      if(localStorage.getItem("reservas") != null && localStorage.getItem("reservas") != ""){
+        let localReservas: any[] = JSON.parse(localStorage.getItem('reservas') || '{}');
+        this.reservas.forEach((res) => {
+          localReservas.push(res);
+        })
+        localStorage.setItem("reservas", JSON.stringify(localReservas));
+        console.log(localReservas);
+        this.reservas = [];
+      } else {
+        localStorage.setItem("reservas", JSON.stringify(this.reservas));
+        this.reservas = [];
+      }
+
+      // alert("Reservado con exito!");
       //this.router.navigate(["/historial-reservas"]);
-      this.router.navigate([""]);
+      this.router.navigate(["/carrito"]);
+    };
 
-  }
+}
 }

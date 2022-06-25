@@ -8,7 +8,7 @@
             </h3>
             <div class="card-toolbar">
                 <div class="dropdown dropdown-inline">
-                    <a href="#" class="btn btn-primary font-weight-bolder font-size-sm">
+                    <a href="javascript:void(0);" [routerLink]="['/peliculas']" class="btn btn-primary font-weight-bolder font-size-sm">
                         Continuar comprando
                     </a>
                 </div>
@@ -23,8 +23,8 @@
                     <!--begin::Cart Header-->
                     <thead>
                         <tr>
-                            <th>Producto</th>
-                            <th class="text-center">Cantidad</th>
+                            <th>Item</th>
+                            <th class="text-center">Detalle</th>
                             <th class="text-right">Precio</th>
                             <th></th>
                         </tr>
@@ -33,65 +33,23 @@
 
                     <tbody>
                         <!--begin::Cart Content-->
-                        <tr>
+                        <tr *ngFor="let item of items; let i = index">
                             <td class="d-flex align-items-center font-weight-bolder">
                                 <!--begin::Symbol-->
-                                <div class="symbol symbol-60 flex-shrink-0 mr-4 bg-light">
+                                <!-- <div class="symbol symbol-60 flex-shrink-0 mr-4 bg-light">
                                     <div class="symbol-label" style="background-image: url('assets/media/products/11.png')"></div>
-                                </div>
+                                </div> -->
                                 <!--end::Symbol-->
-                                <a href="#" class="text-dark text-hover-primary">Producto 1</a>
+                                <a href="#" class="text-dark text-hover-primary">Entrada para {{item.pelicula}}</a>
                             </td>
-                            <td class="text-center align-middle">
-                                <span class="mr-2 font-weight-bolder">1</span>
+                            <td class="text-left align-middle">
+                                <span class="mr-2 font-weight-bolder">Asiento: {{item.asiento}}<br>Fecha y Hora: {{item.fechaFuncion}}</span>
                             </td>
                             <td class="text-right align-middle font-weight-bolder font-size-h5">
-                                $90.00
+                                $950.00
                             </td>
                             <td class="text-right align-middle">
-                                <a href="#" class="btn btn-danger font-weight-bolder font-size-sm">
-                                    Quitar
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="d-flex align-items-center font-weight-bolder">
-                                <!--begin::Symbol-->
-                                <div class="symbol symbol-60 flex-shrink-0 mr-4 bg-light">
-                                    <div class="symbol-label" style="background-image: url('assets/media/products/2.png')"></div>
-                                </div>
-                                <!--end::Symbol-->
-                                <a href="#" class="text-dark text-hover-primary">Producto 2</a>
-                            </td>
-                            <td class="text-center align-middle">
-                                <span class="mr-2 font-weight-bolder">1</span>
-                            </td>
-                            <td class="text-right align-middle font-weight-bolder font-size-h5">
-                                $449.00
-                            </td>
-                            <td class="text-right align-middle">
-                                <a href="#" class="btn btn-danger font-weight-bolder font-size-sm">
-                                    Quitar
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="d-flex align-items-center font-weight-bolder">
-                                <!--begin::Symbol-->
-                                <div class="symbol symbol-60 flex-shrink-0 mr-4 bg-light">
-                                    <div class="symbol-label" style="background-image: url('assets/media/products/1.png')"></div>
-                                </div>
-                                <!--end::Symbol-->
-                                <a href="#" class="text-dark text-hover-primary">Producto 3</a>
-                            </td>
-                            <td class="text-center align-middle">
-                                <span class="mr-2 font-weight-bolder">1</span>
-                            </td>
-                            <td class="text-right align-middle font-weight-bolder font-size-h5">
-                                $999.00
-                            </td>
-                            <td class="text-right align-middle">
-                                <a href="#" class="btn btn-danger font-weight-bolder font-size-sm">
+                                <a href="javascript:void(0);" (click)="quitarItem(i)" class="btn btn-danger font-weight-bolder font-size-sm">
                                     Quitar
                                 </a>
                             </td>
@@ -102,7 +60,7 @@
                         <tr>
                             <td colspan="2"></td>
                             <td class="font-weight-bolder font-size-h4 text-right">Total</td>
-                            <td class="font-weight-bolder font-size-h4 text-right">$1538.00</td>
+                            <td class="font-weight-bolder font-size-h4 text-right">${{precioTotal}}.00</td>
                         </tr>
                         <!-- <tr style="padding-top: 5px;">
                             <td colspan="2" class="border-0 pt-10"> -->
@@ -128,8 +86,8 @@
                         <!--end::Cart Footer-->
                     </tbody>
                 </table>
-                <div style="width: 100%; padding-bottom: 1.5rem; padding-top: 2rem; text-align: right;">
-                    <a href="#" class="btn btn-success font-weight-bolder px-8" style="color: #fff;
+                <div style="width: 100%; padding-bottom: 1.5rem; padding-top: 2rem; text-align: right;" *ngIf="items.length > 0">
+                    <a href="javascript:void(0);" (click)="finCompra()" class="btn btn-success font-weight-bolder px-8" style="color: #fff;
                         background-color: #198754;
                         border-color: #198754;">Finalizar compra</a>
                 </div>
