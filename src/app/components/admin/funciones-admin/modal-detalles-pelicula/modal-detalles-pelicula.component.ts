@@ -11,13 +11,14 @@ export class ModalDetallesPeliculaComponent implements OnInit {
   @Input() pelicula: Pelicula = {
     id: 0,
     titulo: '',
-    imagen: '',
+    imagen: null,
     descripcion: '',
     genero: '',
     duracion: '',
     actores: '',
     director: '',
-    estreno:true,
+    estreno: true,
+    trailer: '',
   };
   titulo: string = 'Detalles de la película';
 
