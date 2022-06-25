@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
+import { share } from 'rxjs';
 import { Pelicula } from 'src/app/components/lista-de-peliculas/pelicula';
 
 @Component({
@@ -22,10 +24,16 @@ export class ModalEliminarPeliculaComponent implements OnInit {
     trailer: '',
   };
 
-  constructor() {}
+  constructor(protected httpClient: HttpClient) {}
 
   onDelete(id: number): void {
-    console.log('Eliminado: ' + id);
+    this.httpClient
+      .delete('http://localhost:3000/admin/pelicula/eliminar/' + id)
+      .pipe(share())
+      .subscribe(
+        (val) => console.log(val),
+        (err) => console.log(err)
+      );
     location.reload();
   }
 
