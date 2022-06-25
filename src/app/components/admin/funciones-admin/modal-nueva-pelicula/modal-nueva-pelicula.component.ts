@@ -12,7 +12,7 @@ export class ModalNuevaPeliculaComponent implements OnInit {
   pelicula: Pelicula = {
     id: 0,
     titulo: '',
-    imagen: '',
+    imagen: null,
     descripcion: '',
     genero: '',
     duracion: '',

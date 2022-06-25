@@ -1,7 +1,7 @@
 export interface Pelicula {
   id: number;
   titulo: string;
-  imagen: string;
+  imagen: File | string | null;
   descripcion: string;
   genero: string;
   duracion: string;

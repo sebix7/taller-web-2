@@ -8,6 +8,21 @@
     [mensajeError]="'Debe ingresar un título para la película'"
     [value]="pelicula.titulo"
   ></app-input>
+  <div class="form-group">
+    <label>Imagen</label>
+    <input
+      type="file"
+      class="form-control"
+      [attr.formControlName]="pelicula.imagen"
+      [attr.value]="pelicula.imagen"
+      (change)="tomarImagen($event)"
+    />
+    <small
+      class="text-danger"
+      *ngIf="cargarPelicula.get('imagen')?.touched && cargarPelicula.get('imagen')?.errors?.['required']"
+      >Debe ingresar un archivo de tipo imagen</small
+    >
+  </div>
   <app-input
     [label]="'Descripción'"
     [placeholder]="'Ingrese la descripción de la Película'"
