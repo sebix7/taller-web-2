@@ -17,17 +17,18 @@ export class ListaDePeliculasComponent implements OnInit {
 
   ngOnInit(): void {
     let res: Observable<Pelicula[]> = this.httpClient
-      .get<Pelicula[]>('http://localhost:3000/peliculas')
-      .pipe(share());
+    .get<Pelicula[]>('http://localhost:3000/peliculas')
+    .pipe(share());
 
-    res.subscribe(
-      (value) => {
-        this.Peliculas = value;
-        this.peliculas = this.Peliculas;
-      },
-      (error) => {
-        console.log('ocurrio un error');
-      }
-    );
-  }
+  res.subscribe(
+    (value) => {
+      console.log(value);
+      this.Peliculas = value;
+      this.peliculas = this.Peliculas.peliculas;
+    },
+    (error) => {
+      console.log('ocurrio un error');
+    }
+  );
+}
 }

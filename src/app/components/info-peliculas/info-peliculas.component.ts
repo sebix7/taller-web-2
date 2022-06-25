@@ -45,18 +45,17 @@ export class InfoPeliculasComponent implements OnInit {
     this.idPelicula = this.route.snapshot.paramMap.get('id');
 
     let res: Observable<Pelicula[]> = this.httpClient
-      .get<Pelicula[]>(`http://localhost:3000/peliculas/${this.idPelicula}`)
-      .pipe(share());
-
-    res.subscribe(
-      (value) => {
-        console.log(value);
-        this.Peliculas = value[0];
-        this.pelicula = this.Peliculas;
-      },
-      (error) => {
-        console.log('ocurrio un error');
-      }
-    );
+    .get<Pelicula[]>(`http://localhost:3000/peliculas/${this.idPelicula}`)
+    .pipe(share());
+  res.subscribe(
+    (value) => {
+      console.log(value);
+      this.Peliculas = value;
+      this.pelicula = this.Peliculas;
+    },
+    (error) => {
+      console.log('ocurrio un error');
+    }
+  );
   }
 }

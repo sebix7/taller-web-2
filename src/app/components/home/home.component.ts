@@ -31,19 +31,21 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     $.getScript('assets/js/custom.js');
 
-    let res: Observable<Pelicula[]> = this.httpClient
-      .get<Pelicula[]>('http://localhost:3000/peliculas')
-      .pipe(share());
 
-    res.subscribe(
-      (value) => {
-        console.log(value);
-        this.Peliculas = value;
-        this.peliculas = this.Peliculas;
-      },
-      (error) => {
-        console.log('ocurrio un error');
-      }
-    );
+
+    let res: Observable<Pelicula[]> = this.httpClient
+    .get<Pelicula[]>('http://localhost:3000/peliculas')
+    .pipe(share());
+
+  res.subscribe(
+    (value) => {
+      console.log(value);
+      this.Peliculas = value;
+      this.peliculas = this.Peliculas.peliculas;
+    },
+    (error) => {
+      console.log('ocurrio un error');
+    }
+  );
   }
 }
