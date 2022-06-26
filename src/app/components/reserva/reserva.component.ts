@@ -39,6 +39,13 @@ export class ReservaComponent implements OnInit {
   filaH: Butacas[] = [];
   reservas:Reserva[]=[];
   columna: any[] = [];
+  reserva:Reserva={
+    id:0,
+    pelicula:'',
+    asiento:'',
+    fechaFuncion:'',
+    candySnack:''
+  }
 
   constructor(protected router: Router, protected httpClient: HttpClient,private route:ActivatedRoute) {
     this.tituloPeli = this.route.snapshot.paramMap.get('titulo');
@@ -117,6 +124,25 @@ export class ReservaComponent implements OnInit {
   );
   }
 
+  guardarReserva(reserva:Reserva): Observable<any>{
+      let url='http://localhost:3000/reserva';
+      return this.httpClient.post(url,reserva);
+  }
+
+  generarId(){
+    let idGenerado=1;
+    if(this.reservas.length!=0){
+
+      this.reservas.filter((reserva)=>{
+        idGenerado=Math.max(reserva.id)+1;
+     });
+
+    }
+    
+    return idGenerado;
+    
+  }
+  
   reservarCol(columna: string, numero: number){
     this.columna.push(columna+''+(numero+1));
     console.log(this.columna);
@@ -125,14 +151,19 @@ export class ReservaComponent implements OnInit {
 
     if(this.columna.length > 0){
     this.columna.forEach(col => {
+
+      this.reserva.id=this.generarId();
+      this.reserva.pelicula=this.titulo;
+      this.reserva.asiento=this.columna.toString().replace(',',' ');
+      this.reserva.fechaFuncion=this.funcionDia+" "+this.funcionHorario;
+      this.reserva.candySnack="-";
+
+      this.reservas.push(this.reserva);
       
-      this.reservas.push({
-        id:this.id,
-        pelicula:this.titulo,
-        asiento:col,
-        fechaFuncion:this.funcionDia+" "+this.funcionHorario,
-        candySnack:"-"
-      });
+      this.guardarReserva(this.reserva).subscribe(data=>{
+        console.log(data, "se guardooo");
+      },error=> console.log(error))
+
     });
 
       if(localStorage.getItem("reservas") != null && localStorage.getItem("reservas") != ""){
@@ -148,9 +179,8 @@ export class ReservaComponent implements OnInit {
         this.reservas = [];
       }
 
-      console.log(this.reservas)
-      // alert("Reservado con exito!");
-      //this.router.navigate(["/historial-reservas"]);
+      console.log(this.reserva)
+       
       this.router.navigate(["/carrito"]);
     };
 
