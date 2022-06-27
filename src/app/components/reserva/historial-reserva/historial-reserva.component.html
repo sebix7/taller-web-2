@@ -3,12 +3,12 @@
         <div>
           <h2 class="text-center pb-4">Mis reservas</h2>
         </div>
-        <div *ngIf="!reservas">
+        <div *ngIf="!reservas || reservas.length== 0">
             <div class="alert alert-warning" role="alert">
                Aun no ha realizado reservas!
               </div>
         </div>
-        <div *ngIf="reservas">
+        <div *ngIf="reservas && reservas.length>0">
             <table class="table table-dark table-striped">
                 <thead>
                   <tr>
