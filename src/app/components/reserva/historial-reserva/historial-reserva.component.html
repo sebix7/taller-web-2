@@ -3,12 +3,12 @@
         <div>
           <h2 class="text-center pb-4">Mis reservas</h2>
         </div>
-        <div [class]="mensaje">
+        <div *ngIf="!reservas">
             <div class="alert alert-warning" role="alert">
                Aun no ha realizado reservas!
               </div>
         </div>
-        <div [class]="tabla">
+        <div *ngIf="reservas">
             <table class="table table-dark table-striped">
                 <thead>
                   <tr>
@@ -20,21 +20,19 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let reserva of reservas">
-                    <!--<div >-->
-                      <td class="text-center">{{reserva.pelicula}}</td>
-                      <td class="text-center">{{reserva.asiento}}</td>
-                      <td class="text-center">{{reserva.fechaFuncion}}</td>
-                      <td class="text-center">{{reserva.candySnack}}</td>
-                      <td class="d-flex justify-content-center">
-                          <button type="button" class="btn btn-danger zoom" (click)="cancelarReserva()">Cancelar</button>
-                      </td>
-                    <!--</div>-->
-                    
-                  </tr>
+                    <tr *ngFor="let reserva of reservas">
+                        <td class="text-center">{{reserva.pelicula}}</td>
+                        <td class="text-center">{{reserva.asiento}}</td>
+                        <td class="text-center">{{reserva.fechaFuncion}}</td>
+                        <td class="text-center">{{reserva.candySnack}}</td>
+                        <td class="d-flex justify-content-center">
+                            <button type="button" class="btn btn-danger zoom" (click)="cancelarReserva(reserva.id)">Cancelar</button>
+                        </td>
+                    </tr>
+                 
                 </tbody>
               </table>
-        </div>
+         </div>
         
 
           <div>

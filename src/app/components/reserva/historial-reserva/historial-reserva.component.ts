@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable, share } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 import { Reserva } from './historial-reserva';
 
 @Component({
@@ -8,21 +10,48 @@ import { Reserva } from './historial-reserva';
 })
 export class HistorialReservaComponent implements OnInit {
 
-  mensaje:string="d-none";
-  tabla:string="d-block";
   reservas:Reserva[]=[];
-
-  constructor() {
-    this.reservas =JSON.parse(localStorage.getItem('reservas') || '{}');
-    console.log(this.reservas);
+  url:string;
+  constructor(protected httpClient: HttpClient) {
+    this.url= 'http://localhost:3000/historial-reservas'; 
    }
 
   ngOnInit(): void {
+
+    this.getReservas();
+    
   }
 
-  cancelarReserva(){
-      this.mensaje="d-block";
-      this.tabla="d-none";
+  getReservas(){
+    let res: Observable<Reserva[]> = this.httpClient
+    .get<Reserva[]>(this.url)
+    .pipe(share());
+
+    res.subscribe(
+      (value) => {
+        console.log(value);
+        this.reservas = value;
+      },
+      (error) => {
+        console.log('ocurrio un error');
+      }
+    );
+  }
+
+  eliminarReserva(id:number):Observable<any>{
+    
+    return this.httpClient.delete(this.url+'/'+id);
+
+  }
+
+  cancelarReserva(id:number){
+      
+      this.eliminarReserva(id).subscribe(data=>{
+        console.log(data)
+        this.getReservas();
+      },error=>{
+        console.log(error)
+      })
   }
 
 }
