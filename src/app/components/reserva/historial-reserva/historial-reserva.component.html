@@ -24,7 +24,12 @@
                         <td class="text-center">{{reserva.pelicula}}</td>
                         <td class="text-center">{{reserva.asiento}}</td>
                         <td class="text-center">{{reserva.fechaFuncion}}</td>
-                        <td class="text-center">{{reserva.candySnack}}</td>
+                        <td *ngIf="reserva.candySnack!='-'" class="text-center">
+                          {{reserva.candySnack}}
+                        </td>
+                        <td *ngIf="reserva.candySnack=='-'" class="text-center">
+                            <a type="button" class="btn btn-success zoom" routerLink="/store">Ir a tienda</a>
+                        </td>
                         <td class="d-flex justify-content-center">
                             <button type="button" class="btn btn-danger zoom" (click)="cancelarReserva(reserva.id)">Cancelar</button>
                         </td>
