@@ -44,28 +44,6 @@ export class FormularioPeliculaComponent implements OnInit {
   ngOnChanges(cambios: any): void {
     this.pelicula = cambios['pelicula'].currentValue;
     this.cargarPelicula.setValue(cambios['pelicula'].currentValue);
-    const archivo = this.base64toFile(this.cargarPelicula.get('imagen')?.value);
-    this.cargarPelicula.get('imagen')?.setValue(archivo);
-  }
-
-  base64toFile(stringBase64: string): File | void {
-    if (stringBase64) {
-      const datosImagen = stringBase64.split(',');
-      const formato = datosImagen[0].substring(
-        datosImagen[0].indexOf(':') + 1,
-        datosImagen[0].indexOf(';')
-      );
-      const byteCharacters = atob(datosImagen[1]);
-      const byteNumbers = new Array(byteCharacters.length);
-      for (let i = 0; i < byteCharacters.length; i++) {
-        byteNumbers[i] = byteCharacters.charCodeAt(i);
-      }
-      const byteArray = new Uint8Array(byteNumbers);
-      const blob = new Blob([byteArray], { type: formato });
-      const archivo = new File([blob], 'Imagen', { type: formato });
-      return archivo;
-    }
-    return;
   }
 
   tomarImagen(e: any) {
@@ -87,8 +65,12 @@ export class FormularioPeliculaComponent implements OnInit {
     if (this.cargarPelicula.invalid) return;
     this.pelicula = this.cargarPelicula.value;
     let formData: FormData = new FormData();
+    console.log(typeof this.cargarPelicula.get('imagen')?.value);
     for (let key of Object.keys(this.pelicula)) {
-      if (key != 'imagen') {
+      if (
+        key != 'imagen' ||
+        typeof this.cargarPelicula.get(key)?.value === 'string'
+      ) {
         formData.append(key, this.cargarPelicula.get(key)?.value);
       } else {
         const archivo = this.cargarPelicula.get(key)?.value as File;
