@@ -4,4 +4,5 @@ export interface Reserva{
     asiento:string;
     fechaFuncion:string;
     candySnack:string;
+    precio:500
 }

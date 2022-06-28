@@ -1,22 +1,48 @@
+.card {
+  width: 200px; 
+  height: 200px;
+  box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
+  border: none;
+  border-radius: 0;
+  margin:20px;
 
-img {
-  height: 254px;
-  width: 203px;
-  object-fit: cover;
+}
+.imagen{
+  width: 200px; 
+  padding:0px; 
+  height: 230px;
+
 }
 
-.principal {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  background-color: #020d18;
-  flex-wrap: wrap;
-  margin-top: 100px;
-  height: auto;
+.card:hover {
+  filter:brightness(0.7);
+  transition: 0.2s;
+  opacity:1
 }
 
-.movie-item {
-  margin: 10px;
-  background-color: rgb(87, 10, 10)
+.a:hover > .info{
+  opacity: 1;
+  background-color: rgb(255, 0, 0);
+  transition: 0.2s;
+
 }
 
+.info{
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding:12px;
+  padding-left: 25px;
+  padding-right: 25px;
+  border-radius: 10px;
+  opacity: 0;
+}
+
+a{
+font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+a:hover{
+  text-decoration-line:underline;
+}

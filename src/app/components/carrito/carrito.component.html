@@ -35,58 +35,49 @@
                         <!--begin::Cart Content-->
                         <tr *ngFor="let item of items; let i = index">
                             <td class="d-flex align-items-center font-weight-bolder">
-                                <!--begin::Symbol-->
-                                <!-- <div class="symbol symbol-60 flex-shrink-0 mr-4 bg-light">
-                                    <div class="symbol-label" style="background-image: url('assets/media/products/11.png')"></div>
-                                </div> -->
-                                <!--end::Symbol-->
+                            
                                 <a href="#" class="text-dark text-hover-primary">Entrada para {{item.pelicula}}</a>
                             </td>
                             <td class="text-left align-middle">
                                 <span class="mr-2 font-weight-bolder">Asiento: {{item.asiento}}<br>Fecha y Hora: {{item.fechaFuncion}}</span>
                             </td>
                             <td class="text-right align-middle font-weight-bolder font-size-h5">
-                                $950.00
+                                {{item.precio}}
                             </td>
                             <td class="text-right align-middle">
-                                <a href="javascript:void(0);" (click)="quitarItem(i)" class="btn btn-danger font-weight-bolder font-size-sm">
+                                <a href="javascript:void(0);" (click)="quitarItemFuncion(i)" class="btn btn-danger font-weight-bolder font-size-sm">
                                     Quitar
                                 </a>
                             </td>
                         </tr>
-                        <!--end::Cart Content-->
-
-                        <!--begin::Cart Footer-->
+                    
+                        <tr *ngFor="let item of itemProductos; let i = index">
+                            <td class="d-flex align-items-center font-weight-bolder">
+                            
+                                <a href="#" class="text-dark text-hover-primary">{{item.producto}}</a>
+                            </td>
+                            <td class="text-left align-middle">
+                                <span class="mr-2 font-weight-bolder">{{item.descripcion}}</span>
+                            </td>
+                            <td class="text-right align-middle font-weight-bolder font-size-h5">
+                                {{item.precio}}
+                            </td>
+                            <td class="text-right align-middle">
+                                <a href="javascript:void(0);" (click)="quitarItemProducto(i)" class="btn btn-danger font-weight-bolder font-size-sm">
+                                    Quitar
+                                </a>
+                            </td>
+                        </tr>
                         <tr>
                             <td colspan="2"></td>
+                            
                             <td class="font-weight-bolder font-size-h4 text-right">Total</td>
                             <td class="font-weight-bolder font-size-h4 text-right">${{precioTotal}}.00</td>
                         </tr>
-                        <!-- <tr style="padding-top: 5px;">
-                            <td colspan="2" class="border-0 pt-10"> -->
-                        <!-- <form>
-                                    <div class="form-group row">
-                                        <div class="col-md-3 d-flex align-items-center">
-                                            <label class="font-weight-bolder">Apply Voucher</label>
-                                        </div>
-                                        <div class="col-md-7">
-                                            <div class="input-group w-100">
-                                                <input type="text" class="form-control" placeholder="Voucher Code" />
-                                                <div class="input-group-append">
-                                                    <button class="btn btn-secondary" type="button">Apply</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form> -->
-                        <!-- </td> -->
-                        <!-- <td colspan="2" class="border-0 text-right pt-10"> -->
-                        <!-- </td> -->
-                        <!-- </tr> -->
-                        <!--end::Cart Footer-->
+                    
                     </tbody>
                 </table>
-                <div style="width: 100%; padding-bottom: 1.5rem; padding-top: 2rem; text-align: right;" *ngIf="items.length > 0">
+                <div style="width: 100%; padding-bottom: 1.5rem; padding-top: 2rem; text-align: right;">
                     <a href="javascript:void(0);" (click)="finCompra()" class="btn btn-success font-weight-bolder px-8" style="color: #fff;
                         background-color: #198754;
                         border-color: #198754;">Finalizar compra</a>

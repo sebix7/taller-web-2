@@ -14,6 +14,7 @@ import { Reserva } from './historial-reserva/historial-reserva';
 })
 export class ReservaComponent implements OnInit {
   id: number= 0;
+  precio: number= 0;
   titulo: string = '';
   imagen: string = '';
   descripcion: string = '';
@@ -40,11 +41,12 @@ export class ReservaComponent implements OnInit {
   reservas:Reserva[]=[];
   columna: any[] = [];
   reserva:Reserva={
-    id:0,
-    pelicula:'',
-    asiento:'',
-    fechaFuncion:'',
-    candySnack:''
+    id: 0,
+    pelicula: '',
+    asiento: '',
+    fechaFuncion: '',
+    candySnack: '',
+    precio: 500
   }
 
   constructor(protected router: Router, protected httpClient: HttpClient,private route:ActivatedRoute) {
@@ -62,6 +64,7 @@ export class ReservaComponent implements OnInit {
         this.Peliculas = value;
         this.pelicula = this.Peliculas;
         this.id=this.pelicula.id;
+        this.precio = 500;
         this.titulo = this.pelicula.titulo;
         this.imagen=this.pelicula.imagen;
         this.descripcion = this.pelicula.descripcion;

@@ -1,53 +1,107 @@
 <div class="section p-5">
 
+
   <div class="contenedorInformacion p-5 d-flex flex-column">
-    <div class="pt-5">
-      <h2 class="text-center mb-5 title-in">Nachos</h2>
-      <div class="d-flex flex-row justify-content-between p-5 store">
-        <div *ngFor="let producto of productos">
-          <div *ngIf="producto.producto == 'Pochoclo'">
-            <div class="card" style="width: 20rem; height: 32rem;">
-              <img src="{{producto.img}}" class="card-img-top" alt="..." />
-              <div class="card-body text-center">
-                <h5 class="card-title text-dark">{{producto.producto}}</h5>
-                <p class="card-text text-dark text-center mb-5" style="padding-bottom: 5px;">{{producto.descripcion}}
-                </p>
-                <br>
-                <a href="#"
-                  class="comprar text-center btn btn-primary d-flex align-items-center">${{producto.precio}}</a>
-              </div>
-            </div>
+
+
+    <h2 class="text-center mb-5 title-in">Combos</h2>
+    <div class="store">
+      <div *ngFor="let producto of productos">
+        <div class="card" *ngIf="producto.categoria == 'Combos'">
+          <img src="{{producto.img}}" class="card-img-top" alt="..." />
+          <div class="card-body text-center">
+            <h5 class="card-title text-dark">{{producto.producto}}</h5>
+            <p class="card-text text-dark text-center mb-5" style="padding-bottom: 5px;">{{producto.descripcion}}
+            </p>
+            <br>
+            <button (click)='agregarAlCarrito(producto)' class="comprar text-center btn btn-primary d-flex align-items-center">${{producto.precio}}</button>
           </div>
+
         </div>
-        <div>
-        </div>
+      </div>
+      <div>
       </div>
     </div>
 
 
-    <div class="contenedorInformacion p-5 d-flex flex-column">
-      <div class="pt-5">
-        <h2 class="text-center mb-5 title-in">Nachos</h2>
-        <div class="d-flex flex-row justify-content-between p-5 store">
-          <div *ngFor="let producto of productos">
-            <div *ngIf="producto.producto == 'Nachos'">
-              <div class="card" style="width: 20rem; height: 32rem;">
-                <img src="{{producto.img}}" class="card-img-top" alt="..." />
-                <div class="card-body text-center">
-                  <h5 class="card-title text-dark">{{producto.producto}}</h5>
-                  <p class="card-text text-dark text-center mb-5" style="padding-bottom: 5px;">{{producto.descripcion}}
-                  </p>
-                  <br>
-                  <a href="#"
-                    class="comprar text-center btn btn-primary d-flex align-items-center">${{producto.precio}}</a>
-                </div>
-              </div>
-            </div>
+    <h2 class="text-center mb-5 title-in">Pochoclos</h2>
+    <div class="store">
+      <div *ngFor="let producto of productos">
+        <div class="card" *ngIf="producto.categoria == 'Pochoclo'">
+          <img src="{{producto.img}}" class="card-img-top" alt="..." />
+          <div class="card-body text-center">
+            <h5 class="card-title text-dark">{{producto.producto}}</h5>
+            <p class="card-text text-dark text-center mb-5" style="padding-bottom: 5px;">{{producto.descripcion}}
+            </p>
+            <br>
+            <button (click)='agregarAlCarrito(producto)' class="comprar text-center btn btn-primary d-flex align-items-center">${{producto.precio}}</button>
           </div>
-          <div>
-          </div>
+
         </div>
       </div>
+      <div>
+      </div>
+    </div>
+
+
+    <h2 class="text-center mb-5 title-in">Nachos</h2>
+    <div class="store">
+      <div *ngFor="let producto of productos">
+        <div class="card" *ngIf="producto.categoria == 'Nachos'">
+          <img src="{{producto.img}}" class="card-img-top" alt="..." />
+          <div class="card-body text-center">
+            <h5 class="card-title text-dark">{{producto.producto}}</h5>
+            <p class="card-text text-dark text-center mb-5" style="padding-bottom: 5px;">{{producto.descripcion}}
+            </p>
+            <br>
+            <button (click)='agregarAlCarrito(producto)' class="comprar text-center btn btn-primary d-flex align-items-center">${{producto.precio}}</button>
+          </div>
+
+        </div>
+      </div>
+      <div>
+      </div>
+    </div>
+
+
+    <h2 class="text-center mb-5 title-in">Gaseosas</h2>
+    <div class="store">
+      <div *ngFor="let producto of productos">
+        <div class="card" *ngIf="producto.categoria == 'Bebida'">
+          <img src="{{producto.img}}" class="card-img-top" alt="..." />
+          <div class="card-body text-center">
+            <h5 class="card-title text-dark">{{producto.producto}}</h5>
+            <p class="card-text text-dark text-center mb-5" style="padding-bottom: 5px;">{{producto.descripcion}}
+            </p>
+            <br>
+            <button (click)='agregarAlCarrito(producto)' class="comprar text-center btn btn-primary d-flex align-items-center">${{producto.precio}}</button>
+          </div>
+
+        </div>
+      </div>
+      <div>
+      </div>
+    </div>
+
+    <h2 class="text-center mb-5 title-in">Candy</h2>
+    <div class="store">
+      <div *ngFor="let producto of productos">
+        <div class="card" *ngIf="producto.categoria == 'Candy'">
+          <img src="{{producto.img}}" class="card-img-top" alt="..." />
+          <div class="card-body text-center">
+            <h5 class="card-title text-dark">{{producto.producto}}</h5>
+            <p class="card-text text-dark text-center mb-5" style="padding-bottom: 5px;">{{producto.descripcion}}
+            </p>
+            <br>
+            <button (click)='agregarAlCarrito(producto)' class="comprar text-center btn btn-primary d-flex align-items-center">${{producto.precio}}</button>
+          </div>
+
+        </div>
+      </div>
+      <div>
+      </div>
+    </div>
+
 
 
     </div>

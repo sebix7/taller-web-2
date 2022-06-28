@@ -41,27 +41,22 @@ export class NavComponent implements OnInit {
 
   ngOnInit(): void {
     let res: Observable<Pelicula[]> = this.httpClient
-      .get<Pelicula[]>('http://localhost:3000/')
-      .pipe(share());
+    .get<Pelicula[]>('http://localhost:3000/peliculas')
+    .pipe(share());
 
-    res.subscribe(
-      (value) => {
-        this.Peliculas = value;
-        this.peliculas = this.Peliculas;
-      },
-      (error) => {
-        console.log('ocurrio un error');
-      }
-    );
+  res.subscribe(
+    (value) => {
+      console.log(value);
+      this.Peliculas = value;
+      this.peliculas = this.Peliculas.peliculas;
+    },
+    (error) => {
+      console.log('ocurrio un error');
+    }
+  );
   }
 
-  onSubmit() {
-    //var getPelicula=this.peliculas.find(peli=>peli.titulo==this.peliculaBuscada);
-    //if(getPelicula){
-    //this.router.navigate(['/info/'+getPelicula?.id]);
-    // this.router.navigate(['/info/'+this.peliculaBuscada]);
-    //}
-  }
+ 
 
   mostrarBusqueda() {
     this.peliculas.forEach((pelicula) => {
