@@ -3,12 +3,12 @@
         <div>
           <h2 class="text-center pb-4">Mis reservas</h2>
         </div>
-        <div [class]="mensaje">
+        <div *ngIf="!reservas || reservas.length== 0">
             <div class="alert alert-warning" role="alert">
                Aun no ha realizado reservas!
               </div>
         </div>
-        <div [class]="tabla">
+        <div *ngIf="reservas && reservas.length>0">
             <table class="table table-dark table-striped">
                 <thead>
                   <tr>
@@ -20,25 +20,24 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row"></th>
-                    <!--<div *ngFor="let reserva of reservas">
-                      <td>{{reserva.pelicula}}</td>
-                      <td>{{reserva.asiento}}</td>
-                      <td>{{reserva.fechaFuncion}}</td>
-                      <td>{{reserva.candySnack}}</td>-->
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td class="d-flex justify-content-center">
-                          <button type="button" class="btn btn-danger zoom" (click)="cancelarReserva()">Cancelar</button>
-                      </td>
-                    <!--</div>-->
-                    
-                  </tr>
+                    <tr *ngFor="let reserva of reservas">
+                        <td class="text-center">{{reserva.pelicula}}</td>
+                        <td class="text-center">{{reserva.asiento}}</td>
+                        <td class="text-center">{{reserva.fechaFuncion}}</td>
+                        <td *ngIf="reserva.candySnack!='-'" class="text-center">
+                          {{reserva.candySnack}}
+                        </td>
+                        <td *ngIf="reserva.candySnack=='-'" class="text-center">
+                            <a type="button" class="btn btn-success zoom" routerLink="/store">Ir a tienda</a>
+                        </td>
+                        <td class="d-flex justify-content-center">
+                            <button type="button" class="btn btn-danger zoom" (click)="cancelarReserva(reserva.id)">Cancelar</button>
+                        </td>
+                    </tr>
+                 
                 </tbody>
               </table>
-        </div>
+         </div>
         
 
           <div>
