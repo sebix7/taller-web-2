@@ -121,8 +121,10 @@ export class AuthenticationComponent implements OnInit {
     );
   }
 
-  confirmar(): any {
-    const body = { codigo: this.formConfirmacion.value, email: this.email };
+  verificar(): any {
+    const codigo = this.formConfirmacion.value.codigo;
+    const body = { codigo, email: this.email };
+
     let res: Observable<Response[]> = this.httpClient
       .post<Response[]>(`http://localhost:3000/auth/validar`, body)
       .pipe(share());
