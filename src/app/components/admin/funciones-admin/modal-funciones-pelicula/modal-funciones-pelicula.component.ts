@@ -1,15 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
-import {
-  FormArray,
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable, share } from 'rxjs';
-import { Funcion } from 'src/app/components/funciones/Funcion';
-import { ListaFunciones } from './ListaFunciones';
 
 @Component({
   selector: 'app-modal-funciones-pelicula',
@@ -20,17 +12,6 @@ export class ModalFuncionesPeliculaComponent implements OnInit {
   target: string = 'funcionesPelicula';
   titulo: string = '';
   form: FormGroup;
-  funcion: Funcion = {
-    idFuncion: 0,
-    idPelicula: 0,
-    titulo: '',
-    sala: 0,
-    dia: '',
-    fecha: '',
-    horario: '',
-    valorEntrada: 0,
-    entradasDisponibles: 0,
-  };
   @Input() idPelicula: number = 0;
   @Input() tituloPelicula: string = '';
 
@@ -38,15 +19,9 @@ export class ModalFuncionesPeliculaComponent implements OnInit {
     this.form = this.fb.group({
       funciones: this.fb.array([
         this.fb.group({
-          // idFuncion: [0, Validators.required],
-          // idPelicula: [0, Validators.required],
-          //titulo: ['', Validators.required],
           sala: [null, Validators.required],
-          // dia: ['', Validators.required],
           fecha: ['', Validators.required],
           horario: ['', Validators.required],
-          // valorEntrada: [0, Validators.required],
-          // entradasDisponibles: [0, Validators.required],
         }),
       ]),
     });
@@ -59,7 +34,13 @@ export class ModalFuncionesPeliculaComponent implements OnInit {
 
   agregarFuncion(): void {
     const lista = this.form.controls['funciones'] as FormArray;
-    lista.push(this.fb.group(this.funcion));
+    lista.push(
+      this.fb.group({
+        sala: [null, Validators.required],
+        fecha: ['', Validators.required],
+        horario: ['', Validators.required],
+      })
+    );
   }
 
   eliminarFuncion(index: number): void {
@@ -68,7 +49,19 @@ export class ModalFuncionesPeliculaComponent implements OnInit {
   }
 
   submit(): void {
-    console.log(this.form.get('funciones')?.value);
+    const datosAEnviar = { funciones: [], idPelicula: 0 };
+    datosAEnviar.funciones = this.form.get('funciones')?.value;
+    datosAEnviar.idPelicula = this.idPelicula;
+    console.log(datosAEnviar);
+    this.httpClient
+      .post('http://localhost:3000/admin/funciones/agregar', datosAEnviar)
+      .pipe(share())
+      .subscribe(
+        (val) => {
+          location.reload();
+        },
+        (err) => console.log(err)
+      );
     //location.reload();
   }
 

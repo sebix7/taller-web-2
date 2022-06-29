@@ -1,13 +1,8 @@
 import { Router } from '@angular/router';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import {
-  HttpClient,
-  HttpHeaders,
-  HttpErrorResponse,
-  JsonpClientBackend,
-} from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { share, catchError } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { share } from 'rxjs/operators';
 import { Pelicula } from '../../lista-de-peliculas/pelicula';
 
 @Component({
