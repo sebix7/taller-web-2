@@ -163,17 +163,17 @@
     <div class="d-flex flex-column col-10 col-sm-6 col-md-4">
       <div>
         <p class="mb-3 fs-3 fw-bold text-center">
-          Ingresá el código de confirmación.
+          Ingresá el código de verficación.
         </p>
 
         <form
           [formGroup]="formConfirmacion"
-          (submit)="confirmar()"
+          (submit)="verificar()"
           class="mb-3"
         >
           <div class="form-group d-flex flex-column">
             <label class="text-muted mb-1" htmlFor="exampleInputEmail1">
-              Código de confirmación
+              Código de verficación
             </label>
             <input
               type="number"
@@ -182,10 +182,6 @@
               formControlName="codigo"
               placeholder="Ingresar codigo"
             />
-
-            <p id="codeHelp" class="forgotPassword form-text">
-              No te llego todavía?
-            </p>
 
             <button type="submit" class="buttonLogin mt-2 mb-2 btn btn-primary">
               Ingresar código
