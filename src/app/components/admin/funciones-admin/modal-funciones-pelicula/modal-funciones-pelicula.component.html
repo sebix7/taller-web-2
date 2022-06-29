@@ -6,17 +6,29 @@
     >
       <ng-container [formGroupName]="i">
         <div class="row d-flex align-items-center">
-          <div class="col-5">
+          <div class="col-4">
             <div class="form-group">
+              <label>Día</label>
               <input formControlName="fecha" class="form-control" type="date" />
             </div>
           </div>
-          <div class="col-5">
+          <div class="col-4">
             <div class="form-group">
+              <label>Hora</label>
               <input
                 formControlName="horario"
                 class="form-control"
                 type="time"
+              />
+            </div>
+          </div>
+          <div class="col-2">
+            <div class="form-group">
+              <label>Sala</label>
+              <input
+                formControlName="sala"
+                class="form-control"
+                type="number"
               />
             </div>
           </div>

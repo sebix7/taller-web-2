@@ -27,6 +27,7 @@ import { FormularioPeliculaComponent } from './components/admin/funciones-admin/
 import { InputComponent } from './components/forms/input/input.component';
 import { NavbarAdminComponent } from './components/admin/navbar-admin/navbar-admin.component';
 import { CarritoComponent } from './components/carrito/carrito.component';
+import { SpinnerComponent } from './components/otros/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { CarritoComponent } from './components/carrito/carrito.component';
     InputComponent,
     NavbarAdminComponent,
     CarritoComponent,
+    SpinnerComponent,
   ],
   imports: [
     BrowserModule,
