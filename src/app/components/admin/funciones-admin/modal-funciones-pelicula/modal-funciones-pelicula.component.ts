@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import {
   FormArray,
@@ -6,7 +7,8 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { Funcion } from './Funcion';
+import { Observable, share } from 'rxjs';
+import { Funcion } from 'src/app/components/funciones/Funcion';
 import { ListaFunciones } from './ListaFunciones';
 
 @Component({
@@ -16,22 +18,43 @@ import { ListaFunciones } from './ListaFunciones';
 })
 export class ModalFuncionesPeliculaComponent implements OnInit {
   target: string = 'funcionesPelicula';
-  titulo: string = 'Funciones de la Película';
+  titulo: string = '';
   form: FormGroup;
   funcion: Funcion = {
-    fecha: ['', Validators.required],
-    horario: ['', Validators.required],
+    idFuncion: 0,
+    idPelicula: 0,
+    titulo: '',
+    sala: 0,
+    dia: '',
+    fecha: '',
+    horario: '',
+    valorEntrada: 0,
+    entradasDisponibles: 0,
   };
   @Input() idPelicula: number = 0;
+  @Input() tituloPelicula: string = '';
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, protected httpClient: HttpClient) {
     this.form = this.fb.group({
-      funciones: this.fb.array([this.fb.group(this.funcion)]),
+      funciones: this.fb.array([
+        this.fb.group({
+          // idFuncion: [0, Validators.required],
+          // idPelicula: [0, Validators.required],
+          //titulo: ['', Validators.required],
+          sala: [null, Validators.required],
+          // dia: ['', Validators.required],
+          fecha: ['', Validators.required],
+          horario: ['', Validators.required],
+          // valorEntrada: [0, Validators.required],
+          // entradasDisponibles: [0, Validators.required],
+        }),
+      ]),
     });
   }
 
   ngOnChanges(cambios: any): void {
     this.idPelicula = cambios['idPelicula'].currentValue;
+    this.titulo = 'Agregar funciones de ' + this.tituloPelicula;
   }
 
   agregarFuncion(): void {
@@ -45,12 +68,8 @@ export class ModalFuncionesPeliculaComponent implements OnInit {
   }
 
   submit(): void {
-    const listaFunciones = {
-      idPelicula: this.idPelicula,
-      funciones: this.form.value,
-    } as ListaFunciones;
-    console.log(listaFunciones);
-    location.reload();
+    console.log(this.form.get('funciones')?.value);
+    //location.reload();
   }
 
   ngOnInit(): void {}
