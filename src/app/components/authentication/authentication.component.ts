@@ -91,25 +91,6 @@ export class AuthenticationComponent implements OnInit {
     }
   }
 
-  probar(): any {
-    // console.log(localStorage.getItem('token'));
-
-    const body = { token: localStorage.getItem('token') };
-
-    let res: Observable<Response[]> = this.httpClient
-      .post<Response[]>(`http://localhost:3000/auth/decode`, body)
-      .pipe(share());
-
-    res.subscribe(
-      (value) => {
-        console.log(value);
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-  }
-
   login(): any {
     const body = this.formLogin.value;
 

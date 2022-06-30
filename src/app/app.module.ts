@@ -64,7 +64,6 @@ import { SpinnerComponent } from './components/otros/spinner/spinner.component';
     HttpClientModule,
     ReactiveFormsModule,
   ],
-  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
