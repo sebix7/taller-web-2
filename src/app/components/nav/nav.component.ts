@@ -1,4 +1,10 @@
-import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  TemplateRef,
+  ViewChild,
+} from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -24,7 +30,7 @@ export class NavComponent implements OnInit {
   buscador: boolean = false;
   formBusqueda: FormGroup;
   peliculaBuscada: string = '';
-  administradorRole: boolean = true;
+  @Input() administradorRole: boolean = false;
 
   peliculas: Pelicula[] = [];
   Peliculas: any;
@@ -41,22 +47,20 @@ export class NavComponent implements OnInit {
 
   ngOnInit(): void {
     let res: Observable<Pelicula[]> = this.httpClient
-    .get<Pelicula[]>('http://localhost:3000/peliculas')
-    .pipe(share());
+      .get<Pelicula[]>('http://localhost:3000/peliculas')
+      .pipe(share());
 
-  res.subscribe(
-    (value) => {
-      console.log(value);
-      this.Peliculas = value;
-      this.peliculas = this.Peliculas.peliculas;
-    },
-    (error) => {
-      console.log('ocurrio un error');
-    }
-  );
+    res.subscribe(
+      (value) => {
+        console.log(value);
+        this.Peliculas = value;
+        this.peliculas = this.Peliculas.peliculas;
+      },
+      (error) => {
+        console.log('ocurrio un error');
+      }
+    );
   }
-
- 
 
   mostrarBusqueda() {
     this.peliculas.forEach((pelicula) => {
@@ -69,5 +73,10 @@ export class NavComponent implements OnInit {
         this.buscador = false;
       }
     });
+  }
+
+  logout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/login']);
   }
 }

@@ -37,19 +37,41 @@ export class FuncionesAdminComponent implements OnInit {
 
   ngOnInit(): void {
     // Para redirigir si no está logueado
-    //this.router.navigate(['/']);
-    let res: Observable<Pelicula[]> = this.httpClient
-      .get<Pelicula[]>('http://localhost:3000/peliculas')
+    let body = { token: localStorage.getItem('token') };
+
+    let resp: Observable<Response[]> = this.httpClient
+      .post<Response[]>(`http://localhost:3000/auth/decode`, body)
       .pipe(share());
 
-    res.subscribe(
+    resp.subscribe(
       (value) => {
-        console.log(value);
-        this.Peliculas = value;
-        this.peliculas = this.Peliculas.peliculas;
+        const user_id = JSON.stringify(value);
+
+        if (
+          (user_id ===
+            JSON.stringify('6918af43-9fc7-4399-8fa7-65dd66913cff')) ===
+          false
+        ) {
+          this.router.navigate(['/']);
+        } else {
+          let res: Observable<Pelicula[]> = this.httpClient
+            .get<Pelicula[]>('http://localhost:3000/peliculas')
+            .pipe(share());
+
+          res.subscribe(
+            (value) => {
+              console.log(value);
+              this.Peliculas = value;
+              this.peliculas = this.Peliculas.peliculas;
+            },
+            (error) => {
+              console.log('ocurrio un error');
+            }
+          );
+        }
       },
       (error) => {
-        console.log('ocurrio un error');
+        this.router.navigate(['/']);
       }
     );
   }

@@ -100,7 +100,7 @@ export class AuthenticationComponent implements OnInit {
 
     res.subscribe(
       (value) => {
-        // console.log(value);
+        localStorage.setItem('token', JSON.stringify(value));
         this.errorsLogin.usuarioIncorrecto = '';
         this.router.navigate(['/']);
 
