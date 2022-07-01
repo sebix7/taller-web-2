@@ -3,6 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { share } from 'rxjs';
 import { Pelicula } from 'src/app/components/lista-de-peliculas/pelicula';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-formulario-pelicula',
@@ -65,7 +66,6 @@ export class FormularioPeliculaComponent implements OnInit {
     if (this.cargarPelicula.invalid) return;
     this.pelicula = this.cargarPelicula.value;
     let formData: FormData = new FormData();
-    console.log(typeof this.cargarPelicula.get('imagen')?.value);
     for (let key of Object.keys(this.pelicula)) {
       if (
         key != 'imagen' ||
@@ -82,16 +82,26 @@ export class FormularioPeliculaComponent implements OnInit {
         .put('http://localhost:3000/admin/pelicula/editar', formData)
         .pipe(share())
         .subscribe(
-          (val) => location.reload(),
-          (err) => console.log(err)
+          (val) => {
+            Swal.fire({
+              title: 'Película editada correctamente correctamente',
+              icon: 'success',
+            }).then((result) => location.reload());
+          },
+          (err) => Swal.fire(err.error.mensaje, '', 'error')
         );
     } else {
       this.httpClient
         .post('http://localhost:3000/admin/pelicula/nueva', formData)
         .pipe(share())
         .subscribe(
-          (val) => location.reload(),
-          (err) => console.log(err)
+          (val) => {
+            Swal.fire({
+              title: 'Película creada correctamente',
+              icon: 'success',
+            }).then((result) => location.reload());
+          },
+          (err) => Swal.fire(err.error.mensaje, '', 'error')
         );
     }
   }

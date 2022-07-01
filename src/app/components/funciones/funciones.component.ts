@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, share } from 'rxjs';
+import Swal from 'sweetalert2';
 import { Funcion } from './Funcion';
 
 @Component({
@@ -34,12 +35,11 @@ export class FuncionesComponent implements OnInit {
 
     res.subscribe(
       (value) => {
-        console.log(value);
         this.Funciones = value;
         this.funciones = this.Funciones;
       },
       (error) => {
-        console.log('ocurrio un error');
+        Swal.fire('Ocurrió un error', '', 'error');
       }
     );
   }

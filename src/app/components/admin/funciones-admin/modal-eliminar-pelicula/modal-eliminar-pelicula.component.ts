@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { share } from 'rxjs';
 import { Pelicula } from 'src/app/components/lista-de-peliculas/pelicula';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-modal-eliminar-pelicula',
@@ -31,10 +32,14 @@ export class ModalEliminarPeliculaComponent implements OnInit {
       .delete('http://localhost:3000/admin/pelicula/eliminar/' + id)
       .pipe(share())
       .subscribe(
-        (val) => console.log(val),
-        (err) => console.log(err)
+        (val) => {
+          Swal.fire({
+            title: 'Película eliminada correctamente',
+            icon: 'success',
+          }).then((result) => location.reload());
+        },
+        (err) => Swal.fire(err.error.mensaje, '', 'error')
       );
-    location.reload();
   }
 
   ngOnInit(): void {}
