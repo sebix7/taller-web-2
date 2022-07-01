@@ -42,6 +42,7 @@ export class ReservaComponent implements OnInit {
   columna: any[] = [];
   reserva:Reserva={
     id: 0,
+    usuario:'',
     pelicula: '',
     asiento: '',
     fechaFuncion: '',
@@ -127,6 +128,11 @@ export class ReservaComponent implements OnInit {
   );
   }
 
+  getUsuario():Observable<Response[]>{
+    let body =localStorage.getItem('token');
+    return this.httpClient.post<Response[]>('http://localhost:3000/auth/decode',body);
+  }
+
   guardarReserva(reserva:Reserva): Observable<any>{
       let url='http://localhost:3000/reserva';
       return this.httpClient.post(url,reserva);
@@ -156,6 +162,7 @@ export class ReservaComponent implements OnInit {
     this.columna.forEach(col => {
 
       this.reserva.id=this.generarId();
+      this.reserva.usuario= JSON.stringify(this.getUsuario());
       this.reserva.pelicula=this.titulo;
       this.reserva.asiento=this.columna.toString().replace(',',' ');
       this.reserva.fechaFuncion=this.funcionDia+" "+this.funcionHorario;
