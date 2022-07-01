@@ -68,7 +68,7 @@ export class CarritoComponent implements OnInit {
         this.reserva.fechaFuncion = element.fechaFuncion;
         this.reserva.pelicula = element.pelicula;
         this.reserva.precio = 500;
-        this.reserva.asiento = element.asiento;
+        this.reserva.asiento = element.asiento;  
         this.reserva.candySnack = "-";
   
         this.Reservas.push(this.reserva);

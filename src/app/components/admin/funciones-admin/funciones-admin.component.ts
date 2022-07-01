@@ -40,7 +40,7 @@ export class FuncionesAdminComponent implements OnInit {
 
         const user_id = localStorage.getItem('IdUser');
         console.log(user_id)
-        if (user_id != '6918af43-9fc7-4399-8fa7-65dd66913cff')
+        if (user_id != '9b2e856e-7478-40ac-b9dc-99d0facd92ee')
         {
           this.router.navigate(['/']);
         } else {

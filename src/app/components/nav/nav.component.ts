@@ -1,25 +1,9 @@
-import {
-  Component,
-  Input,
-  OnInit,
-  TemplateRef,
-  ViewChild,
-} from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import {Component,Input,OnInit} from '@angular/core';
+import {FormBuilder,FormControl,FormGroup,Validators,} from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable, share } from 'rxjs';
 import { Pelicula } from '../home/pelicula';
-import {
-  HttpClient,
-  HttpHeaders,
-  HttpErrorResponse,
-  JsonpClientBackend,
-} from '@angular/common/http';
+import { HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-nav',
@@ -30,7 +14,8 @@ export class NavComponent implements OnInit {
   buscador: boolean = false;
   formBusqueda: FormGroup;
   peliculaBuscada: string = '';
-  @Input() administradorRole: boolean = false;
+
+  tipoDeUsuario:any; //va a guardar el UserId y va a evaluar si es admin o no, y si no esta logueado
 
   peliculas: Pelicula[] = [];
   Peliculas: any;
@@ -60,6 +45,20 @@ export class NavComponent implements OnInit {
         console.log('ocurrio un error');
       }
     );
+
+      if(localStorage.getItem('IdUser') != null){
+        this.tipoDeUsuario = 'Comun';
+        console.log(this.tipoDeUsuario)
+      }
+      if (localStorage.getItem('IdUser') === '9b2e856e-7478-40ac-b9dc-99d0facd92ee'){
+        this.tipoDeUsuario = 'Admin';
+        console.log(this.tipoDeUsuario)
+      }
+      if(localStorage.getItem('IdUser') == null){
+        this.tipoDeUsuario = null; 
+        console.log(this.tipoDeUsuario)
+      }
+
   }
 
   mostrarBusqueda() {
@@ -77,6 +76,6 @@ export class NavComponent implements OnInit {
 
   logout() {
     localStorage.clear();
-    this.router.navigate(['/login']);
+    this.router.navigate(['/']).then(()=>{window.location.reload();});
   }
 }

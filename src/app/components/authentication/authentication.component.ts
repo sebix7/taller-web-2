@@ -103,9 +103,8 @@ export class AuthenticationComponent implements OnInit {
         localStorage.setItem('token', JSON.stringify(value));
         this.SetearUserId();
         this.errorsLogin.usuarioIncorrecto = '';
-        this.router.navigate(['/']);
+        this.router.navigate(['/']).then(()=>{window.location.reload();});
 
-        // Swal.fire('Login exitoso', '', 'success');
       },
       (error) => {
         if (error.ok === false) {
@@ -115,7 +114,6 @@ export class AuthenticationComponent implements OnInit {
           } else {
             this.errorsLogin.usuarioIncorrecto =
               'Usuario / Password incorrecto';
-            // console.log(this.errorsLogin.usuarioIncorrecto);
           }
         }
       }
@@ -212,24 +210,5 @@ export class AuthenticationComponent implements OnInit {
       this.errors.password = '';
     }
   }
-/*
-  SetearUserId(){
-  let body = { token: localStorage.getItem('token') };//lo obtengo cuando me logueo
 
-  let resp: Observable<Response[]> = this.httpClient
-    .post<Response[]>(`http://localhost:3000/auth/decode`, body)
-    .pipe(share());
-
-    resp.subscribe(
-      (value) => {
-        this.UserId = value;
-        console.log(this.UserId)
-        
-      },
-      (error) => {
-        console.log('ocurrio un error');
-      }
-    );
-  }
-  */
 }
