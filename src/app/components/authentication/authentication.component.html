@@ -1,143 +1,105 @@
-<div
-  class="divContainer d-flex justify-content-center align-items-center col-12"
->
-  <!-- <div *ngIf="'login' === screen; then thenBlock; else elseBlock"></div> -->
+<div class="divContainer d-flex justify-content-center align-items-center col-12">
 
+  <!--Si desea loguearse se muestra este template-->
   <ng-template [ngIf]="'login' === screen">
     <div class="d-flex flex-column col-10 col-sm-6 col-md-4">
       <div>
         <p class="loginBienvenido">Bienvenido!</p>
         <p class="mb-3 fs-3 fw-bold">Ingresá a tu cuenta</p>
 
+        <!--Formulario de Login-->
         <form [formGroup]="formLogin" (submit)="login()" class="mb-3">
           <div class="form-group d-flex flex-column">
-            <label class="text-muted mb-1" htmlFor="exampleInputEmail1">
-              Email
-            </label>
-            <input
-              type="text"
-              class="form-control bg-white"
-              id="email"
-              formControlName="email"
-              placeholder="Ingresar email"
-            />
 
-            <label class="text-muted mt-2 mb-1" htmlFor="exampleInputPassword1">
-              Contraseña
-            </label>
-            <input
-              type="password"
-              class="form-control bg-white"
-              id="password"
-              formControlName="password"
-              placeholder="Ingresar contraseña"
-            />
-            <p id="emailHelp" class="forgotPassword form-text">
-              Olvidaste tu contraseña?
-            </p>
+            <label class="text-muted mb-1" htmlFor="exampleInputEmail1">Email</label>
+            <input type="text" class="form-control bg-white" id="email" formControlName="email" placeholder="Ingresar email"/>
 
-            <button type="submit" class="buttonLogin mt-2 mb-2 btn btn-primary">
-              Ingresar
-            </button>
+            <label class="text-muted mt-2 mb-1" htmlFor="exampleInputPassword1">Contraseña</label>
+            <input type="password" class="form-control bg-white" id="password" formControlName="password"placeholder="Ingresar contraseña"/>
+            
+            <p id="emailHelp" class="forgotPassword form-text">¿Olvidaste tu contraseña?</p>
 
-            <div
-              *ngIf="!!errorsLogin.usuarioIncorrecto; then errorLoginUsuario"
-            ></div>
-            <ng-template #errorLoginUsuario>
-              <small class="text-danger mt-2">{{
-                errorsLogin.usuarioIncorrecto
-              }}</small>
-            </ng-template>
+            <button type="submit" class="buttonLogin mt-2 mb-2 btn btn-primary">Ingresar</button>
+            
+          <!--Mensaje de usuario incorrecto-->
+            <div *ngIf="!!errorsLogin.usuarioIncorrecto; then errorLoginUsuario"></div>
+              <ng-template #errorLoginUsuario>
+               <small class="text-danger mt-2">{{errorsLogin.usuarioIncorrecto}}</small>
+              </ng-template>
           </div>
         </form>
 
-        <div
-          class="registerLink text-center text-muted d-flex justify-content-center"
-        >
-          No tenés cuenta?
-          <p (click)="changeScreen('registro')" class="registerLinkP ms-1">
-            Registrate
-          </p>
+        <div class="registerLink text-center text-muted d-flex justify-content-center"> No tenés cuenta?  
+        <p (click)="changeScreen('registro')" class="registerLinkP ms-1">Registrate</p>
         </div>
+
       </div>
     </div>
   </ng-template>
+  <!--Fin de vista LOGIN-->
 
+<!---------------------------------------------------------------------------------------------------->
+
+  <!--Si se desea registrar-->
   <ng-template [ngIf]="'registro' === screen">
     <div class="d-flex flex-column col-10 col-sm-6 col-md-4">
       <div>
         <p class="mb-3 fs-3 fw-bold">Registrate!</p>
+
+        <!--Formulario de Registro-->
         <form class="mb-3" [formGroup]="formRegistro" (submit)="registrar()">
+          
+          <!--NOMBRE-->
           <div class="form-group d-flex flex-column">
             <div>
-              <input
-                type="text"
-                class="form-control bg-black"
-                formControlName="nombre"
-                id="nombre"
-                placeholder="Nombre"
-              />
+              <input type="text" class="form-control bg-black" formControlName="nombre" id="nombre" placeholder="Nombre"/>
             </div>
 
+            <!--Validacion del Nombre-->
             <div *ngIf="!!errors.nombre; then errorNombreBlock"></div>
             <ng-template #errorNombreBlock>
               <small class="text-danger">{{ errors.nombre }}</small>
             </ng-template>
+         
+          <!--APELLIDO-->  
+          <div>
+             <input type="text" class="form-control bg-black mt-3" formControlName="apellido" id="apellido" placeholder="Apellido"/>
+          </div>
 
-            <div>
-              <input
-                type="text"
-                class="form-control bg-black mt-3"
-                formControlName="apellido"
-                id="apellido"
-                placeholder="Apellido"
-              />
-            </div>
-
+            <!--Validacion del Apellido-->
             <div *ngIf="!!errors.apellido; then errorApellidoBlock"></div>
             <ng-template #errorApellidoBlock>
               <small class="text-danger">{{ errors.apellido }}</small>
             </ng-template>
 
+          <!--DIRECCION-->
             <div>
-              <input
-                type="text"
-                class="form-control bg-black mt-3"
-                formControlName="direccion"
-                id="direccion"
-                placeholder="Dirección"
-              />
+              <input type="text" class="form-control bg-black mt-3" formControlName="direccion" id="direccion" placeholder="Dirección"/>
             </div>
 
+            <!--Validacion de Direccion-->
             <div *ngIf="!!errors.direccion; then errorDireccionBlock"></div>
             <ng-template #errorDireccionBlock>
               <small class="text-danger">{{ errors.direccion }}</small>
             </ng-template>
 
+          <!--EMAIL-->
             <div>
-              <input
-                type="text"
-                class="form-control bg-black mt-3"
-                formControlName="email"
-                id="email"
-                placeholder="Email"
-              />
+              <input type="text" class="form-control bg-black mt-3" formControlName="email" id="email" placeholder="Email"/>
             </div>
 
+            <!--Validacion de Email-->
             <div *ngIf="!!errors.email; then errorEmailBlock"></div>
             <ng-template #errorEmailBlock>
               <small class="text-danger">{{ errors.email }}</small>
             </ng-template>
 
+          <!--PASSWORD-->
             <div>
-              <input
-                type="password"
-                class="form-control bg-black mt-3"
-                formControlName="password"
-                id="password"
-                placeholder="Contraseña"
-              />
+              <input type="password" class="form-control bg-black mt-3" formControlName="password" id="password" placeholder="Contraseña"/>
             </div>
+
+            <!--Validacion de Password-->
             <div *ngIf="!!errors.password; then errorPasswordBlock"></div>
             <ng-template #errorPasswordBlock>
               <small class="text-danger">{{ errors.password }}</small>
@@ -159,6 +121,12 @@
     </div>
   </ng-template>
 
+    <!--Fin de vista REGISTRAR-->
+
+<!---------------------------------------------------------------------------------------------------->
+
+  <!--CONFIRMACION DE USUARIO CON CODIGO DE VERIFICACION-->
+
   <ng-template [ngIf]="'validar' === screen">
     <div class="d-flex flex-column col-10 col-sm-6 col-md-4">
       <div>
@@ -166,44 +134,29 @@
           Ingresá el código de verficación.
         </p>
 
-        <form
-          [formGroup]="formConfirmacion"
-          (submit)="verificar()"
-          class="mb-3"
-        >
+        <!--FORMULARIO DE VERIFICACION DE CUENTA-->
+        <form [formGroup]="formConfirmacion" (submit)="verificar()" class="mb-3">
           <div class="form-group d-flex flex-column">
-            <label class="text-muted mb-1" htmlFor="exampleInputEmail1">
-              Código de verficación
-            </label>
-            <input
-              type="number"
-              class="form-control bg-white"
-              id="codigo"
-              formControlName="codigo"
-              placeholder="Ingresar codigo"
-            />
+
+            <!--CODIGO DE VERIFICACION-->
+            <label class="text-muted mb-1" htmlFor="exampleInputEmail1"> Código de verficación </label>
+            <input type="number" class="form-control bg-white" id="codigo" formControlName="codigo" placeholder="Ingresar codigo"/>
 
             <button type="submit" class="buttonLogin mt-2 mb-2 btn btn-primary">
               Ingresar código
             </button>
 
-            <div
-              *ngIf="
-                !!errorsLogin.usuarioNoConfirmado;
-                then errorUsuarioNoConfirmado
-              "
-            ></div>
-            <ng-template #errorUsuarioNoConfirmado>
-              <small class="text-danger mt-2">{{
-                errorsLogin.usuarioNoConfirmado
-              }}</small>
-            </ng-template>
-          </div>
+            <!--Validacion de codigo incorrecto-->
+            <div *ngIf="!!errorsLogin.usuarioNoConfirmado; then errorUsuarioNoConfirmado"></div>
+                <ng-template #errorUsuarioNoConfirmado>
+                <small class="text-danger mt-2">
+                  {{errorsLogin.usuarioNoConfirmado}}
+                </small>
+              </ng-template>
+            </div>
         </form>
 
-        <div
-          class="registerLink text-center text-muted d-flex justify-content-center"
-        >
+        <div class="registerLink text-center text-muted d-flex justify-content-center">
           <p (click)="changeScreen('login')" class="registerLinkP ms-1">
             Volver a login
           </p>

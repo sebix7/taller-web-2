@@ -27,12 +27,12 @@
                         <td *ngIf="reserva.candySnack!='-'" class="text-center">
                           {{reserva.candySnack}}
                         </td>
-                        <td *ngIf="reserva.candySnack=='-'" class="text-center">
+                        <td class="text-center">
                             <a type="button" class="btn btn-success zoom" routerLink="/store">Ir a tienda</a>
                         </td>
-                        <td class="d-flex justify-content-center">
-                            <button type="button" class="btn btn-danger zoom" (click)="cancelarReserva(reserva.id)">Cancelar</button>
-                        </td>
+                        <td class="text-center">
+                          <a type="button" class="btn btn-danger" (click)="eliminarReserva(reserva.id)">Eliminar reserva</a>
+                      </td>    
                     </tr>
                  
                 </tbody>

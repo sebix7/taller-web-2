@@ -1,26 +1,23 @@
 <div class="movie-items full-width" style="padding-top: 125px;">
-    <!--begin::Section-->
     <div class="card card-custom gutter-b">
-        <!--begin::Header-->
+        <!--HEADER-->
         <div class="card-header flex-wrap border-0 pt-6 pb-0">
             <h3 class="card-title align-items-start flex-column">
                 <span class="card-label font-weight-bolder font-size-h3 text-dark">Carrito de Compras</span>
             </h3>
             <div class="card-toolbar">
                 <div class="dropdown dropdown-inline">
-                    <a href="javascript:void(0);" [routerLink]="['/peliculas']" class="btn btn-primary font-weight-bolder font-size-sm">
+                    <a [routerLink]="['/peliculas']" class="btn btn-primary font-weight-bolder font-size-sm">
                         Continuar comprando
                     </a>
                 </div>
             </div>
         </div>
-        <!--end::Header-->
-
+        <!--FIN HEADER-->
+ 
         <div class="card-body">
-            <!--begin::Shopping Cart-->
             <div class="table-responsive">
                 <table class="table">
-                    <!--begin::Cart Header-->
                     <thead>
                         <tr>
                             <th>Item</th>
@@ -29,20 +26,20 @@
                             <th></th>
                         </tr>
                     </thead>
-                    <!--end::Cart Header-->
 
                     <tbody>
-                        <!--begin::Cart Content-->
-                        <tr *ngFor="let item of items; let i = index">
-                            <td class="d-flex align-items-center font-weight-bolder">
-                            
-                                <a href="#" class="text-dark text-hover-primary">Entrada para {{item.pelicula}}</a>
+                    <!--RECORRO LAS RESERVAS DEL CARRITO -->
+                        <tr *ngFor="let reserva of Reservas; let i = index">
+
+                             <td class="text-left align-middle">
+                                <span class="mr-2 font-weight-bolder">Entrada para: {{reserva.pelicula}}</span>
                             </td>
+
                             <td class="text-left align-middle">
-                                <span class="mr-2 font-weight-bolder">Asiento: {{item.asiento}}<br>Fecha y Hora: {{item.fechaFuncion}}</span>
+                                <span class="mr-2 font-weight-bolder">Asiento: {{reserva.asiento}}<br>Fecha y Hora: {{reserva.fechaFuncion}}</span>
                             </td>
                             <td class="text-right align-middle font-weight-bolder font-size-h5">
-                                {{item.precio}}
+                                {{reserva.precio}}
                             </td>
                             <td class="text-right align-middle">
                                 <a href="javascript:void(0);" (click)="quitarItemFuncion(i)" class="btn btn-danger font-weight-bolder font-size-sm">
@@ -51,16 +48,17 @@
                             </td>
                         </tr>
                     
-                        <tr *ngFor="let item of itemProductos; let i = index">
-                            <td class="d-flex align-items-center font-weight-bolder">
+                     <!--RECORRO LOS PRODUCTOS DEL CARRITO -->
+                        <tr *ngFor="let producto of Productos; let i = index">
                             
-                                <a href="#" class="text-dark text-hover-primary">{{item.producto}}</a>
+                            <td class="text-left align-middle">
+                                <span class="mr-2 font-weight-bolder">{{producto.producto}}</span>
                             </td>
                             <td class="text-left align-middle">
-                                <span class="mr-2 font-weight-bolder">{{item.descripcion}}</span>
+                                <span class="mr-2 font-weight-bolder">{{producto.descripcion}}</span>
                             </td>
                             <td class="text-right align-middle font-weight-bolder font-size-h5">
-                                {{item.precio}}
+                                {{producto.precio}}
                             </td>
                             <td class="text-right align-middle">
                                 <a href="javascript:void(0);" (click)="quitarItemProducto(i)" class="btn btn-danger font-weight-bolder font-size-sm">
@@ -70,7 +68,6 @@
                         </tr>
                         <tr>
                             <td colspan="2"></td>
-                            
                             <td class="font-weight-bolder font-size-h4 text-right">Total</td>
                             <td class="font-weight-bolder font-size-h4 text-right">${{precioTotal}}.00</td>
                         </tr>
@@ -78,13 +75,11 @@
                     </tbody>
                 </table>
                 <div style="width: 100%; padding-bottom: 1.5rem; padding-top: 2rem; text-align: right;">
-                    <a href="javascript:void(0);" (click)="finCompra()" class="btn btn-success font-weight-bolder px-8" style="color: #fff;
-                        background-color: #198754;
-                        border-color: #198754;">Finalizar compra</a>
+                    <a href="javascript:void(0);" (click)="finCompra()"  class="btn btn-success font-weight-bolder px-8" style="color: #fff;background-color: #198754; border-color: #198754;">
+                        Finalizar compra
+                    </a>
                 </div>
             </div>
-            <!--end::Shopping Cart-->
         </div>
     </div>
-    <!--end::Section-->
 </div>

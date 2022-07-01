@@ -180,12 +180,6 @@ export class ReservaComponent implements OnInit {
 
       this.reservas.push(this.reserva);
        
-      /*this.guardarReserva(this.reserva).subscribe(data=>{
-        console.log(data, "se guardooo");
-      },error=> console.log(error))*/
-
-      //this.reserva.asiento = col;
-      //console.log(this.reserva)
 
     });
 

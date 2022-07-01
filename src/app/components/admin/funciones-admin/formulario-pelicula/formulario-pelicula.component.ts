@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Observable, of, share } from 'rxjs';
+import { share } from 'rxjs';
 import { Pelicula } from 'src/app/components/lista-de-peliculas/pelicula';
 
 @Component({

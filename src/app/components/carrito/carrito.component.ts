@@ -1,20 +1,8 @@
-import {
-  HttpClient
-} from '@angular/common/http';
-import {
-  Component,
-  OnInit
-} from '@angular/core';
-import {
-  Router
-} from '@angular/router';
-import {
-  Observable,
-  share
-} from 'rxjs';
-import {
-  Reserva
-} from './reserva';
+import {HttpClient} from '@angular/common/http';
+import {Component,OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {Observable,share} from 'rxjs';
+import {Reserva} from './reserva';
 
 @Component({
   selector: 'app-carrito',
@@ -23,8 +11,8 @@ import {
 })
 export class CarritoComponent implements OnInit {
 
-  items: any[] = [];
-  itemProductos: any[] = [];
+  ReservasAlBack: any[] = [];
+  Productos: any[] = [];
   precioTotal: number = 0;
 
   Reservas: Reserva[] = []; //el carrito puede contener mas de una reserva
@@ -41,28 +29,33 @@ export class CarritoComponent implements OnInit {
   constructor(private router: Router, protected httpClient: HttpClient) {}
 
   ngOnInit(): void {
-    if (localStorage.getItem("reservas") != null && localStorage.getItem("reservas") != "") {
-      this.items = JSON.parse(localStorage.getItem('reservas') || '{}');
-      console.log(this.items)
+    //LAS RESERVAS QUE VIENEN DE LA SELECCION DE BUTACAS
+    if (localStorage.getItem("reservas") != null) { //SI HAY RESERVA
+      this.Reservas = JSON.parse(localStorage.getItem('reservas') || '{}'); //LAS GUARDO EN LA VARIABLE
     }
-    if (localStorage.getItem("ProductoCarrito") != null && localStorage.getItem("ProductoCarrito") != "") {
-      this.itemProductos = JSON.parse(localStorage.getItem('ProductoCarrito') || '{}');
+
+    //LOS PRODUCTOS QUE VIENEN DE LA SECCION SNACK STORE
+    if (localStorage.getItem("ProductoCarrito") != null) { //SI HAY PRODUCTOS
+      this.Productos = JSON.parse(localStorage.getItem('ProductoCarrito') || '{}');//LAS GUARDO EN LA VARIABLE
     }
-    this.calcularTotal();
+    this.calcularTotal(); //CALCULO EL TOTAL.
   }
 
   finCompra() {
-    console.log(localStorage.getItem("IdUser"))
-    if(localStorage.getItem("IdUser") === null ){
 
+    //SI QUIERO FINALIZAR SIN ESTAR LOGUEADO NO ME VA A PERMITIR
+    if(localStorage.getItem("IdUser") === null ){
       alert('Debes estar logueado - Se re redigira al login')
       this.router.navigate(['/login']);
 
     }else{
 
-      for (let index = 0; index < this.items.length; index++) {
-        const element = this.items[index];
+      //SI ESTA LOGUEADO:
+      //
+      for (let index = 0; index < this.Reservas.length; index++) {//RECORRO EL CARRITO
+        const element = this.Reservas[index];
   
+        //CON ESA INFORMACION CONSTRUYO UNA RESERVA - CON LA INFORMACION NECESARIA
         this.reserva.id = 0;
         this.reserva.usuario = localStorage.getItem('IdUser');
         this.reserva.fechaFuncion = element.fechaFuncion;
@@ -71,10 +64,10 @@ export class CarritoComponent implements OnInit {
         this.reserva.asiento = element.asiento;  
         this.reserva.candySnack = "-";
   
-        this.Reservas.push(this.reserva);
+        this.ReservasAlBack.push(this.reserva);//AGREGO ESA RESERVA A UN ARRAY QUE VA AL BACK
       }
   
-      const body = this.Reservas
+      const body = this.ReservasAlBack //EL ARRAY DE RESERVAS LO ENVIO POR POST Y LAS GUARDO
   
       let res: Observable < Response[] > = this.httpClient
         .post < Response[] > (`http://localhost:3000/reserva/`,body)
@@ -82,14 +75,11 @@ export class CarritoComponent implements OnInit {
   
       res.subscribe(
         (value) => {
-  
-          this.router.navigate(['/']);
-  
         },
         (error) => {
-          alert('nada de nada')
         }
       )
+
       this.liberarInformacion();
 
     }
@@ -97,39 +87,41 @@ export class CarritoComponent implements OnInit {
     
 
   }
-
+//LIBERTO LA INFORMACION DE RESERVAS Y PRODUCTOS QUE HABIA EN EL LOCALSTORAGE
   liberarInformacion() {
     localStorage.removeItem("reservas");
     localStorage.removeItem("ProductoCarrito");
-    this.precioTotal = 0;
+    this.precioTotal = 0; //EL PRECIO TOTAL VUELVE A CERO
     alert("¡Gracias por su Compra!");
     this.router.navigate(["/"]);
 
   }
 
 
+  //SI QUIERE ELIMINAR ESA RESERVA.
+  quitarItemFuncion(id: number) {
+    this.Reservas.splice(id, 1);//ELIMINO LA RESERVA CON ESE ID
+    localStorage.setItem("reservas", JSON.stringify(this.Reservas));//LO VUELVO A GUARDAR
+    this.precioTotal = 0;
+    this.calcularTotal();//VUELVO A CALCULAR PRECIO
+  }
 
-  quitarItemFuncion(i: number) {
-    this.items.splice(i, 1);
-    localStorage.setItem("reservas", JSON.stringify(this.items));
+  //LO MISMO CON LOS PRODUCTOS
+  quitarItemProducto(id: number) {
+    this.Productos.splice(id, 1)
+    localStorage.setItem("ProductoCarrito", JSON.stringify(this.Productos));
     this.precioTotal = 0;
     this.calcularTotal();
   }
 
-  quitarItemProducto(i: number) {
-    this.itemProductos.splice(i, 1)
-    localStorage.setItem("ProductoCarrito", JSON.stringify(this.itemProductos));
-    this.precioTotal = 0;
-    this.calcularTotal();
-  }
-
+  //RECORRO LOS DOS ARRAY (RESERVAS Y PRODUCTOS PARA CALCULAR EL PRECIO)
   calcularTotal() {
-    for (let index = 0; index < this.items.length; index++) {
-      this.precioTotal += this.items[index].precio;
+    for (let index = 0; index < this.Reservas.length; index++) {
+      this.precioTotal += this.Reservas[index].precio;
     }
 
-    for (let index = 0; index < this.itemProductos.length; index++) {
-      this.precioTotal += this.itemProductos[index].precio;
+    for (let index = 0; index < this.Productos.length; index++) {
+      this.precioTotal += this.Productos[index].precio;
     }
   }
 

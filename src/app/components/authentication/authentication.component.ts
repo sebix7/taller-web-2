@@ -1,17 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import {FormBuilder, FormControl,FormGroup,Validators,} from '@angular/forms';
 import { Router } from '@angular/router';
-import {
-  HttpClient,
-  HttpHeaders,
-  HttpErrorResponse,
-} from '@angular/common/http';
-import { datosDeRegistro } from './datosDeRegistro';
+import {HttpClient,} from '@angular/common/http';
 import { Observable, share } from 'rxjs';
 import Swal from 'sweetalert2';
 
@@ -21,6 +11,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./authentication.component.css'],
 })
 export class AuthenticationComponent implements OnInit {
+//ATRIBUTOS
   public screen: string;
   public formRegistro: any;
   public formLogin: any;
@@ -29,11 +20,10 @@ export class AuthenticationComponent implements OnInit {
   public errorsLogin: any;
   public email: string;
   UserId: any;
-  constructor(
-    protected router: Router,
-    private formBuilder: FormBuilder,
-    protected httpClient: HttpClient
-  ) {
+
+//CONSTRUCTOR
+  constructor(protected router: Router,private formBuilder: FormBuilder,protected httpClient: HttpClient) 
+  {
     this.screen = 'login';
     this.formLogin = FormGroup;
     this.formRegistro = FormGroup;
@@ -53,29 +43,30 @@ export class AuthenticationComponent implements OnInit {
     this.email = '';
   }
 
+//METODOS
+
   ngOnInit(): void {
+
+    //CREACION DE FORMULARIO LOGIN
     this.formLogin = this.formBuilder.group({
       email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [
-        Validators.required,
-        Validators.minLength(6),
-      ]),
+      password: new FormControl('', [Validators.required,Validators.minLength(6),]),
     });
 
+    //CREACION DE FORMULARIO REGISTRO
     this.formRegistro = this.formBuilder.group({
       nombre: new FormControl('', Validators.required),
       apellido: new FormControl('', Validators.required),
       direccion: new FormControl('', Validators.required),
       email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [
-        Validators.minLength(8),
-        Validators.required,
+      password: new FormControl('', [Validators.minLength(8),Validators.required,
         Validators.pattern(
           '(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[$@$ñ<>!%*?&]).{8,}'
         ),
       ]),
     });
 
+    //CREACION DE FORMULARIO DE CONFIRMACION
     this.formConfirmacion = this.formBuilder.group({
       codigo: new FormControl('', [Validators.required]),
     });
@@ -100,13 +91,13 @@ export class AuthenticationComponent implements OnInit {
 
     res.subscribe(
       (value) => {
-        localStorage.setItem('token', JSON.stringify(value));
-        this.SetearUserId();
+        localStorage.setItem('token', JSON.stringify(value)); //Resultado del login me da un token
+        this.SetearUserId(); //Decodifico el token y obtengo el ID del usuario
         this.errorsLogin.usuarioIncorrecto = '';
-        this.router.navigate(['/']).then(()=>{window.location.reload();});
+        this.router.navigate(['/']).then(()=>{window.location.reload();});//Se dirige al home y refresca
 
       },
-      (error) => {
+      (error) => { //Si no devuelve el token, es que o el pass o user son incorrectos
         if (error.ok === false) {
           if (error.error.err.name === 'UserNotConfirmedException') {
             this.changeScreen('validar', this.formLogin.value.email);
@@ -119,8 +110,10 @@ export class AuthenticationComponent implements OnInit {
       }
     );
   }
+
+//IMPLEMENTA EL METODO DECODE EL CUAL ME CONVIERTE EL TOKEN AL ID DEL USUARIO
   SetearUserId() {
-    let body = { token: localStorage.getItem('token') };//lo obtengo cuando me logueo
+    let body = { token: localStorage.getItem('token') };
 
     let resp: Observable<Response[]> = this.httpClient
       .post<Response[]>(`http://localhost:3000/auth/decode`, body)
@@ -130,7 +123,7 @@ export class AuthenticationComponent implements OnInit {
         (value) => {
           this.UserId = value;
           console.log(this.UserId);
-          localStorage.setItem("IdUser", this.UserId); //seteo el id encodeado
+          localStorage.setItem("IdUser", this.UserId); //seteo el id encodeado en LS
           
         },
         (error) => {
@@ -139,7 +132,7 @@ export class AuthenticationComponent implements OnInit {
       );
     }
   
-
+//FERIFICA EL CODIGO QUE LLEGA A EMAIL Y ACTIVA EL USUARIO PARA EL USO.
   verificar(): any {
     const codigo = this.formConfirmacion.value.codigo;
     const body = { codigo, email: this.email };
@@ -159,6 +152,7 @@ export class AuthenticationComponent implements OnInit {
     );
   }
 
+//METODO REGISTRAR NUEVO USUARIO
   registrar(): any {
     if (
       this.formRegistro.controls.nombre.invalid === true ||
@@ -166,7 +160,9 @@ export class AuthenticationComponent implements OnInit {
       this.formRegistro.controls.direccion.invalid === true ||
       this.formRegistro.controls.email.invalid === true ||
       this.formRegistro.controls.password.invalid === true
-    ) {
+      ) { 
+
+      //Los campos son obligatorios y validados.
       this.formRegistro.controls.nombre.invalid === true
         ? (this.errors.nombre = 'El nombre es obligatorio')
         : (this.errors.nombre = '');
@@ -188,13 +184,14 @@ export class AuthenticationComponent implements OnInit {
             'La contraseña debe tener mínimo 8, caracteres una letra mayúscula, una minúscula, un número y un carácter especial')
         : (this.errors.password = '');
     } else {
-      const body = this.formRegistro.value;
+
+      const body = this.formRegistro.value; //LUEGO DE VALIDAR ENVIA LOS DATOS AL BACK
 
       let res: Observable<Response[]> = this.httpClient
         .post<Response[]>(`http://localhost:3000/auth`, body)
         .pipe(share());
 
-      res.subscribe(
+      res.subscribe(//QUE FUNCION REALIZA? 
         () => {
           Swal.fire('Registro exitoso', '', 'success');
         },

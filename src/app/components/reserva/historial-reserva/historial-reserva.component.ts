@@ -13,6 +13,7 @@ export class HistorialReservaComponent implements OnInit {
   reservas:Reserva[]=[];
   url:string;
   UserId:any;
+  
   constructor(protected httpClient: HttpClient) {
     this.url= 'http://localhost:3000/historial-reservas'; 
    }
@@ -43,22 +44,17 @@ export class HistorialReservaComponent implements OnInit {
     );
   }
 
-  eliminarReserva(id:number):Observable<any>{
+  eliminarReserva(idReserva:number){
     
-    return this.httpClient.delete(this.url+'/'+id);
-
-  }
-
-  cancelarReserva(id:number){
-      
-      this.eliminarReserva(id).subscribe(data=>{
-        console.log(data)
-        //this.getReservas();
-      },error=>{
-        console.log(error)
-      })
-
+    this.httpClient.delete('http://localhost:3000/historial-reservas/eliminar/'+idReserva)
+    .pipe(share())
+        .subscribe(
+          (val) => console.log(val),
+          (err) => console.log(err)
+        );
       location.reload();
+    }
+
   }
 
-}
+

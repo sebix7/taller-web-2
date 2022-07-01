@@ -3,8 +3,8 @@
 
   <div class="contenedorInformacion p-5 d-flex flex-column">
 
-
-    <h2 class="text-center mb-5 title-in">Combos</h2>
+    <!--CONTENEDOR DE COMBOS-->
+    <h2 class="text-center mb-5 title-in">COMBOS</h2>
     <div class="store">
       <div *ngFor="let producto of productos">
         <div class="card" *ngIf="producto.categoria == 'Combos'">
@@ -23,8 +23,8 @@
       </div>
     </div>
 
-
-    <h2 class="text-center mb-5 title-in">Pochoclos</h2>
+    <!--CONTENEDOR DE POCHOCLOS-->
+    <h2 class="text-center mb-5 title-in">POCHOCLOS</h2>
     <div class="store">
       <div *ngFor="let producto of productos">
         <div class="card" *ngIf="producto.categoria == 'Pochoclo'">
@@ -43,8 +43,8 @@
       </div>
     </div>
 
-
-    <h2 class="text-center mb-5 title-in">Nachos</h2>
+    <!--CONTENEDOR DE NACHOS-->
+    <h2 class="text-center mb-5 title-in">NACHOS</h2>
     <div class="store">
       <div *ngFor="let producto of productos">
         <div class="card" *ngIf="producto.categoria == 'Nachos'">
@@ -63,8 +63,8 @@
       </div>
     </div>
 
-
-    <h2 class="text-center mb-5 title-in">Gaseosas</h2>
+    <!--CONTENEDOR DE BEBIDAS-->
+    <h2 class="text-center mb-5 title-in">BEBIDAS</h2>
     <div class="store">
       <div *ngFor="let producto of productos">
         <div class="card" *ngIf="producto.categoria == 'Bebida'">
@@ -83,7 +83,8 @@
       </div>
     </div>
 
-    <h2 class="text-center mb-5 title-in">Candy</h2>
+    <!--CONTENEDOR DE CANDY-->
+    <h2 class="text-center mb-5 title-in">CANDYS</h2>
     <div class="store">
       <div *ngFor="let producto of productos">
         <div class="card" *ngIf="producto.categoria == 'Candy'">
@@ -101,8 +102,6 @@
       <div>
       </div>
     </div>
-
-
 
     </div>
   </div>
