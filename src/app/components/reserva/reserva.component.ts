@@ -133,6 +133,16 @@ export class ReservaComponent implements OnInit {
     return this.httpClient.post<Response[]>('http://localhost:3000/auth/decode',body);
   }
 
+  getButaca(columna:string):Observable<Butacas[]>{
+    let url='http://localhost:3000/reserva'+'/'+columna;
+    return this.httpClient.get<Butacas[]>(url);
+  }
+
+  modificarButaca(columna:string, butaca:Butacas):Observable<any>{
+    let url='http://localhost:3000/reserva'+'/'+columna;
+    return this.httpClient.put(url,butaca);
+  }
+
   guardarReserva(reserva:Reserva): Observable<any>{
       let url='http://localhost:3000/reserva';
       return this.httpClient.post(url,reserva);
@@ -161,18 +171,21 @@ export class ReservaComponent implements OnInit {
     if(this.columna.length > 0){
     this.columna.forEach(col => {
 
+      this.reserva.asiento=col;
       this.reserva.id=this.generarId();
       this.reserva.usuario= JSON.stringify(this.getUsuario());
       this.reserva.pelicula=this.titulo;
-      this.reserva.asiento=this.columna.toString().replace(',',' ');
       this.reserva.fechaFuncion=this.funcionDia+" "+this.funcionHorario;
       this.reserva.candySnack="-";
 
       this.reservas.push(this.reserva);
-      
-      this.guardarReserva(this.reserva).subscribe(data=>{
+       
+      /*this.guardarReserva(this.reserva).subscribe(data=>{
         console.log(data, "se guardooo");
-      },error=> console.log(error))
+      },error=> console.log(error))*/
+
+      //this.reserva.asiento = col;
+      //console.log(this.reserva)
 
     });
 

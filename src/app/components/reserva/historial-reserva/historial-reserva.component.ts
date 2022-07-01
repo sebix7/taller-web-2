@@ -48,7 +48,7 @@ export class HistorialReservaComponent implements OnInit {
       
       this.eliminarReserva(id).subscribe(data=>{
         console.log(data)
-        this.getReservas();
+        //this.getReservas();
       },error=>{
         console.log(error)
       })
