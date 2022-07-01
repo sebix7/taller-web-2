@@ -40,6 +40,12 @@ export class ReservaComponent implements OnInit {
   filaH: Butacas[] = [];
   reservas:Reserva[]=[];
   columna: any[] = [];
+  butacaReservada:Butacas={
+    id:0,
+    columna:'',
+    fila:'',
+    disponible:true
+  };
   reserva:Reserva={
     id: 0,
     usuario:'',
@@ -49,6 +55,7 @@ export class ReservaComponent implements OnInit {
     candySnack: '',
     precio: 500
   }
+  
 
   constructor(protected router: Router, protected httpClient: HttpClient,private route:ActivatedRoute) {
     this.tituloPeli = this.route.snapshot.paramMap.get('titulo');
@@ -133,14 +140,30 @@ export class ReservaComponent implements OnInit {
     return this.httpClient.post<Response[]>('http://localhost:3000/auth/decode',body);
   }
 
-  getButaca(columna:string):Observable<Butacas[]>{
+  getButaca(columna:string){
+   
     let url='http://localhost:3000/reserva'+'/'+columna;
-    return this.httpClient.get<Butacas[]>(url);
+    let res: Observable<Butacas> = this.httpClient.get<Butacas>(url);
+    res.subscribe((data)=>{
+          this.butacaReservada.id=data.id;
+          this.butacaReservada.fila=data.fila;
+          this.butacaReservada.columna=data.columna;
+          this.butacaReservada.disponible=false;
+          console.log('se encontro la butaca',this.butacaReservada)
+          this.modificarButaca(this.butacaReservada.columna,this.butacaReservada)
+      },
+      (error) => {
+        console.log('no se encontro',error);
+      })
   }
 
-  modificarButaca(columna:string, butaca:Butacas):Observable<any>{
+  modificarButaca(columna:string, butaca:Butacas){
     let url='http://localhost:3000/reserva'+'/'+columna;
-    return this.httpClient.put(url,butaca);
+    this.httpClient.put(url,butaca).subscribe(data=>{
+      console.log("se modificoo",data)
+    }, error=>{
+      console.log(error)
+    });
   }
 
   guardarReserva(reserva:Reserva): Observable<any>{
@@ -179,8 +202,9 @@ export class ReservaComponent implements OnInit {
       this.reserva.candySnack="-";
 
       this.reservas.push(this.reserva);
-       
 
+         
+      this.getButaca(col); 
     });
 
       if(localStorage.getItem("reservas") != null && localStorage.getItem("reservas") != ""){
