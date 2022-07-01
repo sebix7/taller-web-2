@@ -37,21 +37,11 @@ export class FuncionesAdminComponent implements OnInit {
 
   ngOnInit(): void {
     // Para redirigir si no está logueado
-    let body = { token: localStorage.getItem('token') };
 
-    let resp: Observable<Response[]> = this.httpClient
-      .post<Response[]>(`http://localhost:3000/auth/decode`, body)
-      .pipe(share());
-
-    resp.subscribe(
-      (value) => {
-        const user_id = JSON.stringify(value);
-
-        if (
-          (user_id ===
-            JSON.stringify('6918af43-9fc7-4399-8fa7-65dd66913cff')) ===
-          false
-        ) {
+        const user_id = localStorage.getItem('IdUser');
+        console.log(user_id)
+        if (user_id != '6918af43-9fc7-4399-8fa7-65dd66913cff')
+        {
           this.router.navigate(['/']);
         } else {
           let res: Observable<Pelicula[]> = this.httpClient
@@ -69,12 +59,8 @@ export class FuncionesAdminComponent implements OnInit {
             }
           );
         }
-      },
-      (error) => {
-        this.router.navigate(['/']);
       }
-    );
-  }
+     
 
   setPelicula(pelicula: Pelicula): void {
     this.peliculaElegida = pelicula;

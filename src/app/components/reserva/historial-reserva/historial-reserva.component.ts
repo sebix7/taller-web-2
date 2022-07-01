@@ -12,6 +12,7 @@ export class HistorialReservaComponent implements OnInit {
 
   reservas:Reserva[]=[];
   url:string;
+  UserId:any;
   constructor(protected httpClient: HttpClient) {
     this.url= 'http://localhost:3000/historial-reservas'; 
    }
@@ -19,12 +20,16 @@ export class HistorialReservaComponent implements OnInit {
   ngOnInit(): void {
 
     this.getReservas();
-    
+
   }
 
+ 
+
   getReservas(){
+    let UserId = localStorage.getItem('IdUser')
+    
     let res: Observable<Reserva[]> = this.httpClient
-    .get<Reserva[]>(this.url)
+    .get<Reserva[]>(`http://localhost:3000/historial-reservas/${UserId}`)
     .pipe(share());
 
     res.subscribe(

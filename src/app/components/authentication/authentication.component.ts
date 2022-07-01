@@ -28,7 +28,7 @@ export class AuthenticationComponent implements OnInit {
   public errors: any;
   public errorsLogin: any;
   public email: string;
-
+  UserId: any;
   constructor(
     protected router: Router,
     private formBuilder: FormBuilder,
@@ -101,6 +101,7 @@ export class AuthenticationComponent implements OnInit {
     res.subscribe(
       (value) => {
         localStorage.setItem('token', JSON.stringify(value));
+        this.SetearUserId();
         this.errorsLogin.usuarioIncorrecto = '';
         this.router.navigate(['/']);
 
@@ -120,6 +121,26 @@ export class AuthenticationComponent implements OnInit {
       }
     );
   }
+  SetearUserId() {
+    let body = { token: localStorage.getItem('token') };//lo obtengo cuando me logueo
+
+    let resp: Observable<Response[]> = this.httpClient
+      .post<Response[]>(`http://localhost:3000/auth/decode`, body)
+      .pipe(share());
+  
+      resp.subscribe(
+        (value) => {
+          this.UserId = value;
+          console.log(this.UserId);
+          localStorage.setItem("IdUser", this.UserId); //seteo el id encodeado
+          
+        },
+        (error) => {
+          console.log('ocurrio un error');
+        }
+      );
+    }
+  
 
   verificar(): any {
     const codigo = this.formConfirmacion.value.codigo;
@@ -191,4 +212,24 @@ export class AuthenticationComponent implements OnInit {
       this.errors.password = '';
     }
   }
+/*
+  SetearUserId(){
+  let body = { token: localStorage.getItem('token') };//lo obtengo cuando me logueo
+
+  let resp: Observable<Response[]> = this.httpClient
+    .post<Response[]>(`http://localhost:3000/auth/decode`, body)
+    .pipe(share());
+
+    resp.subscribe(
+      (value) => {
+        this.UserId = value;
+        console.log(this.UserId)
+        
+      },
+      (error) => {
+        console.log('ocurrio un error');
+      }
+    );
+  }
+  */
 }
