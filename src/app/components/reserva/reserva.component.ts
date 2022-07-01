@@ -90,7 +90,7 @@ export class ReservaComponent implements OnInit {
   res.subscribe(
     (value) => {
       this.Butacas = value;
-      this.butacas = this.Butacas;
+      this.butacas = this.Butacas.butacas;
       this.butacas.find((butaca) => {
         this.butacas.push(butaca);
         switch (butaca.fila) {
