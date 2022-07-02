@@ -58,12 +58,17 @@ export class NavComponent implements OnInit {
     //VALIDACION DE USUARIO LOGUEADO O DESLOGUEADO PARA RENDERIZAR EL NAV
     if (localStorage.getItem('IdUser') != null) {
       this.tipoDeUsuario = 'Comun';
+      console.log(this.tipoDeUsuario);
     }
-    if (localStorage.getItem('IdUser') === environment.userId) {
+    if (
+      localStorage.getItem('IdUser') === '9b2e856e-7478-40ac-b9dc-99d0facd92ee'
+    ) {
       this.tipoDeUsuario = 'Admin';
+      console.log(this.tipoDeUsuario);
     }
     if (localStorage.getItem('IdUser') == null) {
       this.tipoDeUsuario = null;
+      console.log(this.tipoDeUsuario);
     }
   }
 
