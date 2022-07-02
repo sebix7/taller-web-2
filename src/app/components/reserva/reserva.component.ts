@@ -145,6 +145,12 @@ export class ReservaComponent implements OnInit {
 
   getButaca(columna: string) {
     let url = 'http://localhost:3000/reserva' + '/' + columna;
+    if (localStorage.getItem('IdUser') === null) {
+      Swal.fire({
+        title: 'Debes estar logueado - Se re redigira al login',
+        icon: 'warning',
+      }).then((result) => this.router.navigate(['/login']));
+    } else {
     let res: Observable<Butacas> = this.httpClient.get<Butacas>(url);
     res.subscribe(
       (data) => {
@@ -161,6 +167,7 @@ export class ReservaComponent implements OnInit {
         Swal.fire('No se encontró', '', 'error');
       }
     );
+    }
   }
 
   modificarButaca(columna: string, butaca: Butacas) {
