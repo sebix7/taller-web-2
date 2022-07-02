@@ -48,7 +48,7 @@ export class NavComponent implements OnInit {
         this.tipoDeUsuario = 'Comun';
         console.log(this.tipoDeUsuario)
       }
-      if (localStorage.getItem('IdUser') === '6918af43-9fc7-4399-8fa7-65dd66913cff'){
+      if (localStorage.getItem('IdUser') === '9b2e856e-7478-40ac-b9dc-99d0facd92ee'){
         this.tipoDeUsuario = 'Admin';
         console.log(this.tipoDeUsuario)
       }
