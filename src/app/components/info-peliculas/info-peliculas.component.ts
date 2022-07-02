@@ -1,9 +1,10 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { HttpClient,} from '@angular/common/http';
-import { Observable, } from 'rxjs';
-import { share, } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { share } from 'rxjs/operators';
 import { Pelicula } from '../home/pelicula';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-info-peliculas',
@@ -40,17 +41,16 @@ export class InfoPeliculasComponent implements OnInit {
     this.idPelicula = this.route.snapshot.paramMap.get('id');
 
     let res: Observable<Pelicula[]> = this.httpClient
-    .get<Pelicula[]>(`http://localhost:3000/peliculas/${this.idPelicula}`)
-    .pipe(share());
-  res.subscribe(
-    (value) => {
-      console.log(value);
-      this.Peliculas = value;
-      this.pelicula = this.Peliculas;
-    },
-    (error) => {
-      console.log('ocurrio un error');
-    }
-  );
+      .get<Pelicula[]>(`http://localhost:3000/peliculas/${this.idPelicula}`)
+      .pipe(share());
+    res.subscribe(
+      (value) => {
+        this.Peliculas = value;
+        this.pelicula = this.Peliculas;
+      },
+      (error) => {
+        Swal.fire('Ocurrió un error', '', 'error');
+      }
+    );
   }
 }

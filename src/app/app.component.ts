@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Observable, share } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -22,11 +23,7 @@ export class AppComponent {
       (value) => {
         const user_id = JSON.stringify(value);
 
-        if (
-          (user_id ===
-            JSON.stringify('6918af43-9fc7-4399-8fa7-65dd66913cff')) ===
-          true
-        ) {
+        if (user_id === JSON.stringify(environment.userId)) {
           this.administradorRole = true;
         }
       },

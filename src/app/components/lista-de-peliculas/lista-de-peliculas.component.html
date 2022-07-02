@@ -1,16 +1,21 @@
 <div class="movie-items full-width">
   <div class="title-hd">
     <h2>Todas las Peliculas</h2>
-    <a routerLink="/peliculas" style="Color:white">Ver todos</a>
+    <a routerLink="/peliculas" style="color: white">Ver todos</a>
   </div>
-  <div style="display:flex; flex-wrap: wrap;">
+  <app-spinner [condicion]="peliculas.length === 0"></app-spinner>
+  <div style="display: flex; flex-wrap: wrap" *ngIf="peliculas.length > 0">
     <div *ngFor="let peli of peliculas">
-        <div class="card">
-          <a routerLink="/info/{{peli.id}}" class="a">
-            <div class="info"><span style="font-size: 15px; font-weight: bold; color:white">Ver info</span></div>
-            <img class="imagen" src="{{peli.imagen}}">
-          </a>
-        </div>
+      <div class="card">
+        <a routerLink="/info/{{ peli.id }}" class="a">
+          <div class="info">
+            <span style="font-size: 15px; font-weight: bold; color: white"
+              >Ver info</span
+            >
+          </div>
+          <img class="imagen" src="{{ peli.imagen }}" />
+        </a>
       </div>
     </div>
   </div>
+</div>

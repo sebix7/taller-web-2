@@ -1,113 +1,152 @@
-<main class="principal" style="margin-top: 100px;">
-
+<main class="principal" style="margin-top: 100px">
   <div class="funcionesContainer">
+    <h2 style="text-align: center">FUNCIONES PARA: {{ titulo }}</h2>
 
-    <h2 style="text-align: center;">FUNCIONES PARA: {{titulo}}</h2>
-
-    <h3 class="dia"> Lunes</h3>
+    <h3 class="dia">Lunes</h3>
     <div class="Horarios">
-      <ul style="display:flex">
+      <ul style="display: flex">
         <div *ngFor="let funcion of funciones">
           <div *ngIf="funcion.dia == 'Lunes'">
-            <li class="funcion"><a routerLink="/reserva/{{titulo}}/{{idPelicula}}/{{funcion.fecha}}/{{funcion.horario}}" routerLinkActive="active">
-                Fecha: {{funcion.fecha}} <br>
-                Hora: {{funcion.horario}}
-            </a></li>
+            <li class="funcion">
+              <a
+                routerLink="/reserva/{{ titulo }}/{{ idPelicula }}/{{
+                  funcion.fecha
+                }}/{{ funcion.horario }}"
+                routerLinkActive="active"
+              >
+                Fecha: {{ formatearFecha(funcion.fecha) }} <br />
+                Hora: {{ funcion.horario }}
+              </a>
+            </li>
           </div>
         </div>
       </ul>
     </div>
 
-    <h3 class="dia"> Martes</h3>
+    <h3 class="dia">Martes</h3>
     <div class="Horarios">
-      <ul style="display:flex">
+      <ul style="display: flex">
         <div *ngFor="let funcion of funciones">
           <div *ngIf="funcion.dia == 'Martes'">
-            <li class="funcion"><a routerLink="/reserva/{{titulo}}/{{idPelicula}}/{{funcion.fecha}}/{{funcion.horario}}" routerLinkActive="active">
-                Fecha: {{funcion.fecha}} <br>
-                Hora: {{funcion.horario}}
-            </a></li>
+            <li class="funcion">
+              <a
+                routerLink="/reserva/{{ titulo }}/{{ idPelicula }}/{{
+                  funcion.fecha
+                }}/{{ funcion.horario }}"
+                routerLinkActive="active"
+              >
+                Fecha: {{ formatearFecha(funcion.fecha) }} <br />
+                Hora: {{ funcion.horario }}
+              </a>
+            </li>
           </div>
         </div>
       </ul>
     </div>
 
-    <h3 class="dia"> Miercoles</h3>
+    <h3 class="dia">Miércoles</h3>
     <div class="Horarios">
-      <ul style="display:flex">
+      <ul style="display: flex">
         <div *ngFor="let funcion of funciones">
-          <div *ngIf="funcion.dia == 'Miercoles'">
-            <li class="funcion"><a routerLink="/reserva/{{titulo}}/{{idPelicula}}/{{funcion.fecha}}/{{funcion.horario}}" routerLinkActive="active">
-                Fecha: {{funcion.fecha}} <br>
-                Hora: {{funcion.horario}}
-            </a></li>
+          <div *ngIf="funcion.dia == 'Miércoles'">
+            <li class="funcion">
+              <a
+                routerLink="/reserva/{{ titulo }}/{{ idPelicula }}/{{
+                  funcion.fecha
+                }}/{{ funcion.horario }}"
+                routerLinkActive="active"
+              >
+                Fecha: {{ formatearFecha(funcion.fecha) }} <br />
+                Hora: {{ funcion.horario }}
+              </a>
+            </li>
           </div>
         </div>
       </ul>
     </div>
 
-    <h3 class="dia"> Jueves</h3>
+    <h3 class="dia">Jueves</h3>
     <div class="Horarios">
-      <ul style="display:flex">
+      <ul style="display: flex">
         <div *ngFor="let funcion of funciones">
           <div *ngIf="funcion.dia == 'Jueves'">
-            <li class="funcion"><a routerLink="/reserva/{{titulo}}/{{idPelicula}}/{{funcion.fecha}}/{{funcion.horario}}" routerLinkActive="active">
-             Fecha: {{funcion.fecha}} <br>
-             Hora: {{funcion.horario}}
-            </a></li>
+            <li class="funcion">
+              <a
+                routerLink="/reserva/{{ titulo }}/{{ idPelicula }}/{{
+                  funcion.fecha
+                }}/{{ funcion.horario }}"
+                routerLinkActive="active"
+              >
+                Fecha: {{ formatearFecha(funcion.fecha) }} <br />
+                Hora: {{ funcion.horario }}
+              </a>
+            </li>
           </div>
         </div>
       </ul>
     </div>
 
-    <h3 class="dia"> Viernes</h3>
+    <h3 class="dia">Viernes</h3>
     <div class="Horarios">
-      <ul style="display:flex">
+      <ul style="display: flex">
         <div *ngFor="let funcion of funciones">
           <div *ngIf="funcion.dia == 'Viernes'">
-            <li class="funcion"><a routerLink="/reserva/{{titulo}}/{{idPelicula}}/{{funcion.fecha}}/{{funcion.horario}}" routerLinkActive="active">
-                Fecha: {{funcion.fecha}} <br>
-                Hora: {{funcion.horario}}
-            </a> </li>
+            <li class="funcion">
+              <a
+                routerLink="/reserva/{{ titulo }}/{{ idPelicula }}/{{
+                  funcion.fecha
+                }}/{{ funcion.horario }}"
+                routerLinkActive="active"
+              >
+                Fecha: {{ formatearFecha(funcion.fecha) }} <br />
+                Hora: {{ funcion.horario }}
+              </a>
+            </li>
           </div>
         </div>
       </ul>
     </div>
 
-    <h3 class="dia"> Sabado</h3>
+    <h3 class="dia">Sabado</h3>
     <div class="Horarios">
-      <ul style="display:flex">
+      <ul style="display: flex">
         <div *ngFor="let funcion of funciones">
           <div *ngIf="funcion.dia == 'Sabado'">
-            <li class="funcion"><a routerLink="/reserva/{{titulo}}/{{idPelicula}}/{{funcion.fecha}}/{{funcion.horario}}" routerLinkActive="active">
-                Fecha: {{funcion.fecha}} <br>
-                Hora: {{funcion.horario}}
-            </a></li>
+            <li class="funcion">
+              <a
+                routerLink="/reserva/{{ titulo }}/{{ idPelicula }}/{{
+                  funcion.fecha
+                }}/{{ funcion.horario }}"
+                routerLinkActive="active"
+              >
+                Fecha: {{ formatearFecha(funcion.fecha) }} <br />
+                Hora: {{ funcion.horario }}
+              </a>
+            </li>
           </div>
         </div>
       </ul>
     </div>
 
-    <h3 class="dia"> Domingo</h3>
+    <h3 class="dia">Domingo</h3>
     <div class="Horarios">
-      <ul style="display:flex">
+      <ul style="display: flex">
         <div *ngFor="let funcion of funciones">
           <div *ngIf="funcion.dia == 'Domingo'">
-            <li class="funcion"><a routerLink="/reserva/{{titulo}}/{{idPelicula}}/{{funcion.fecha}}/{{funcion.horario}}" routerLinkActive="active">
-                Fecha: {{funcion.fecha}} <br>
-                Hora: {{funcion.horario}}
-            </a></li>
+            <li class="funcion">
+              <a
+                routerLink="/reserva/{{ titulo }}/{{ idPelicula }}/{{
+                  funcion.fecha
+                }}/{{ funcion.horario }}"
+                routerLinkActive="active"
+              >
+                Fecha: {{ formatearFecha(funcion.fecha) }} <br />
+                Hora: {{ funcion.horario }}
+              </a>
+            </li>
           </div>
         </div>
       </ul>
     </div>
-
-
-
-
-
-
-
   </div>
-
 </main>

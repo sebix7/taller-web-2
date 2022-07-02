@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, share } from 'rxjs';
+import Swal from 'sweetalert2';
 import { Pelicula } from '../home/pelicula';
 
 @Component({
@@ -17,18 +18,17 @@ export class ListaDePeliculasComponent implements OnInit {
 
   ngOnInit(): void {
     let res: Observable<Pelicula[]> = this.httpClient
-    .get<Pelicula[]>('http://localhost:3000/peliculas')
-    .pipe(share());
+      .get<Pelicula[]>('http://localhost:3000/peliculas')
+      .pipe(share());
 
-  res.subscribe(
-    (value) => {
-      console.log(value);
-      this.Peliculas = value;
-      this.peliculas = this.Peliculas.peliculas;
-    },
-    (error) => {
-      console.log('ocurrio un error');
-    }
-  );
-}
+    res.subscribe(
+      (value) => {
+        this.Peliculas = value;
+        this.peliculas = this.Peliculas.peliculas;
+      },
+      (error) => {
+        Swal.fire('Ocurrió un error', '', 'error');
+      }
+    );
+  }
 }

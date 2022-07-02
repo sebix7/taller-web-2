@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, share } from 'rxjs';
+import Swal from 'sweetalert2';
 import { Funcion } from './Funcion';
 
 @Component({
@@ -24,6 +25,11 @@ export class FuncionesComponent implements OnInit {
     protected route: ActivatedRoute
   ) {}
 
+  formatearFecha(fecha: string): string {
+    const fechaToDate = new Date(fecha);
+    return fechaToDate.toLocaleDateString();
+  }
+
   ngOnInit(): void {
     this.titulo = this.route.snapshot.paramMap.get('titulo');
     this.idPelicula = this.route.snapshot.paramMap.get('idPeli');
@@ -34,12 +40,11 @@ export class FuncionesComponent implements OnInit {
 
     res.subscribe(
       (value) => {
-        console.log(value);
         this.Funciones = value;
         this.funciones = this.Funciones;
       },
       (error) => {
-        console.log('ocurrio un error');
+        Swal.fire('Ocurrió un error', '', 'error');
       }
     );
   }

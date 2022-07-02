@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { Butacas } from './butacas';
 import { Router } from '@angular/router';
 import { Reserva } from './historial-reserva/historial-reserva';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-reserva',
@@ -13,8 +14,8 @@ import { Reserva } from './historial-reserva/historial-reserva';
   styleUrls: ['./reserva.component.css'],
 })
 export class ReservaComponent implements OnInit {
-  id: number= 0;
-  precio: number= 0;
+  id: number = 0;
+  precio: number = 0;
   titulo: string = '';
   imagen: string = '';
   descripcion: string = '';
@@ -23,11 +24,11 @@ export class ReservaComponent implements OnInit {
   actores: string = '';
   director: string = '';
   pelicula!: Pelicula;
-  Peliculas:any;
-  idPeli:any;
-  tituloPeli:any;
-  funcionDia:any;
-  funcionHorario:any;
+  Peliculas: any;
+  idPeli: any;
+  tituloPeli: any;
+  funcionDia: any;
+  funcionHorario: any;
   butacas: Butacas[] = [];
   Butacas: any;
   filaA: Butacas[] = [];
@@ -38,26 +39,29 @@ export class ReservaComponent implements OnInit {
   filaF: Butacas[] = [];
   filaG: Butacas[] = [];
   filaH: Butacas[] = [];
-  reservas:Reserva[]=[];
+  reservas: Reserva[] = [];
   columna: any[] = [];
-  butacaReservada:Butacas={
-    id:0,
-    columna:'',
-    fila:'',
-    disponible:true
-  };
-  reserva:Reserva={
+  butacaReservada: Butacas = {
     id: 0,
-    usuario:'',
+    columna: '',
+    fila: '',
+    disponible: true,
+  };
+  reserva: Reserva = {
+    id: 0,
+    usuario: '',
     pelicula: '',
     asiento: '',
     fechaFuncion: '',
     candySnack: '',
-    precio: 500
-  }
-  
+    precio: 500,
+  };
 
-  constructor(protected router: Router, protected httpClient: HttpClient,private route:ActivatedRoute) {
+  constructor(
+    protected router: Router,
+    protected httpClient: HttpClient,
+    private route: ActivatedRoute
+  ) {
     this.tituloPeli = this.route.snapshot.paramMap.get('titulo');
     this.idPeli = this.route.snapshot.paramMap.get('idPeli');
     this.funcionDia = this.route.snapshot.paramMap.get('fecha');
@@ -68,162 +72,166 @@ export class ReservaComponent implements OnInit {
 
     res.subscribe(
       (value) => {
-        console.log(value);
         this.Peliculas = value;
         this.pelicula = this.Peliculas;
-        this.id=this.pelicula.id;
+        this.id = this.pelicula.id;
         this.precio = 500;
         this.titulo = this.pelicula.titulo;
-        this.imagen=this.pelicula.imagen;
+        this.imagen = this.pelicula.imagen;
         this.descripcion = this.pelicula.descripcion;
         this.genero = this.pelicula.genero;
-        this.duracion=this.duracion;
+        this.duracion = this.duracion;
         this.actores = this.pelicula.actores;
         this.director = this.pelicula.director;
       },
       (error) => {
-        console.log('ocurrio un error');
+        Swal.fire('Ocurrió un error', '', 'error');
       }
     );
   }
 
-  ngOnInit(): void { 
-
-    console.log(this.reservas)
+  ngOnInit(): void {
     let res: Observable<Butacas[]> = this.httpClient
-    .get<Butacas[]>('http://localhost:3000/reserva')
-    .pipe(share());
+      .get<Butacas[]>('http://localhost:3000/reserva')
+      .pipe(share());
 
-  res.subscribe(
-    (value) => {
-      this.Butacas = value;
-      this.butacas = this.Butacas.butacas;
-      this.butacas.find((butaca) => {
-        this.butacas.push(butaca);
-        switch (butaca.fila) {
-          case 'A':
-            this.filaA.push(butaca);
-            break;
-          case 'B':
-            this.filaB.push(butaca);
-            break;
-          case 'C':
-            this.filaC.push(butaca);
-            break;
-          case 'D':
-            this.filaD.push(butaca);
-            break;
-          case 'E':
-            this.filaE.push(butaca);
-            break;
-          case 'F':
-            this.filaF.push(butaca);
-            break;
-          case 'G':
-            this.filaG.push(butaca);
-            break;
-          case 'H':
-            this.filaH.push(butaca);
-            break;
-        }
-      })
-
-    },
-    (error) => {
-      console.log('ocurrio un error');
-    }
-  );
-  }
-
-  getUsuario():Observable<Response[]>{
-    let body =localStorage.getItem('token');
-    return this.httpClient.post<Response[]>('http://localhost:3000/auth/decode',body);
-  }
-
-  getButaca(columna:string){
-   
-    let url='http://localhost:3000/reserva'+'/'+columna;
-    let res: Observable<Butacas> = this.httpClient.get<Butacas>(url);
-    res.subscribe((data)=>{
-          this.butacaReservada.id=data.id;
-          this.butacaReservada.fila=data.fila;
-          this.butacaReservada.columna=data.columna;
-          this.butacaReservada.disponible=false;
-          console.log('se encontro la butaca',this.butacaReservada)
-          this.modificarButaca(this.butacaReservada.columna,this.butacaReservada)
+    res.subscribe(
+      (value) => {
+        this.Butacas = value;
+        this.butacas = this.Butacas.butacas;
+        this.butacas.find((butaca) => {
+          this.butacas.push(butaca);
+          switch (butaca.fila) {
+            case 'A':
+              this.filaA.push(butaca);
+              break;
+            case 'B':
+              this.filaB.push(butaca);
+              break;
+            case 'C':
+              this.filaC.push(butaca);
+              break;
+            case 'D':
+              this.filaD.push(butaca);
+              break;
+            case 'E':
+              this.filaE.push(butaca);
+              break;
+            case 'F':
+              this.filaF.push(butaca);
+              break;
+            case 'G':
+              this.filaG.push(butaca);
+              break;
+            case 'H':
+              this.filaH.push(butaca);
+              break;
+          }
+        });
       },
       (error) => {
-        console.log('no se encontro',error);
-      })
+        Swal.fire('Ocurrió un error', '', 'error');
+      }
+    );
   }
 
-  modificarButaca(columna:string, butaca:Butacas){
-    let url='http://localhost:3000/reserva'+'/'+columna;
-    this.httpClient.put(url,butaca).subscribe(data=>{
-      console.log("se modificoo",data)
-    }, error=>{
-      console.log(error)
-    });
+  getUsuario(): Observable<Response[]> {
+    let body = localStorage.getItem('token');
+    return this.httpClient.post<Response[]>(
+      'http://localhost:3000/auth/decode',
+      body
+    );
   }
 
-  guardarReserva(reserva:Reserva): Observable<any>{
-      let url='http://localhost:3000/reserva';
-      return this.httpClient.post(url,reserva);
+  getButaca(columna: string) {
+    let url = 'http://localhost:3000/reserva' + '/' + columna;
+    let res: Observable<Butacas> = this.httpClient.get<Butacas>(url);
+    res.subscribe(
+      (data) => {
+        this.butacaReservada.id = data.id;
+        this.butacaReservada.fila = data.fila;
+        this.butacaReservada.columna = data.columna;
+        this.butacaReservada.disponible = false;
+        this.modificarButaca(
+          this.butacaReservada.columna,
+          this.butacaReservada
+        );
+      },
+      (error) => {
+        Swal.fire('No se encontró', '', 'error');
+      }
+    );
   }
 
-  generarId(){
-    let idGenerado=1;
-    if(this.reservas.length!=0){
+  modificarButaca(columna: string, butaca: Butacas) {
+    let url = 'http://localhost:3000/reserva' + '/' + columna;
+    this.httpClient.put(url, butaca).subscribe(
+      (data) => {
+        console.log('se modificoo', data);
+      },
+      (error) => {
+        Swal.fire('Ocurrió un error', '', 'error');
+      }
+    );
+  }
 
-      this.reservas.filter((reserva)=>{
-        idGenerado=Math.max(reserva.id)+1;
-     });
+  guardarReserva(reserva: Reserva): Observable<any> {
+    let url = 'http://localhost:3000/reserva';
+    return this.httpClient.post(url, reserva);
+  }
 
+  formatearFecha(fecha: string): string {
+    const fechaToDate = new Date(fecha);
+    return fechaToDate.toLocaleDateString();
+  }
+
+  generarId() {
+    let idGenerado = 1;
+    if (this.reservas.length != 0) {
+      this.reservas.filter((reserva) => {
+        idGenerado = Math.max(reserva.id) + 1;
+      });
     }
-    
+
     return idGenerado;
-    
   }
-  
-  reservarCol(columna: string, numero: number){
-    this.columna.push(columna+''+(numero+1));
-    console.log(this.columna);
+
+  reservarCol(columna: string, numero: number) {
+    this.columna.push(columna + '' + (numero + 1));
   }
-  reservar(){
+  reservar() {
+    if (this.columna.length > 0) {
+      this.columna.forEach((col) => {
+        this.reserva.asiento = col;
+        this.reserva.id = this.generarId();
+        this.reserva.usuario = JSON.stringify(this.getUsuario());
+        this.reserva.pelicula = this.titulo;
+        this.reserva.fechaFuncion = this.funcionDia + ' ' + this.funcionHorario;
+        this.reserva.candySnack = '-';
 
-    if(this.columna.length > 0){
-    this.columna.forEach(col => {
+        this.reservas.push(this.reserva);
 
-      this.reserva.asiento=col;
-      this.reserva.id=this.generarId();
-      this.reserva.usuario= JSON.stringify(this.getUsuario());
-      this.reserva.pelicula=this.titulo;
-      this.reserva.fechaFuncion=this.funcionDia+" "+this.funcionHorario;
-      this.reserva.candySnack="-";
+        this.getButaca(col);
+      });
 
-      this.reservas.push(this.reserva);
-
-         
-      this.getButaca(col); 
-    });
-
-      if(localStorage.getItem("reservas") != null && localStorage.getItem("reservas") != ""){
-        let localReservas: any[] = JSON.parse(localStorage.getItem('reservas') || '{}');
+      if (
+        localStorage.getItem('reservas') != null &&
+        localStorage.getItem('reservas') != ''
+      ) {
+        let localReservas: any[] = JSON.parse(
+          localStorage.getItem('reservas') || '{}'
+        );
         this.reservas.forEach((res) => {
           localReservas.push(res);
-        })
-        localStorage.setItem("reservas", JSON.stringify(localReservas));
-        console.log(localReservas);
+        });
+        localStorage.setItem('reservas', JSON.stringify(localReservas));
         this.reservas = [];
       } else {
-        localStorage.setItem("reservas", JSON.stringify(this.reservas));
+        localStorage.setItem('reservas', JSON.stringify(this.reservas));
         this.reservas = [];
       }
 
-      console.log(this.reserva)
-       
-      this.router.navigate(["/carrito"]);
-    };
-
-}
+      this.router.navigate(['/carrito']);
+    }
+  }
 }
