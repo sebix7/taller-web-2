@@ -22,6 +22,15 @@ export class HistorialReservaComponent implements OnInit {
     this.getReservas();
   }
 
+  formatearFecha(fecha: string): string {
+    const fechaToDate = new Date(fecha.substring(0, fecha.indexOf('Z')));
+    return (
+      fechaToDate.toLocaleDateString() +
+      ' ' +
+      fecha.substring(fecha.indexOf('Z') + 1)
+    );
+  }
+
   getReservas() {
     let UserId = localStorage.getItem('IdUser');
 

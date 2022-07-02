@@ -25,6 +25,11 @@ export class FuncionesComponent implements OnInit {
     protected route: ActivatedRoute
   ) {}
 
+  formatearFecha(fecha: string): string {
+    const fechaToDate = new Date(fecha);
+    return fechaToDate.toLocaleDateString();
+  }
+
   ngOnInit(): void {
     this.titulo = this.route.snapshot.paramMap.get('titulo');
     this.idPelicula = this.route.snapshot.paramMap.get('idPeli');

@@ -1,48 +1,56 @@
 <div class="section p-5">
-    <div class="contenedorInformacion p-5 d-flex flex-column">
-        <div>
-          <h2 class="text-center pb-4">Mis reservas</h2>
-        </div>
-        <div *ngIf="!reservas || reservas.length== 0">
-            <div class="alert alert-warning" role="alert">
-               Aun no ha realizado reservas!
-              </div>
-        </div>
-        <div *ngIf="reservas && reservas.length>0">
-            <table class="table table-dark table-striped">
-                <thead>
-                  <tr>
-                    <th scope="col" class="text-center">Pelicula</th>
-                    <th scope="col" class="text-center">Asiento</th>
-                    <th scope="col" class="text-center">Fecha de la funcion</th>
-                    <th scope="col" class="text-center">Candy & Snack</th>
-                    <th scope="col" class="text-center">Cancelar</th>
-                  </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let reserva of reservas">
-                        <td class="text-center">{{reserva.pelicula}}</td>
-                        <td class="text-center">{{reserva.asiento}}</td>
-                        <td class="text-center">{{reserva.fechaFuncion}}</td>
-                        <td *ngIf="reserva.candySnack!='-'" class="text-center">
-                          {{reserva.candySnack}}
-                        </td>
-                        <td class="text-center">
-                            <a type="button" class="btn btn-success zoom" routerLink="/store">Ir a tienda</a>
-                        </td>
-                        <td class="text-center">
-                          <a type="button" class="btn btn-danger" (click)="eliminarReserva(reserva.id)">Eliminar reserva</a>
-                      </td>    
-                    </tr>
-                 
-                </tbody>
-              </table>
-         </div>
-        
+  <div class="contenedorInformacion p-5 d-flex flex-column">
+    <div>
+      <h2 class="text-center pb-4">Mis reservas</h2>
+    </div>
+    <div *ngIf="!reservas || reservas.length == 0">
+      <div class="alert alert-warning" role="alert">
+        Aun no ha realizado reservas!
+      </div>
+    </div>
+    <div *ngIf="reservas && reservas.length > 0">
+      <table class="table table-dark table-striped">
+        <thead>
+          <tr>
+            <th scope="col" class="text-center">Pelicula</th>
+            <th scope="col" class="text-center">Asiento</th>
+            <th scope="col" class="text-center">Fecha de la funcion</th>
+            <th scope="col" class="text-center">Candy & Snack</th>
+            <th scope="col" class="text-center">Cancelar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let reserva of reservas">
+            <td class="text-center">{{ reserva.pelicula }}</td>
+            <td class="text-center">{{ reserva.asiento }}</td>
+            <td class="text-center">
+              {{ formatearFecha(reserva.fechaFuncion) }}
+            </td>
+            <td *ngIf="reserva.candySnack != '-'" class="text-center">
+              {{ reserva.candySnack }}
+            </td>
+            <td class="text-center">
+              <a type="button" class="btn btn-success" routerLink="/store"
+                >Ir a tienda</a
+              >
+            </td>
+            <td class="text-center">
+              <a
+                type="button"
+                class="btn btn-danger"
+                (click)="eliminarReserva(reserva.id)"
+                >Eliminar reserva</a
+              >
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
-          <div>
-            <a [routerLink]="['/peliculas']" class="btn btn-dark zoom">Ver más peliculas</a>
-          </div>
-    </div>  
+    <div>
+      <a [routerLink]="['/peliculas']" class="btn btn-dark zoom"
+        >Ver más peliculas</a
+      >
+    </div>
+  </div>
 </div>
-

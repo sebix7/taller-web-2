@@ -180,6 +180,11 @@ export class ReservaComponent implements OnInit {
     return this.httpClient.post(url, reserva);
   }
 
+  formatearFecha(fecha: string): string {
+    const fechaToDate = new Date(fecha);
+    return fechaToDate.toLocaleDateString();
+  }
+
   generarId() {
     let idGenerado = 1;
     if (this.reservas.length != 0) {

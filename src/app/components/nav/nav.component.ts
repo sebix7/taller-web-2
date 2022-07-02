@@ -10,6 +10,7 @@ import { Observable, share } from 'rxjs';
 import { Pelicula } from '../home/pelicula';
 import { HttpClient } from '@angular/common/http';
 import Swal from 'sweetalert2';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-nav',
@@ -58,9 +59,7 @@ export class NavComponent implements OnInit {
     if (localStorage.getItem('IdUser') != null) {
       this.tipoDeUsuario = 'Comun';
     }
-    if (
-      localStorage.getItem('IdUser') === '6918af43-9fc7-4399-8fa7-65dd66913cff'
-    ) {
+    if (localStorage.getItem('IdUser') === environment.userId) {
       this.tipoDeUsuario = 'Admin';
     }
     if (localStorage.getItem('IdUser') == null) {
